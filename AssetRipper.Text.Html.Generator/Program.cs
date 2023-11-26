@@ -1,7 +1,6 @@
-﻿using AssetRipper.Text.SourceGeneration;
+﻿using AssetRipper.Text.Html.Model;
+using AssetRipper.Text.SourceGeneration;
 using System.CodeDom.Compiler;
-using System.Text;
-using System.Text.Json;
 
 namespace HtmlSharp.Generator;
 
@@ -12,36 +11,15 @@ internal class Program
 	private const string TargetProject = RepositoryRoot + "AssetRipper.Text.Html/";
 	private const string GeneratedFolder = TargetProject + "Generated/";
 
-	//https://developer.mozilla.org/en-US/docs/Glossary/Void_element
-	private static readonly HashSet<string> VoidElements = [
-		"area",
-		"base",
-		"br",
-		"col",
-		"embed",
-		"hr",
-		"img",
-		"input",
-		"link",
-		"meta",
-		"param",
-		"source",
-		"track",
-		"wbr"
-	];
-
 	static void Main()
 	{
-		List<KeyValuePair<string, List<string>>> elements = JsonSerializer.Deserialize<List<KeyValuePair<string, List<string>>>>(
-			File.OpenRead(JsonFile))
-			?? throw new NullReferenceException();
+		IReadOnlyDictionary<string, HtmlElement> elements = HtmlJsonLoader.Load(JsonFile);
 
 		Directory.CreateDirectory(GeneratedFolder);
 
-		foreach ((string element, List<string> attributes) in elements)
+		foreach (HtmlElement element in elements.Values)
 		{
-			string className = ConvertToCSharpNaming(element, "");
-			IndentedTextWriter writer = IndentedTextWriterFactory.Create(GeneratedFolder, className);
+			IndentedTextWriter writer = IndentedTextWriterFactory.Create(GeneratedFolder, element.ClassName);
 
 			writer.WriteGeneratedCodeWarning();
 			writer.WriteLineNoTabs();
@@ -49,44 +27,42 @@ internal class Program
 			writer.WriteLineNoTabs();
 			writer.WriteFileScopedNamespace("AssetRipper.Text.Html");
 			writer.WriteLineNoTabs();
-			writer.WriteLine($"public readonly ref partial struct {className}");
+			writer.WriteLine($"public readonly ref partial struct {element.ClassName}");
 			using (new CurlyBrackets(writer))
 			{
-				writer.WriteLine($"private const string ElementName = \"{element}\";");
+				writer.WriteLine($"private const string ElementName = \"{element.Name}\";");
 				writer.WriteLine("private readonly TextWriter writer;");
 				writer.WriteLineNoTabs();
-				writer.WriteLine($"public {className}(TextWriter writer)");
+				writer.WriteLine($"public {element.ClassName}(TextWriter writer)");
 				using (new CurlyBrackets(writer))
 				{
 					writer.WriteLine("this.writer = writer;");
 					writer.WriteLine("writer.Write($\"<{ElementName}\");");
 				}
-				foreach (string attribute in attributes)
+				foreach (HtmlAttribute attribute in element.Attributes)
 				{
-					string propertyName = ConvertToCSharpNaming(attribute, className);
-
 					writer.WriteLineNoTabs();
-					writer.WriteLine($"public string? {propertyName}");
+					writer.WriteLine($"public string? {attribute.PropertyName}");
 					using (new CurlyBrackets(writer))
 					{
 						writer.WriteLine("set");
 						using (new CurlyBrackets(writer))
 						{
-							writer.WriteLine($"writer.Write(\" {attribute}=\\\"\");");
+							writer.WriteLine($"writer.Write(\" {attribute.Name}=\\\"\");");
 							writer.WriteLine("writer.Write(value);");
 							writer.WriteLine("writer.Write('\"');");
 						}
 					}
 					writer.WriteLineNoTabs();
-					writer.WriteLine($"public {className} With{propertyName}(string? value = null)");
+					writer.WriteLine($"public {element.ClassName} {attribute.FluentMethodName}(string? value = null)");
 					using (new CurlyBrackets(writer))
 					{
-						writer.WriteLine($"{propertyName} = value;");
+						writer.WriteLine($"{attribute.PropertyName} = value;");
 						writer.WriteLine("return this;");
 					}
 				}
 				writer.WriteLineNoTabs();
-				writer.WriteLine($"public {className} WithCustomAttribute(string key, string? value = null)");
+				writer.WriteLine($"public {element.ClassName} WithCustomAttribute(string key, string? value = null)");
 				using (new CurlyBrackets(writer))
 				{
 					writer.WriteLine("WriteKey(key);");
@@ -94,7 +70,7 @@ internal class Program
 					writer.WriteLine("return this;");
 				}
 				writer.WriteLineNoTabs();
-				writer.WriteLine($"public {className} WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)");
+				writer.WriteLine($"public {element.ClassName} WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)");
 				using (new CurlyBrackets(writer))
 				{
 					writer.WriteLine("foreach ((string key, string? value) in attributes)");
@@ -122,7 +98,7 @@ internal class Program
 				}
 				writer.WriteLineNoTabs();
 				writer.WriteLine("public void Close() => writer.Write(\"/>\");");
-				if (!VoidElements.Contains(element))
+				if (element.HasEndMethod)
 				{
 					writer.WriteLineNoTabs();
 					writer.WriteLine("public HtmlElementCloser End()");
@@ -133,35 +109,8 @@ internal class Program
 					}
 				}
 			}
-			Console.WriteLine(element);
+			Console.WriteLine(element.Name);
 		}
 		Console.WriteLine("Done!");
-	}
-
-	static string ConvertToCSharpNaming(string kebabCase, string className)
-	{
-		StringBuilder pascalCaseBuilder = new(kebabCase.Length);
-
-		bool capitalizeNext = true;
-
-		foreach (char c in kebabCase)
-		{
-			if (c == '-')
-			{
-				capitalizeNext = true;
-			}
-			else
-			{
-				pascalCaseBuilder.Append(capitalizeNext ? char.ToUpperInvariant(c) : c);
-				capitalizeNext = false;
-			}
-		}
-
-		if (pascalCaseBuilder.Equals(className))
-		{
-			pascalCaseBuilder.Append('_');
-		}
-
-		return pascalCaseBuilder.ToString();
 	}
 }

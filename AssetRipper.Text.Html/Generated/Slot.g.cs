@@ -217,7 +217,7 @@ public readonly ref partial struct Slot
 		}
 	}
 
-	public Slot WithSlot_(string? value = null)
+	public Slot WithSlot(string? value = null)
 	{
 		Slot_ = value;
 		return this;

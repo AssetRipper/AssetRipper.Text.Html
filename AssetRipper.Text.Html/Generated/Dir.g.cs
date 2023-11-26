@@ -105,7 +105,7 @@ public readonly ref partial struct Dir
 		}
 	}
 
-	public Dir WithDir_(string? value = null)
+	public Dir WithDir(string? value = null)
 	{
 		Dir_ = value;
 		return this;

@@ -281,7 +281,7 @@ public readonly ref partial struct Title
 		}
 	}
 
-	public Title WithTitle_(string? value = null)
+	public Title WithTitle(string? value = null)
 	{
 		Title_ = value;
 		return this;

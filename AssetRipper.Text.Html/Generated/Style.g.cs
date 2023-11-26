@@ -281,7 +281,7 @@ public readonly ref partial struct Style
 		}
 	}
 
-	public Style WithStyle_(string? value = null)
+	public Style WithStyle(string? value = null)
 	{
 		Style_ = value;
 		return this;
