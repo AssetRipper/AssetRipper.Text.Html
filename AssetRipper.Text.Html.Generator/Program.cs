@@ -39,7 +39,7 @@ internal class Program
 					writer.WriteLine("this.writer = writer;");
 					writer.WriteLine("writer.Write($\"<{ElementName}\");");
 				}
-				foreach (HtmlAttribute attribute in element.Attributes)
+				foreach (HtmlAttribute attribute in element.Attributes.Values)
 				{
 					writer.WriteLineNoTabs();
 					writer.WriteLine($"public string? {attribute.PropertyName}");

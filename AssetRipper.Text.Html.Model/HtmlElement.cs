@@ -6,18 +6,18 @@ public sealed class HtmlElement
 	public string ClassName { get; }
 	public bool IsVoidElement { get; }
 	public bool HasEndMethod => !IsVoidElement;
-	public IReadOnlyList<HtmlAttribute> Attributes { get; }
+	public IReadOnlyDictionary<string, HtmlAttribute> Attributes { get; }
 
 	public HtmlElement(string name, ReadOnlySpan<string> attributes)
 	{
 		Name = name;
 		ClassName = HtmlHelper.ConvertKebabToPascal(name);
 		IsVoidElement = HtmlHelper.IsVoidElement(name);
-		HtmlAttribute[] attributeArray = new HtmlAttribute[attributes.Length];
-		for (int i = 0; i < attributes.Length; i++)
+		Dictionary<string, HtmlAttribute> attributesDictionary = new();
+		foreach (string attribute in attributes)
 		{
-			attributeArray[i] = new(attributes[i], ClassName);
+			attributesDictionary.Add(attribute, new(attribute, ClassName));
 		}
-		Attributes = attributeArray;
+		Attributes = attributesDictionary;
 	}
 }
