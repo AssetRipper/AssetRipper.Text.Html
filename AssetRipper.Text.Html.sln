@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetRipper.Text.Html.Tests", "AssetRipper.Text.Html.Tests\AssetRipper.Text.Html.Tests.csproj", "{AE9497A7-FFFF-495E-B339-D3AEFAA3E4D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetRipper.Text.Html", "AssetRipper.Text.Html\AssetRipper.Text.Html.csproj", "{4241F033-4F60-4ED2-95F7-0BA15F911E33}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetRipper.Text.Html.Generator", "AssetRipper.Text.Html.Generator\AssetRipper.Text.Html.Generator.csproj", "{4BA08D51-E8FE-446E-BFFF-15C655DC4014}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetRipper.Text.Html.Scraper", "AssetRipper.Text.Html.Scraper\AssetRipper.Text.Html.Scraper.csproj", "{1BA9DFDD-E3B0-4D29-A190-1061D2A2C1FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0D674883-9878-44EE-8280-8D67B6C00076}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE9497A7-FFFF-495E-B339-D3AEFAA3E4D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE9497A7-FFFF-495E-B339-D3AEFAA3E4D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE9497A7-FFFF-495E-B339-D3AEFAA3E4D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE9497A7-FFFF-495E-B339-D3AEFAA3E4D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4241F033-4F60-4ED2-95F7-0BA15F911E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4241F033-4F60-4ED2-95F7-0BA15F911E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4241F033-4F60-4ED2-95F7-0BA15F911E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4241F033-4F60-4ED2-95F7-0BA15F911E33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BA08D51-E8FE-446E-BFFF-15C655DC4014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BA08D51-E8FE-446E-BFFF-15C655DC4014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BA08D51-E8FE-446E-BFFF-15C655DC4014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BA08D51-E8FE-446E-BFFF-15C655DC4014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA9DFDD-E3B0-4D29-A190-1061D2A2C1FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA9DFDD-E3B0-4D29-A190-1061D2A2C1FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA9DFDD-E3B0-4D29-A190-1061D2A2C1FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA9DFDD-E3B0-4D29-A190-1061D2A2C1FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B25A046-F493-42C5-AD64-C77CB21E45DC}
+	EndGlobalSection
+EndGlobal
