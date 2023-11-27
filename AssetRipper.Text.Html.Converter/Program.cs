@@ -11,9 +11,7 @@ namespace AssetRipper.Text.Html.Converter;
 
 internal static partial class Program
 {
-	private const string RepositoryRoot = "../../../../";
-	private const string JsonFile = RepositoryRoot + "AssetRipper.Text.Html.Scraper/bin/Debug/net8.0/html-elements-attributes.json";
-	private static IReadOnlyDictionary<string, HtmlElement> ElementDictionary { get; } = HtmlJsonLoader.Load(JsonFile);
+	private static IReadOnlyDictionary<string, HtmlElement> ElementDictionary { get; } = HtmlJsonLoader.Load();
 
 	//This works perfect, except for whitespace removal. That could be improved.
 	//Currently, there's a lot of `writer.Write(' ');` calls that get generated,

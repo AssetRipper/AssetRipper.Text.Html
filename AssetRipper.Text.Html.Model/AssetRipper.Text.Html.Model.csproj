@@ -6,4 +6,9 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<None Remove="*.json" />
+		<EmbeddedResource Include="*.json" />
+	</ItemGroup>
+
 </Project>

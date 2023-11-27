@@ -7,13 +7,12 @@ namespace HtmlSharp.Generator;
 internal class Program
 {
 	private const string RepositoryRoot = "../../../../";
-	private const string JsonFile = RepositoryRoot + "AssetRipper.Text.Html.Scraper/bin/Debug/net8.0/html-elements-attributes.json";
 	private const string TargetProject = RepositoryRoot + "AssetRipper.Text.Html/";
 	private const string GeneratedFolder = TargetProject + "Generated/";
 
 	static void Main()
 	{
-		IReadOnlyDictionary<string, HtmlElement> elements = HtmlJsonLoader.Load(JsonFile);
+		IReadOnlyDictionary<string, HtmlElement> elements = HtmlJsonLoader.Load();
 
 		Directory.CreateDirectory(GeneratedFolder);
 
