@@ -1,7 +1,7 @@
 ﻿using AngleSharp;
 using AngleSharp.Dom;
-using Newtonsoft.Json;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
 
 namespace AssetRipper.Text.Html.Scraper;
 
@@ -109,16 +109,18 @@ class Program
 
 	static void SaveAsJson(Dictionary<string, List<string>> htmlElements)
 	{
-		using (StreamWriter sw = new StreamWriter("html-elements.json"))
+		JsonSerializerOptions options = new() { WriteIndented = true };
+
+		using (FileStream stream = File.Create("html-elements.json"))
 		{
 			IOrderedEnumerable<string> sortedElements = htmlElements.Keys.OrderBy(k => k);
-			sw.Write(JsonConvert.SerializeObject(sortedElements, Formatting.Indented));
+			JsonSerializer.Serialize(stream, sortedElements, options);
 		}
 
-		using (StreamWriter sw = new StreamWriter("html-elements-attributes.json"))
+		using (FileStream stream = File.Create("html-elements-attributes.json"))
 		{
 			IOrderedEnumerable<KeyValuePair<string, List<string>>> sortedElements = htmlElements.OrderBy(e => e.Key);
-			sw.Write(JsonConvert.SerializeObject(sortedElements, Formatting.Indented));
+			JsonSerializer.Serialize(stream, sortedElements, options);
 		}
 	}
 }
