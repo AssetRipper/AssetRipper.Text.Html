@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using Microsoft.Extensions.Options;
+using System.Net;
 using System.Text;
 
 namespace AssetRipper.Text.Html.Converter;
@@ -21,9 +22,9 @@ internal static class Program
 
 		builder.WebHost.UseKestrelHttpsConfiguration();
 
-		WebApplication app = builder.Build();
+		builder.Logging.ConfigureLoggingLevel();
 
-		app.UseHttpsRedirection();
+		WebApplication app = builder.Build();
 
 		app.MapGet("/", () => Results.Redirect("/Edit"));
 
@@ -127,6 +128,26 @@ internal static class Program
 				writer.Write(title);
 			}
 			Bootstrap.WriteStyleSheetReference(writer);
+		}
+	}
+
+	private static ILoggingBuilder ConfigureLoggingLevel(this ILoggingBuilder builder)
+	{
+		builder.Services.Add(ServiceDescriptor.Singleton<IConfigureOptions<LoggerFilterOptions>>(
+			new LifetimeOrWarnConfigureOptions()));
+		return builder;
+	}
+
+	private sealed class LifetimeOrWarnConfigureOptions : ConfigureOptions<LoggerFilterOptions>
+	{
+		public LifetimeOrWarnConfigureOptions() : base(options =>
+		{
+			options.Rules.Add(new LoggerFilterRule(null, null, LogLevel.Information, static (provider, category, logLevel) =>
+			{
+				return category is "Microsoft.Hosting.Lifetime" || logLevel >= LogLevel.Warning;
+			}));
+		})
+		{
 		}
 	}
 }
