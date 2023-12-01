@@ -114,6 +114,13 @@ internal static partial class HtmlConverter
 								}
 							}
 							break;
+						case { } when child.NodeType is NodeType.Comment:
+							{
+								writer.Write("// ");
+								string text = WhiteSpaceRegex().Replace(child.NodeValue?.Trim() ?? "", " ");
+								writer.WriteLine(text);
+							}
+							break;
 						default:
 							throw new NotSupportedException();
 					}

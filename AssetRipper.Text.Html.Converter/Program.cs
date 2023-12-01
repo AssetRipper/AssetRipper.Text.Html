@@ -9,6 +9,7 @@ internal static class Program
 	private const string DefaultHtmlString = """
 		<html>
 			<body>
+				<!--This is a comment. Comments are not displayed in the browser.-->
 				<h1>Hello, <a href="https://github.com/AngleSharp/AngleSharp" v-if="true">AngleSharp</a>!</h1>
 			</body>
 		</html>
