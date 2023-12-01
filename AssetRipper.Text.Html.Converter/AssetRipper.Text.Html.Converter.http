@@ -1,0 +1,6 @@
+@AssetRipper.Text.Html.Converter_HostAddress = http://localhost:5210
+
+GET {{AssetRipper.Text.Html.Converter_HostAddress}}/
+Accept: text/html
+
+###

@@ -1,162 +1,132 @@
-﻿using AngleSharp.Dom;
-using AngleSharp.Html.Dom;
-using AngleSharp.Html.Parser;
-using AssetRipper.Text.Html.Model;
-using AssetRipper.Text.SourceGeneration;
-using System.CodeDom.Compiler;
-using System.Text.RegularExpressions;
-using HtmlElement = AssetRipper.Text.Html.Model.HtmlElement;
+﻿using System.Net;
+using System.Text;
 
 namespace AssetRipper.Text.Html.Converter;
 
-internal static partial class Program
+internal static class Program
 {
-	private static IReadOnlyDictionary<string, HtmlElement> ElementDictionary { get; } = HtmlJsonLoader.Load();
+	private const string DefaultHtmlString = """
+		<html>
+			<body>
+				<h1>Hello, <a href="https://github.com/AngleSharp/AngleSharp" v-if="true">AngleSharp</a>!</h1>
+			</body>
+		</html>
+		""";
 
-	//This works perfect, except for whitespace removal. That could be improved.
-	//Currently, there's a lot of `writer.Write(' ');` calls that get generated,
-	//and they have to be manually removed.
+	private const string HtmlFormName = "Html";
 
 	static void Main(string[] args)
 	{
-		// HTML content as a string
-		string htmlString = """
-			<html>
-				<body>
-					<h1>Hello, <a href="https://github.com/AngleSharp/AngleSharp" v-if="true">AngleSharp</a>!</h1>
-				</body>
-			</html>
-			""";
+		WebApplicationBuilder builder = WebApplication.CreateSlimBuilder(args);
 
-		// Use AngleSharp HTML parser
-		HtmlParser htmlParser = new();
-		IHtmlDocument document = htmlParser.ParseDocument(args is { Length: 1 } ? File.ReadAllText(args[0]) : htmlString);
+		builder.WebHost.UseKestrelHttpsConfiguration();
 
-		StringWriter stringWriter = new();
-		IndentedTextWriter writer = new IndentedTextWriter(stringWriter, "\t") { NewLine = "\n" };
+		WebApplication app = builder.Build();
 
-		foreach (IElement child in document.Children)
+		app.UseHttpsRedirection();
+
+		app.MapGet("/", () => Results.Redirect("/Edit"));
+
+		app.MapGet("/Edit", () =>
 		{
-			Write(writer, child, false);
-		}
-		Console.WriteLine(stringWriter.ToString());
+			StringWriter writer = new();
+			BuildEdit(writer, DefaultHtmlString);
+			return Results.Text(writer.ToString(), "text/html", Encoding.UTF8);
+		});
+
+		app.MapPost("/Edit", async (context) =>
+		{
+			string html = (string?)context.Request.Form[HtmlFormName] ?? DefaultHtmlString;
+			StringWriter writer = new();
+			BuildEdit(writer, html);
+			context.Response.ContentType = "text/html";
+			await context.Response.WriteAsync(writer.ToString());
+		});
+
+		app.MapPost("/Result", async (context) =>
+		{
+			string html = (string?)context.Request.Form[HtmlFormName] ?? DefaultHtmlString;
+			StringWriter writer = new();
+			BuildResult(writer, html);
+			context.Response.ContentType = "text/html";
+			await context.Response.WriteAsync(writer.ToString());
+		});
+
+		app.Run();
 	}
 
-	static void Write(IndentedTextWriter writer, IElement node, bool mightHaveSignificantWhiteSpace)
+	private static void BuildEdit(TextWriter writer, string html)
 	{
-		if (node.ChildNodes.Length == 0)
+		using (new Html(writer).WithLang("en").End())
 		{
-			writer.Write("new ");
-		}
-		else
-		{
-			writer.Write("using (new ");
-		}
-
-		if (ElementDictionary.TryGetValue(node.LocalName, out HtmlElement? elementData))
-		{
-			writer.Write($"{elementData.ClassName}(writer)");
-		}
-		else
-		{
-			writer.Write($"HtmlElement(writer, {ToLiteral(node.LocalName)})");
-		}
-
-		WriteAttributes(writer, node.Attributes, elementData);
-
-		if (node.ChildNodes.Length == 0)
-		{
-			writer.WriteLine(".Close();");
-		}
-		else
-		{
-			writer.WriteLine(".End())");
-			using (new CurlyBrackets(writer))
+			WriteHead(writer, "HTML Converter");
+			using (new Body(writer).WithCustomAttribute("data-bs-theme", "dark").End())
 			{
-				foreach (INode child in node.ChildNodes)
+				using (new Form(writer).WithAction("/Result").WithMethod("post").End())
 				{
-					switch (child)
+					using (new Textarea(writer).WithName(HtmlFormName).WithClass("bg-dark-subtle rounded-3 p-2")
+						.WithStyle("width: 100%; height: 90%")
+						.End())
 					{
-						case IElement childElement:
-							Write(writer, childElement, mightHaveSignificantWhiteSpace || elementData is null || MightHaveSignificantWhiteSpace(elementData.Name));
-							break;
-						case { } when child.NodeType is NodeType.Text:
-							{
-								string text = child.NodeValue ?? "";
-								if (child == node.FirstChild)
-								{
-									text = text.TrimStart();
-								}
-								if (child == node.LastChild)
-								{
-									text = text.TrimEnd();
-								}
-								if (!mightHaveSignificantWhiteSpace)
-								{
-									text = WhiteSpaceRegex().Replace(text, " ");
-								}
-								if (!string.IsNullOrEmpty(text))
-								{
-									writer.Write("writer.Write(");
-									writer.Write(ToLiteral(text));
-									writer.WriteLine(");");
-								}
-							}
-							break;
-						default:
-							throw new NotSupportedException();
+						writer.Write(WebUtility.HtmlEncode(html));
+					}
+					using (new Div(writer).WithClass("text-center").End())
+					{
+						new Input(writer).WithClass("btn btn-primary").WithType("submit").WithValue("Submit").Close();
 					}
 				}
+				Bootstrap.WriteScriptReference(writer);
 			}
 		}
 	}
 
-	static void WriteAttributes(IndentedTextWriter writer, INamedNodeMap attributeMap, HtmlElement? elementData)
+	private static void BuildResult(TextWriter writer, string html)
 	{
-		foreach (IAttr attribute in attributeMap)
+		using (new Html(writer).WithLang("en").End())
 		{
-			if (elementData is not null && elementData.Attributes.TryGetValue(attribute.LocalName, out HtmlAttribute? attributeData))
+			WriteHead(writer, "HTML Converter Result");
+			using (new Body(writer).WithCustomAttribute("data-bs-theme", "dark").End())
 			{
-				writer.Write('.');
-				writer.Write(attributeData.FluentMethodName);
-				writer.Write('(');
+				using (new Pre(writer).WithClass("bg-dark-subtle rounded-3 p-2").End())
+				{
+					writer.Write(WebUtility.HtmlEncode(ConvertToCSharp(html)));
+				}
+				using (new Form(writer).WithAction("/Edit").WithMethod("post").End())
+				{
+					new Input(writer).WithType("hidden").WithName(HtmlFormName).WithValue(WebUtility.HtmlEncode(html)).Close();
+					using (new Div(writer).WithClass("text-center").End())
+					{
+						new Input(writer).WithClass("btn btn-secondary").WithType("submit").WithValue("Go Back").Close();
+					}
+				}
+				Bootstrap.WriteScriptReference(writer);
 			}
-			else
+		}
+
+		static string ConvertToCSharp(string html)
+		{
+			try
 			{
-				writer.Write(".WithCustomAttribute(");
-				writer.Write(ToLiteral(attribute.LocalName));
-				writer.Write(", ");
+				return HtmlConverter.Convert(html);
 			}
-			writer.Write(ToLiteral(attribute.Value));
-			writer.Write(")");
+			catch (Exception ex)
+			{
+				return ex.ToString();
+			}
 		}
 	}
 
-	private static string ToLiteral(string? valueTextForCompiler)
+	private static void WriteHead(TextWriter writer, string title)
 	{
-		if (valueTextForCompiler is { Length: 1 })
+		using (new Head(writer).End())
 		{
-			return Microsoft.CodeAnalysis.CSharp.SymbolDisplay.FormatLiteral(valueTextForCompiler[0], true);
-		}
-		else
-		{
-			return Microsoft.CodeAnalysis.CSharp.SymbolDisplay.FormatLiteral(valueTextForCompiler ?? "", true);
+			new Meta(writer).WithCharset("utf-8").Close();
+			new Meta(writer).WithName("viewport").WithContent("width=device-width, initial-scale=1.0").Close();
+			using (new Title(writer).End())
+			{
+				writer.Write(title);
+			}
+			Bootstrap.WriteStyleSheetReference(writer);
 		}
 	}
-
-	private static bool MightHaveSignificantWhiteSpace(string elementName)
-	{
-		//This list is the list of elements where changing new lines, tabulation, or spacing could make a difference in functionality.
-		//It might not be exhaustive.
-		return elementName
-			is "pre"
-			or "code"
-			or "textarea"
-			or "style"
-			or "script"
-			or "xmp"; //depreciated
-	}
-
-	[GeneratedRegex(@"\s+")]
-	private static partial Regex WhiteSpaceRegex();
 }
