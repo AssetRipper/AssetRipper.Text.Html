@@ -65,12 +65,11 @@ internal static class Program
 			{
 				using (new Form(writer).WithAction("/Result").WithMethod("post").End())
 				{
-					using (new Textarea(writer).WithName(HtmlFormName).WithClass("bg-dark-subtle rounded-3 p-2")
+					new Textarea(writer)
+						.WithName(HtmlFormName)
+						.WithClass("bg-dark-subtle rounded-3 p-2")
 						.WithStyle("width: 100%; height: 90%")
-						.End())
-					{
-						writer.Write(WebUtility.HtmlEncode(html));
-					}
+						.Close(WebUtility.HtmlEncode(html));
 					using (new Div(writer).WithClass("text-center").End())
 					{
 						new Input(writer).WithClass("btn btn-primary").WithType("submit").WithValue("Submit").Close();
@@ -88,10 +87,7 @@ internal static class Program
 			WriteHead(writer, "HTML Converter Result");
 			using (new Body(writer).WithCustomAttribute("data-bs-theme", "dark").End())
 			{
-				using (new Pre(writer).WithClass("bg-dark-subtle rounded-3 p-2").End())
-				{
-					writer.Write(WebUtility.HtmlEncode(ConvertToCSharp(html)));
-				}
+				new Pre(writer).WithClass("bg-dark-subtle rounded-3 p-2").Close(WebUtility.HtmlEncode(ConvertToCSharp(html)));
 				using (new Form(writer).WithAction("/Edit").WithMethod("post").End())
 				{
 					new Input(writer).WithType("hidden").WithName(HtmlFormName).WithValue(WebUtility.HtmlEncode(html)).Close();
@@ -123,10 +119,7 @@ internal static class Program
 		{
 			new Meta(writer).WithCharset("utf-8").Close();
 			new Meta(writer).WithName("viewport").WithContent("width=device-width, initial-scale=1.0").Close();
-			using (new Title(writer).End())
-			{
-				writer.Write(title);
-			}
+			new Title(writer).Close(title);
 			Bootstrap.WriteStyleSheetReference(writer);
 		}
 	}

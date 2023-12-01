@@ -36,7 +36,9 @@ internal static partial class HtmlConverter
 
 	static void Write(IndentedTextWriter writer, IElement node, bool mightHaveSignificantWhiteSpace)
 	{
-		if (node.ChildNodes.Length == 0)
+		bool selfClosing = node.ChildNodes.Length is 0;
+		bool useCloseMethod = selfClosing || (node.ChildNodes.Length is 1 && node.ChildNodes[0].NodeType is NodeType.Text);
+		if (useCloseMethod)
 		{
 			writer.Write("new ");
 		}
@@ -51,14 +53,31 @@ internal static partial class HtmlConverter
 		}
 		else
 		{
-			writer.Write($"ModelElement(writer, {ToLiteral(node.LocalName)})");
+			writer.Write($"HtmlElement(writer, {ToLiteral(node.LocalName)})");
 		}
 
 		WriteAttributes(writer, node.Attributes, elementData);
 
-		if (node.ChildNodes.Length == 0)
+		if (useCloseMethod)
 		{
-			writer.WriteLine(".Close();");
+			if (selfClosing)
+			{
+				writer.WriteLine(".Close();");
+			}
+			else
+			{
+				writer.Write(".Close(");
+				string text = node.ChildNodes[0].NodeValue?.Trim() ?? "";
+				if (!mightHaveSignificantWhiteSpace)
+				{
+					text = WhiteSpaceRegex().Replace(text, " ");
+				}
+				if (!string.IsNullOrEmpty(text))
+				{
+					writer.Write(ToLiteral(text));
+				}
+				writer.WriteLine(");");
+			}
 		}
 		else
 		{

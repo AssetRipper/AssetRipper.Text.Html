@@ -100,6 +100,15 @@ internal class Program
 				if (element.HasEndMethod)
 				{
 					writer.WriteLineNoTabs();
+					writer.WriteLine("public void Close(string? innerContent)");
+					using (new CurlyBrackets(writer))
+					{
+						writer.WriteLine("writer.Write('>');");
+						writer.WriteLine("writer.Write(innerContent);");
+						writer.WriteLine("writer.Write($\"</{ElementName}>\");");
+					}
+
+					writer.WriteLineNoTabs();
 					writer.WriteLine("public HtmlElementCloser End()");
 					using (new CurlyBrackets(writer))
 					{

@@ -415,6 +415,13 @@ public readonly ref partial struct Table
 
 	public void Close() => writer.Write("/>");
 
+	public void Close(string? innerContent)
+	{
+		writer.Write('>');
+		writer.Write(innerContent);
+		writer.Write($"</{ElementName}>");
+	}
+
 	public HtmlElementCloser End()
 	{
 		writer.Write('>');
