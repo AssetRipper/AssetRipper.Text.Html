@@ -74,7 +74,7 @@ internal static partial class HtmlConverter
 				}
 				if (!string.IsNullOrEmpty(text))
 				{
-					writer.Write(ToLiteral(text));
+					writer.WriteAspNetLiteral(text);
 				}
 				writer.WriteLine(");");
 			}
@@ -109,7 +109,7 @@ internal static partial class HtmlConverter
 								if (!string.IsNullOrEmpty(text))
 								{
 									writer.Write("writer.Write(");
-									writer.Write(ToLiteral(text));
+									writer.WriteAspNetLiteral(text);
 									writer.WriteLine(");");
 								}
 							}
@@ -145,8 +145,25 @@ internal static partial class HtmlConverter
 				writer.Write(ToLiteral(attribute.LocalName));
 				writer.Write(", ");
 			}
-			writer.Write(ToLiteral(attribute.Value));
+			writer.WriteAspNetLiteral(attribute.Value);
 			writer.Write(")");
+		}
+	}
+
+	/// <summary>
+	/// Writes <paramref name="text"/> as a string literal, unless it starts with @, in which case it's treated as C# code.
+	/// </summary>
+	/// <param name="writer"></param>
+	/// <param name="text"></param>
+	private static void WriteAspNetLiteral(this TextWriter writer, string? text)
+	{
+		if (text is { Length: > 1} && text[0] is '@')
+		{
+			writer.Write(text.AsSpan()[1..]);
+		}
+		else
+		{
+			writer.Write(ToLiteral(text));
 		}
 	}
 
