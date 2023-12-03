@@ -335,10 +335,16 @@ public readonly ref partial struct Tt
 
 	public void Close() => writer.Write("/>");
 
-	public void Close(string? innerContent)
+	/// <summary>
+	/// End the opening tag, write some text, and write the closing tag.
+	/// </summary>
+	/// <remarks>
+	/// The text is automatically Html-encoded.
+	/// </remarks>
+	public void Close(string? text)
 	{
 		writer.Write('>');
-		writer.Write(innerContent);
+		global::System.Net.WebUtility.HtmlEncode(text, writer);
 		writer.Write($"</{ElementName}>");
 	}
 

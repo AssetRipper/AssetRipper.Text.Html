@@ -100,11 +100,13 @@ internal class Program
 				if (element.HasEndMethod)
 				{
 					writer.WriteLineNoTabs();
-					writer.WriteLine("public void Close(string? innerContent)");
+					writer.WriteSummaryDocumentation("End the opening tag, write some text, and write the closing tag.");
+					writer.WriteRemarksDocumentation("The text is automatically Html-encoded.");
+					writer.WriteLine("public void Close(string? text)");
 					using (new CurlyBrackets(writer))
 					{
 						writer.WriteLine("writer.Write('>');");
-						writer.WriteLine("writer.Write(innerContent);");
+						writer.WriteLine("global::System.Net.WebUtility.HtmlEncode(text, writer);");
 						writer.WriteLine("writer.Write($\"</{ElementName}>\");");
 					}
 
