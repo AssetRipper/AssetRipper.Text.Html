@@ -20,8 +20,7 @@ internal static partial class HtmlConverter
 	public static string Convert(string input)
 	{
 		// Use AngleSharp HTML parser
-		HtmlParser htmlParser = new();
-		IHtmlDocument document = htmlParser.ParseDocument(input);
+		IHtmlDocument document = new HtmlParser().ParseDocument(input);
 
 		StringWriter stringWriter = new();
 		IndentedTextWriter writer = new IndentedTextWriter(stringWriter, "\t") { NewLine = "\n" };
@@ -108,7 +107,7 @@ internal static partial class HtmlConverter
 								}
 								if (!string.IsNullOrEmpty(text))
 								{
-									writer.Write("writer.Write(");
+									writer.Write("writer.WriteHtml(");
 									writer.WriteAspNetLiteral(text);
 									writer.WriteLine(");");
 								}
@@ -169,13 +168,17 @@ internal static partial class HtmlConverter
 
 	private static string ToLiteral(string? valueTextForCompiler)
 	{
-		if (valueTextForCompiler is { Length: 1 })
+		if (valueTextForCompiler is null)
+		{
+			return "null";
+		}
+		else if (valueTextForCompiler is { Length: 1 })
 		{
 			return Microsoft.CodeAnalysis.CSharp.SymbolDisplay.FormatLiteral(valueTextForCompiler[0], true);
 		}
 		else
 		{
-			return Microsoft.CodeAnalysis.CSharp.SymbolDisplay.FormatLiteral(valueTextForCompiler ?? "", true);
+			return Microsoft.CodeAnalysis.CSharp.SymbolDisplay.FormatLiteral(valueTextForCompiler, true);
 		}
 	}
 
