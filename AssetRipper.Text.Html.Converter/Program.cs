@@ -70,7 +70,7 @@ internal static class Program
 						.WithName(HtmlFormName)
 						.WithClass("bg-dark-subtle rounded-3 p-2")
 						.WithStyle("width: 100%; height: 90%")
-						.Close(WebUtility.HtmlEncode(html));
+						.Close(html);
 					using (new Div(writer).WithClass("text-center").End())
 					{
 						new Input(writer).WithClass("btn btn-primary").WithType("submit").WithValue("Submit").Close();
@@ -88,7 +88,7 @@ internal static class Program
 			WriteHead(writer, "HTML Converter Result");
 			using (new Body(writer).WithCustomAttribute("data-bs-theme", "dark").End())
 			{
-				new Pre(writer).WithClass("bg-dark-subtle rounded-3 p-2").Close(WebUtility.HtmlEncode(ConvertToCSharp(html)));
+				new Pre(writer).WithClass("bg-dark-subtle rounded-3 p-2").Close(ConvertToCSharp(html));
 				using (new Form(writer).WithAction("/Edit").WithMethod("post").End())
 				{
 					new Input(writer).WithType("hidden").WithName(HtmlFormName).WithValue(WebUtility.HtmlEncode(html)).Close();
