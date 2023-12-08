@@ -95,10 +95,16 @@ internal class Program
 					writer.WriteLine("writer.Write(value);");
 					writer.WriteLine("writer.Write('\"');");
 				}
-				writer.WriteLineNoTabs();
-				writer.WriteLine("public void Close() => writer.Write(\"/>\");");
-				if (element.HasEndMethod)
+				if (element.IsVoidElement)
 				{
+					writer.WriteLineNoTabs();
+					writer.WriteLine("public void Close() => writer.Write(\"/>\");");
+				}
+				else
+				{
+					writer.WriteLineNoTabs();
+					writer.WriteLine("public void Close() => writer.Write($\"></{ElementName}>\");");
+
 					writer.WriteLineNoTabs();
 					writer.WriteSummaryDocumentation("End the opening tag, write some text, and write the closing tag.");
 					writer.WriteRemarksDocumentation("The text is automatically Html-encoded.");

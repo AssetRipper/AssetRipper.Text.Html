@@ -525,7 +525,7 @@ public readonly ref partial struct Video
 		writer.Write('"');
 	}
 
-	public void Close() => writer.Write("/>");
+	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
 	/// End the opening tag, write some text, and write the closing tag.

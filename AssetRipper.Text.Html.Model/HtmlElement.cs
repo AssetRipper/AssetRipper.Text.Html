@@ -5,7 +5,6 @@ public sealed class HtmlElement
 	public string Name { get; }
 	public string ClassName { get; }
 	public bool IsVoidElement { get; }
-	public bool HasEndMethod => !IsVoidElement;
 	public IReadOnlyDictionary<string, HtmlAttribute> Attributes { get; }
 
 	public HtmlElement(string name, ReadOnlySpan<string> attributes)
