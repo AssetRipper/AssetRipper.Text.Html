@@ -4,6 +4,7 @@ using AngleSharp.Html.Parser;
 using AssetRipper.Text.Html.Model;
 using AssetRipper.Text.SourceGeneration;
 using System.CodeDom.Compiler;
+using System.Net;
 using System.Text.RegularExpressions;
 using ModelElement = AssetRipper.Text.Html.Model.HtmlElement;
 
@@ -73,7 +74,7 @@ internal static partial class HtmlConverter
 				}
 				if (!string.IsNullOrEmpty(text))
 				{
-					writer.WriteAspNetLiteral(text);
+					writer.WriteLiteralOrAspNet(text);
 				}
 				writer.WriteLine(");");
 			}
@@ -107,8 +108,16 @@ internal static partial class HtmlConverter
 								}
 								if (!string.IsNullOrEmpty(text))
 								{
-									writer.Write("writer.WriteHtml(");
-									writer.WriteAspNetLiteral(text);
+									if (IsAspNetEscaped(text) || text != WebUtility.HtmlEncode(text))
+									{
+										writer.Write("writer.WriteHtml(");
+										writer.WriteLiteralOrAspNet(text);
+									}
+									else
+									{
+										writer.Write("writer.Write(");
+										writer.WriteLiteral(text);
+									}
 									writer.WriteLine(");");
 								}
 							}
@@ -144,7 +153,7 @@ internal static partial class HtmlConverter
 				writer.Write(ToLiteral(attribute.LocalName));
 				writer.Write(", ");
 			}
-			writer.WriteAspNetLiteral(attribute.Value);
+			writer.WriteLiteralOrAspNet(attribute.Value);
 			writer.Write(")");
 		}
 	}
@@ -154,16 +163,26 @@ internal static partial class HtmlConverter
 	/// </summary>
 	/// <param name="writer"></param>
 	/// <param name="text"></param>
-	private static void WriteAspNetLiteral(this TextWriter writer, string? text)
+	private static void WriteLiteralOrAspNet(this TextWriter writer, string? text)
 	{
-		if (text is { Length: > 1} && text[0] is '@')
+		if (IsAspNetEscaped(text))
 		{
 			writer.Write(text.AsSpan()[1..]);
 		}
 		else
 		{
-			writer.Write(ToLiteral(text));
+			writer.WriteLiteral(text);
 		}
+	}
+
+	private static void WriteLiteral(this TextWriter writer, string? text)
+	{
+		writer.Write(ToLiteral(text));
+	}
+
+	private static bool IsAspNetEscaped(string? text)
+	{
+		return text is { Length: > 1 } && text[0] is '@';
 	}
 
 	private static string ToLiteral(string? valueTextForCompiler)
