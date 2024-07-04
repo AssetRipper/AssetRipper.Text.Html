@@ -2,7 +2,7 @@
 
 namespace AssetRipper.Text.Html.Model;
 
-[JsonSerializable(typeof(List<KeyValuePair<string, string[]>>))]
+[JsonSerializable(typeof(HtmlJson))]
 internal partial class HtmlJsonSerializerContext : JsonSerializerContext
 {
 }

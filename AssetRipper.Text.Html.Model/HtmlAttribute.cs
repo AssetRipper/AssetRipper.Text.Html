@@ -5,6 +5,7 @@ public sealed class HtmlAttribute
 	public string Name { get; }
 	public string PropertyName { get; }
 	public string FluentMethodName { get; }
+	//public bool PropertyMustBe
 
 	public HtmlAttribute(string name, string className)
 	{

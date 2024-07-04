@@ -13,11 +13,11 @@ public sealed class HtmlJsonLoader
 
 		string json = new StreamReader(stream).ReadToEnd();
 
-		List<KeyValuePair<string, string[]>> data = JsonSerializer.Deserialize(json, HtmlJsonSerializerContext.Default.ListKeyValuePairStringStringArray)
+		HtmlJson data = JsonSerializer.Deserialize(json, HtmlJsonSerializerContext.Default.HtmlJson)
 			?? throw new NullReferenceException("Could not deserialize data from the json text.");
 
 		Dictionary<string, HtmlElement> result = new();
-		foreach ((string elementName, string[] attributeArray) in data)
+		foreach ((string elementName, string[] attributeArray) in data.Elements)
 		{
 			result.Add(elementName, new HtmlElement(elementName, attributeArray));
 		}

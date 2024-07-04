@@ -119,7 +119,7 @@ class Program
 
 		using (FileStream stream = File.Create("html-elements-attributes.json"))
 		{
-			IOrderedEnumerable<KeyValuePair<string, List<string>>> sortedElements = htmlElements.OrderBy(e => e.Key);
+			List<KeyValuePair<string, List<string>>> sortedElements = htmlElements.OrderBy(e => e.Key).ToList();
 			JsonSerializer.Serialize(stream, sortedElements, options);
 		}
 	}
