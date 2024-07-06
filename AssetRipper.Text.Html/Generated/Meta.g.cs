@@ -4,7 +4,12 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Meta
+public readonly ref partial struct Meta : IHtmlElement<Meta>,
+	ICharsetAttribute<Meta>,
+	IContentAttribute<Meta>,
+	IHttpEquivAttribute<Meta>,
+	INameAttribute<Meta>,
+	IGlobalAttributes<Meta>
 {
 	private const string ElementName = "meta";
 	private readonly TextWriter writer;
@@ -15,7 +20,7 @@ public readonly ref partial struct Meta
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +30,9 @@ public readonly ref partial struct Meta
 		}
 	}
 
-	public Meta WithAccesskey(string? value = null)
+	public Meta WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -95,7 +100,7 @@ public readonly ref partial struct Meta
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -105,25 +110,9 @@ public readonly ref partial struct Meta
 		}
 	}
 
-	public Meta WithContenteditable(string? value = null)
+	public Meta WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Meta WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -207,7 +196,7 @@ public readonly ref partial struct Meta
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -217,9 +206,9 @@ public readonly ref partial struct Meta
 		}
 	}
 
-	public Meta WithItemprop(string? value = null)
+	public Meta WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -287,7 +276,7 @@ public readonly ref partial struct Meta
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -297,9 +286,9 @@ public readonly ref partial struct Meta
 		}
 	}
 
-	public Meta WithSpellcheck(string? value = null)
+	public Meta WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -319,7 +308,7 @@ public readonly ref partial struct Meta
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -329,9 +318,9 @@ public readonly ref partial struct Meta
 		}
 	}
 
-	public Meta WithTabindex(string? value = null)
+	public Meta WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -367,35 +356,38 @@ public readonly ref partial struct Meta
 		return this;
 	}
 
-	public Meta WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Meta WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write("/>");
+
+	HtmlElementCloser IHtmlElement<Meta>.End() => throw new NotSupportedException();
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Meta>.Writer => writer;
+	static Meta IHtmlElement<Meta>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Meta>.IsVoidElement => true;
+	static string IHtmlElement<Meta>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Meta>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"charset",
+		"class",
+		"content",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"http-equiv",
+		"id",
+		"itemprop",
+		"lang",
+		"name",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

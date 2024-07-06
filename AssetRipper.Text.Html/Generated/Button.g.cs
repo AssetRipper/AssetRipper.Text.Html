@@ -4,7 +4,18 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Button
+public readonly ref partial struct Button : IHtmlElement<Button>,
+	IDisabledAttribute<Button>,
+	IFormAttribute<Button>,
+	IFormActionAttribute<Button>,
+	IFormEncTypeAttribute<Button>,
+	IFormMethodAttribute<Button>,
+	IFormNoValidateAttribute<Button>,
+	IFormTargetAttribute<Button>,
+	INameAttribute<Button>,
+	ITypeAttribute<Button>,
+	IValueAttribute<Button>,
+	IGlobalAttributes<Button>
 {
 	private const string ElementName = "button";
 	private readonly TextWriter writer;
@@ -15,7 +26,7 @@ public readonly ref partial struct Button
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +36,9 @@ public readonly ref partial struct Button
 		}
 	}
 
-	public Button WithAccesskey(string? value = null)
+	public Button WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +74,7 @@ public readonly ref partial struct Button
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,25 +84,9 @@ public readonly ref partial struct Button
 		}
 	}
 
-	public Button WithContenteditable(string? value = null)
+	public Button WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Button WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -159,7 +154,7 @@ public readonly ref partial struct Button
 		return this;
 	}
 
-	public string? Formaction
+	public string? FormAction
 	{
 		set
 		{
@@ -169,13 +164,13 @@ public readonly ref partial struct Button
 		}
 	}
 
-	public Button WithFormaction(string? value = null)
+	public Button WithFormAction(string? value = null)
 	{
-		Formaction = value;
+		FormAction = value;
 		return this;
 	}
 
-	public string? Formenctype
+	public string? FormEncType
 	{
 		set
 		{
@@ -185,13 +180,13 @@ public readonly ref partial struct Button
 		}
 	}
 
-	public Button WithFormenctype(string? value = null)
+	public Button WithFormEncType(string? value = null)
 	{
-		Formenctype = value;
+		FormEncType = value;
 		return this;
 	}
 
-	public string? Formmethod
+	public string? FormMethod
 	{
 		set
 		{
@@ -201,13 +196,13 @@ public readonly ref partial struct Button
 		}
 	}
 
-	public Button WithFormmethod(string? value = null)
+	public Button WithFormMethod(string? value = null)
 	{
-		Formmethod = value;
+		FormMethod = value;
 		return this;
 	}
 
-	public string? Formnovalidate
+	public string? FormNoValidate
 	{
 		set
 		{
@@ -217,13 +212,13 @@ public readonly ref partial struct Button
 		}
 	}
 
-	public Button WithFormnovalidate(string? value = null)
+	public Button WithFormNoValidate(string? value = null)
 	{
-		Formnovalidate = value;
+		FormNoValidate = value;
 		return this;
 	}
 
-	public string? Formtarget
+	public string? FormTarget
 	{
 		set
 		{
@@ -233,9 +228,9 @@ public readonly ref partial struct Button
 		}
 	}
 
-	public Button WithFormtarget(string? value = null)
+	public Button WithFormTarget(string? value = null)
 	{
-		Formtarget = value;
+		FormTarget = value;
 		return this;
 	}
 
@@ -271,7 +266,7 @@ public readonly ref partial struct Button
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -281,9 +276,9 @@ public readonly ref partial struct Button
 		}
 	}
 
-	public Button WithItemprop(string? value = null)
+	public Button WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -351,7 +346,7 @@ public readonly ref partial struct Button
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -361,9 +356,9 @@ public readonly ref partial struct Button
 		}
 	}
 
-	public Button WithSpellcheck(string? value = null)
+	public Button WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -383,7 +378,7 @@ public readonly ref partial struct Button
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -393,9 +388,9 @@ public readonly ref partial struct Button
 		}
 	}
 
-	public Button WithTabindex(string? value = null)
+	public Button WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -463,36 +458,6 @@ public readonly ref partial struct Button
 		return this;
 	}
 
-	public Button WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Button WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -513,4 +478,41 @@ public readonly ref partial struct Button
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Button>.Writer => writer;
+	static Button IHtmlElement<Button>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Button>.IsVoidElement => false;
+	static string IHtmlElement<Button>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Button>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"disabled",
+		"draggable",
+		"form",
+		"formaction",
+		"formenctype",
+		"formmethod",
+		"formnovalidate",
+		"formtarget",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"name",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"type",
+		"value",
+	];
 }

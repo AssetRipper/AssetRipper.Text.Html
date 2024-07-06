@@ -4,7 +4,9 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Dialog
+public readonly ref partial struct Dialog : IHtmlElement<Dialog>,
+	IOpenAttribute<Dialog>,
+	IGlobalAttributes<Dialog>
 {
 	private const string ElementName = "dialog";
 	private readonly TextWriter writer;
@@ -15,7 +17,7 @@ public readonly ref partial struct Dialog
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +27,9 @@ public readonly ref partial struct Dialog
 		}
 	}
 
-	public Dialog WithAccesskey(string? value = null)
+	public Dialog WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +65,7 @@ public readonly ref partial struct Dialog
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,25 +75,9 @@ public readonly ref partial struct Dialog
 		}
 	}
 
-	public Dialog WithContenteditable(string? value = null)
+	public Dialog WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Dialog WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -159,7 +145,7 @@ public readonly ref partial struct Dialog
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -169,9 +155,9 @@ public readonly ref partial struct Dialog
 		}
 	}
 
-	public Dialog WithItemprop(string? value = null)
+	public Dialog WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -239,7 +225,7 @@ public readonly ref partial struct Dialog
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -249,9 +235,9 @@ public readonly ref partial struct Dialog
 		}
 	}
 
-	public Dialog WithSpellcheck(string? value = null)
+	public Dialog WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -271,7 +257,7 @@ public readonly ref partial struct Dialog
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -281,9 +267,9 @@ public readonly ref partial struct Dialog
 		}
 	}
 
-	public Dialog WithTabindex(string? value = null)
+	public Dialog WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -319,36 +305,6 @@ public readonly ref partial struct Dialog
 		return this;
 	}
 
-	public Dialog WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Dialog WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -369,4 +325,32 @@ public readonly ref partial struct Dialog
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Dialog>.Writer => writer;
+	static Dialog IHtmlElement<Dialog>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Dialog>.IsVoidElement => false;
+	static string IHtmlElement<Dialog>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Dialog>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"open",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

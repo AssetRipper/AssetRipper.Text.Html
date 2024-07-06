@@ -4,7 +4,23 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Textarea
+public readonly ref partial struct Textarea : IHtmlElement<Textarea>,
+	IAutocompleteAttribute<Textarea>,
+	IColsAttribute<Textarea>,
+	IDirNameAttribute<Textarea>,
+	IDisabledAttribute<Textarea>,
+	IEnterKeyHintAttribute<Textarea>,
+	IFormAttribute<Textarea>,
+	IInputModeAttribute<Textarea>,
+	IMaxLengthAttribute<Textarea>,
+	IMinLengthAttribute<Textarea>,
+	INameAttribute<Textarea>,
+	IPlaceholderAttribute<Textarea>,
+	IReadonlyAttribute<Textarea>,
+	IRequiredAttribute<Textarea>,
+	IRowsAttribute<Textarea>,
+	IWrapAttribute<Textarea>,
+	IGlobalAttributes<Textarea>
 {
 	private const string ElementName = "textarea";
 	private readonly TextWriter writer;
@@ -15,7 +31,7 @@ public readonly ref partial struct Textarea
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +41,9 @@ public readonly ref partial struct Textarea
 		}
 	}
 
-	public Textarea WithAccesskey(string? value = null)
+	public Textarea WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -95,7 +111,7 @@ public readonly ref partial struct Textarea
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -105,25 +121,9 @@ public readonly ref partial struct Textarea
 		}
 	}
 
-	public Textarea WithContenteditable(string? value = null)
+	public Textarea WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Textarea WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -143,7 +143,7 @@ public readonly ref partial struct Textarea
 		return this;
 	}
 
-	public string? Dirname
+	public string? DirName
 	{
 		set
 		{
@@ -153,9 +153,9 @@ public readonly ref partial struct Textarea
 		}
 	}
 
-	public Textarea WithDirname(string? value = null)
+	public Textarea WithDirName(string? value = null)
 	{
-		Dirname = value;
+		DirName = value;
 		return this;
 	}
 
@@ -191,7 +191,7 @@ public readonly ref partial struct Textarea
 		return this;
 	}
 
-	public string? Enterkeyhint
+	public string? EnterKeyHint
 	{
 		set
 		{
@@ -201,9 +201,9 @@ public readonly ref partial struct Textarea
 		}
 	}
 
-	public Textarea WithEnterkeyhint(string? value = null)
+	public Textarea WithEnterKeyHint(string? value = null)
 	{
-		Enterkeyhint = value;
+		EnterKeyHint = value;
 		return this;
 	}
 
@@ -255,7 +255,7 @@ public readonly ref partial struct Textarea
 		return this;
 	}
 
-	public string? Inputmode
+	public string? InputMode
 	{
 		set
 		{
@@ -265,13 +265,13 @@ public readonly ref partial struct Textarea
 		}
 	}
 
-	public Textarea WithInputmode(string? value = null)
+	public Textarea WithInputMode(string? value = null)
 	{
-		Inputmode = value;
+		InputMode = value;
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -281,9 +281,9 @@ public readonly ref partial struct Textarea
 		}
 	}
 
-	public Textarea WithItemprop(string? value = null)
+	public Textarea WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -303,7 +303,7 @@ public readonly ref partial struct Textarea
 		return this;
 	}
 
-	public string? Maxlength
+	public string? MaxLength
 	{
 		set
 		{
@@ -313,13 +313,13 @@ public readonly ref partial struct Textarea
 		}
 	}
 
-	public Textarea WithMaxlength(string? value = null)
+	public Textarea WithMaxLength(string? value = null)
 	{
-		Maxlength = value;
+		MaxLength = value;
 		return this;
 	}
 
-	public string? Minlength
+	public string? MinLength
 	{
 		set
 		{
@@ -329,9 +329,9 @@ public readonly ref partial struct Textarea
 		}
 	}
 
-	public Textarea WithMinlength(string? value = null)
+	public Textarea WithMinLength(string? value = null)
 	{
-		Minlength = value;
+		MinLength = value;
 		return this;
 	}
 
@@ -447,7 +447,7 @@ public readonly ref partial struct Textarea
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -457,9 +457,9 @@ public readonly ref partial struct Textarea
 		}
 	}
 
-	public Textarea WithSpellcheck(string? value = null)
+	public Textarea WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -479,7 +479,7 @@ public readonly ref partial struct Textarea
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -489,9 +489,9 @@ public readonly ref partial struct Textarea
 		}
 	}
 
-	public Textarea WithTabindex(string? value = null)
+	public Textarea WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -543,36 +543,6 @@ public readonly ref partial struct Textarea
 		return this;
 	}
 
-	public Textarea WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Textarea WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -593,4 +563,46 @@ public readonly ref partial struct Textarea
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Textarea>.Writer => writer;
+	static Textarea IHtmlElement<Textarea>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Textarea>.IsVoidElement => false;
+	static string IHtmlElement<Textarea>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Textarea>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"autocomplete",
+		"class",
+		"cols",
+		"contenteditable",
+		"dir",
+		"dirname",
+		"disabled",
+		"draggable",
+		"enterkeyhint",
+		"form",
+		"hidden",
+		"id",
+		"inputmode",
+		"itemprop",
+		"lang",
+		"maxlength",
+		"minlength",
+		"name",
+		"placeholder",
+		"readonly",
+		"required",
+		"role",
+		"rows",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"wrap",
+	];
 }

@@ -4,7 +4,11 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Ol
+public readonly ref partial struct Ol : IHtmlElement<Ol>,
+	IReversedAttribute<Ol>,
+	IStartAttribute<Ol>,
+	ITypeAttribute<Ol>,
+	IGlobalAttributes<Ol>
 {
 	private const string ElementName = "ol";
 	private readonly TextWriter writer;
@@ -15,7 +19,7 @@ public readonly ref partial struct Ol
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +29,9 @@ public readonly ref partial struct Ol
 		}
 	}
 
-	public Ol WithAccesskey(string? value = null)
+	public Ol WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +67,7 @@ public readonly ref partial struct Ol
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,25 +77,9 @@ public readonly ref partial struct Ol
 		}
 	}
 
-	public Ol WithContenteditable(string? value = null)
+	public Ol WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Ol WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -159,7 +147,7 @@ public readonly ref partial struct Ol
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -169,9 +157,9 @@ public readonly ref partial struct Ol
 		}
 	}
 
-	public Ol WithItemprop(string? value = null)
+	public Ol WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -239,7 +227,7 @@ public readonly ref partial struct Ol
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -249,9 +237,9 @@ public readonly ref partial struct Ol
 		}
 	}
 
-	public Ol WithSpellcheck(string? value = null)
+	public Ol WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -287,7 +275,7 @@ public readonly ref partial struct Ol
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -297,9 +285,9 @@ public readonly ref partial struct Ol
 		}
 	}
 
-	public Ol WithTabindex(string? value = null)
+	public Ol WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -351,36 +339,6 @@ public readonly ref partial struct Ol
 		return this;
 	}
 
-	public Ol WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Ol WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -401,4 +359,34 @@ public readonly ref partial struct Ol
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Ol>.Writer => writer;
+	static Ol IHtmlElement<Ol>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Ol>.IsVoidElement => false;
+	static string IHtmlElement<Ol>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Ol>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"reversed",
+		"role",
+		"slot",
+		"spellcheck",
+		"start",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"type",
+	];
 }

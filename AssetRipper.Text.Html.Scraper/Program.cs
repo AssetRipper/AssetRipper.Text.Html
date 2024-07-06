@@ -1,7 +1,7 @@
 ﻿using AngleSharp;
 using AngleSharp.Dom;
+using AssetRipper.Text.Html.Model;
 using System.Diagnostics.CodeAnalysis;
-using System.Text.Json;
 
 namespace AssetRipper.Text.Html.Scraper;
 
@@ -13,16 +13,19 @@ class Program
 
 	static void Main()
 	{
-		Dictionary<string, List<string>> elements = Scrape();
-		SaveAsJson(elements);
+		HtmlJson elements = Scrape();
+		string json = elements.ToJson();
+		File.WriteAllText("html-elements-attributes.json", json);
 	}
 
-	static Dictionary<string, List<string>> Scrape()
+	static HtmlJson Scrape()
 	{
 		Dictionary<string, List<string>> htmlElements = new();
+		List<string> globalAttributes = new();
 		ScrapeElements(htmlElements);
-		ScrapeAttributes(htmlElements);
-		return htmlElements;
+		ScrapeAttributes(htmlElements, globalAttributes);
+		globalAttributes.Sort();
+		return new HtmlJson(htmlElements.OrderBy(p => p.Key).ToList(), globalAttributes);
 	}
 
 	static void ScrapeElements(Dictionary<string, List<string>> htmlElements)
@@ -43,7 +46,7 @@ class Program
 		}
 	}
 
-	static void ScrapeAttributes(Dictionary<string, List<string>> htmlElements)
+	static void ScrapeAttributes(Dictionary<string, List<string>> htmlElements, List<string> globalAttributes)
 	{
 		IConfiguration config = Configuration.Default.WithDefaultLoader();
 		IBrowsingContext context = BrowsingContext.New(config);
@@ -71,10 +74,7 @@ class Program
 					{
 						if (element is GlobalAttribute)
 						{
-							foreach (List<string> value in htmlElements.Values)
-							{
-								value.Add(attr);
-							}
+							globalAttributes.Add(attr);
 						}
 						else
 						{
@@ -104,23 +104,6 @@ class Program
 			//contenteditable
 			trimmed = null;
 			return false;
-		}
-	}
-
-	static void SaveAsJson(Dictionary<string, List<string>> htmlElements)
-	{
-		JsonSerializerOptions options = new() { WriteIndented = true };
-
-		using (FileStream stream = File.Create("html-elements.json"))
-		{
-			IOrderedEnumerable<string> sortedElements = htmlElements.Keys.OrderBy(k => k);
-			JsonSerializer.Serialize(stream, sortedElements, options);
-		}
-
-		using (FileStream stream = File.Create("html-elements-attributes.json"))
-		{
-			IOrderedEnumerable<KeyValuePair<string, List<string>>> sortedElements = htmlElements.OrderBy(e => e.Key);
-			JsonSerializer.Serialize(stream, sortedElements, options);
 		}
 	}
 }

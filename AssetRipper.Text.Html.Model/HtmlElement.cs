@@ -7,16 +7,16 @@ public sealed class HtmlElement
 	public bool IsVoidElement { get; }
 	public IReadOnlyDictionary<string, HtmlAttribute> Attributes { get; }
 
-	public HtmlElement(string name, ReadOnlySpan<string> attributes)
+	public HtmlElement(string name, IEnumerable<string> attributes, Dictionary<string, HtmlAttribute> attributeDictionary)
 	{
 		Name = name;
 		ClassName = HtmlHelper.ConvertKebabToPascal(name);
 		IsVoidElement = HtmlHelper.IsVoidElement(name);
-		Dictionary<string, HtmlAttribute> attributesDictionary = new();
+		Dictionary<string, HtmlAttribute> dictionary = new();
 		foreach (string attribute in attributes)
 		{
-			attributesDictionary.Add(attribute, new(attribute, ClassName));
+			dictionary.Add(attribute, attributeDictionary[attribute]);
 		}
-		Attributes = attributesDictionary;
+		Attributes = dictionary;
 	}
 }

@@ -4,7 +4,10 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Del
+public readonly ref partial struct Del : IHtmlElement<Del>,
+	ICiteAttribute<Del>,
+	IDateTimeAttribute<Del>,
+	IGlobalAttributes<Del>
 {
 	private const string ElementName = "del";
 	private readonly TextWriter writer;
@@ -15,7 +18,7 @@ public readonly ref partial struct Del
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +28,9 @@ public readonly ref partial struct Del
 		}
 	}
 
-	public Del WithAccesskey(string? value = null)
+	public Del WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -79,7 +82,7 @@ public readonly ref partial struct Del
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -89,29 +92,13 @@ public readonly ref partial struct Del
 		}
 	}
 
-	public Del WithContenteditable(string? value = null)
+	public Del WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Del WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
-		return this;
-	}
-
-	public string? Datetime
+	public string? DateTime
 	{
 		set
 		{
@@ -121,9 +108,9 @@ public readonly ref partial struct Del
 		}
 	}
 
-	public Del WithDatetime(string? value = null)
+	public Del WithDateTime(string? value = null)
 	{
-		Datetime = value;
+		DateTime = value;
 		return this;
 	}
 
@@ -191,7 +178,7 @@ public readonly ref partial struct Del
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -201,9 +188,9 @@ public readonly ref partial struct Del
 		}
 	}
 
-	public Del WithItemprop(string? value = null)
+	public Del WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -255,7 +242,7 @@ public readonly ref partial struct Del
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -265,9 +252,9 @@ public readonly ref partial struct Del
 		}
 	}
 
-	public Del WithSpellcheck(string? value = null)
+	public Del WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -287,7 +274,7 @@ public readonly ref partial struct Del
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -297,9 +284,9 @@ public readonly ref partial struct Del
 		}
 	}
 
-	public Del WithTabindex(string? value = null)
+	public Del WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -335,36 +322,6 @@ public readonly ref partial struct Del
 		return this;
 	}
 
-	public Del WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Del WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -385,4 +342,33 @@ public readonly ref partial struct Del
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Del>.Writer => writer;
+	static Del IHtmlElement<Del>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Del>.IsVoidElement => false;
+	static string IHtmlElement<Del>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Del>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"cite",
+		"class",
+		"contenteditable",
+		"datetime",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

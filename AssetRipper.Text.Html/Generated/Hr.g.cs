@@ -4,7 +4,10 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Hr
+public readonly ref partial struct Hr : IHtmlElement<Hr>,
+	IAlignAttribute<Hr>,
+	IColorAttribute<Hr>,
+	IGlobalAttributes<Hr>
 {
 	private const string ElementName = "hr";
 	private readonly TextWriter writer;
@@ -15,7 +18,7 @@ public readonly ref partial struct Hr
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +28,9 @@ public readonly ref partial struct Hr
 		}
 	}
 
-	public Hr WithAccesskey(string? value = null)
+	public Hr WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -95,7 +98,7 @@ public readonly ref partial struct Hr
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -105,25 +108,9 @@ public readonly ref partial struct Hr
 		}
 	}
 
-	public Hr WithContenteditable(string? value = null)
+	public Hr WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Hr WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -191,7 +178,7 @@ public readonly ref partial struct Hr
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -201,9 +188,9 @@ public readonly ref partial struct Hr
 		}
 	}
 
-	public Hr WithItemprop(string? value = null)
+	public Hr WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -255,7 +242,7 @@ public readonly ref partial struct Hr
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -265,9 +252,9 @@ public readonly ref partial struct Hr
 		}
 	}
 
-	public Hr WithSpellcheck(string? value = null)
+	public Hr WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -287,7 +274,7 @@ public readonly ref partial struct Hr
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -297,9 +284,9 @@ public readonly ref partial struct Hr
 		}
 	}
 
-	public Hr WithTabindex(string? value = null)
+	public Hr WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -335,35 +322,36 @@ public readonly ref partial struct Hr
 		return this;
 	}
 
-	public Hr WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Hr WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write("/>");
+
+	HtmlElementCloser IHtmlElement<Hr>.End() => throw new NotSupportedException();
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Hr>.Writer => writer;
+	static Hr IHtmlElement<Hr>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Hr>.IsVoidElement => true;
+	static string IHtmlElement<Hr>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Hr>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"align",
+		"autocapitalize",
+		"class",
+		"color",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

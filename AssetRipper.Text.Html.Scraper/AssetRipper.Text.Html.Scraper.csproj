@@ -11,4 +11,8 @@
 		<PackageReference Include="AngleSharp" Version="1.0.7" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\AssetRipper.Text.Html.Model\AssetRipper.Text.Html.Model.csproj" />
+	</ItemGroup>
+
 </Project>

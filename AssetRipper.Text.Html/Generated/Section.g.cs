@@ -4,7 +4,8 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Section
+public readonly ref partial struct Section : IHtmlElement<Section>,
+	IGlobalAttributes<Section>
 {
 	private const string ElementName = "section";
 	private readonly TextWriter writer;
@@ -15,7 +16,7 @@ public readonly ref partial struct Section
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +26,9 @@ public readonly ref partial struct Section
 		}
 	}
 
-	public Section WithAccesskey(string? value = null)
+	public Section WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +64,7 @@ public readonly ref partial struct Section
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,25 +74,9 @@ public readonly ref partial struct Section
 		}
 	}
 
-	public Section WithContenteditable(string? value = null)
+	public Section WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Section WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -159,7 +144,7 @@ public readonly ref partial struct Section
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -169,9 +154,9 @@ public readonly ref partial struct Section
 		}
 	}
 
-	public Section WithItemprop(string? value = null)
+	public Section WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -223,7 +208,7 @@ public readonly ref partial struct Section
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -233,9 +218,9 @@ public readonly ref partial struct Section
 		}
 	}
 
-	public Section WithSpellcheck(string? value = null)
+	public Section WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -255,7 +240,7 @@ public readonly ref partial struct Section
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -265,9 +250,9 @@ public readonly ref partial struct Section
 		}
 	}
 
-	public Section WithTabindex(string? value = null)
+	public Section WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -303,36 +288,6 @@ public readonly ref partial struct Section
 		return this;
 	}
 
-	public Section WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Section WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -353,4 +308,31 @@ public readonly ref partial struct Section
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Section>.Writer => writer;
+	static Section IHtmlElement<Section>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Section>.IsVoidElement => false;
+	static string IHtmlElement<Section>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Section>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

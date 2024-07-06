@@ -4,7 +4,8 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Title
+public readonly ref partial struct Title : IHtmlElement<Title>,
+	IGlobalAttributes<Title>
 {
 	private const string ElementName = "title";
 	private readonly TextWriter writer;
@@ -15,7 +16,7 @@ public readonly ref partial struct Title
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +26,9 @@ public readonly ref partial struct Title
 		}
 	}
 
-	public Title WithAccesskey(string? value = null)
+	public Title WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +64,7 @@ public readonly ref partial struct Title
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,25 +74,9 @@ public readonly ref partial struct Title
 		}
 	}
 
-	public Title WithContenteditable(string? value = null)
+	public Title WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Title WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -159,7 +144,7 @@ public readonly ref partial struct Title
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -169,9 +154,9 @@ public readonly ref partial struct Title
 		}
 	}
 
-	public Title WithItemprop(string? value = null)
+	public Title WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -223,7 +208,7 @@ public readonly ref partial struct Title
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -233,9 +218,9 @@ public readonly ref partial struct Title
 		}
 	}
 
-	public Title WithSpellcheck(string? value = null)
+	public Title WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -255,7 +240,7 @@ public readonly ref partial struct Title
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -265,9 +250,9 @@ public readonly ref partial struct Title
 		}
 	}
 
-	public Title WithTabindex(string? value = null)
+	public Title WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -279,6 +264,11 @@ public readonly ref partial struct Title
 			writer.Write(value);
 			writer.Write('"');
 		}
+	}
+
+	string IGlobalAttributes<Title>.Title
+	{
+		set => Title_ = value;
 	}
 
 	public Title WithTitle(string? value = null)
@@ -303,36 +293,6 @@ public readonly ref partial struct Title
 		return this;
 	}
 
-	public Title WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Title WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -353,4 +313,31 @@ public readonly ref partial struct Title
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Title>.Writer => writer;
+	static Title IHtmlElement<Title>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Title>.IsVoidElement => false;
+	static string IHtmlElement<Title>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Title>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

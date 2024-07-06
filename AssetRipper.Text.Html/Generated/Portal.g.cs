@@ -4,7 +4,8 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Portal
+public readonly ref partial struct Portal : IHtmlElement<Portal>,
+	IGlobalAttributes<Portal>
 {
 	private const string ElementName = "portal";
 	private readonly TextWriter writer;
@@ -15,7 +16,7 @@ public readonly ref partial struct Portal
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +26,9 @@ public readonly ref partial struct Portal
 		}
 	}
 
-	public Portal WithAccesskey(string? value = null)
+	public Portal WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +64,7 @@ public readonly ref partial struct Portal
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,25 +74,9 @@ public readonly ref partial struct Portal
 		}
 	}
 
-	public Portal WithContenteditable(string? value = null)
+	public Portal WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Portal WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -159,7 +144,7 @@ public readonly ref partial struct Portal
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -169,9 +154,9 @@ public readonly ref partial struct Portal
 		}
 	}
 
-	public Portal WithItemprop(string? value = null)
+	public Portal WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -223,7 +208,7 @@ public readonly ref partial struct Portal
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -233,9 +218,9 @@ public readonly ref partial struct Portal
 		}
 	}
 
-	public Portal WithSpellcheck(string? value = null)
+	public Portal WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -255,7 +240,7 @@ public readonly ref partial struct Portal
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -265,9 +250,9 @@ public readonly ref partial struct Portal
 		}
 	}
 
-	public Portal WithTabindex(string? value = null)
+	public Portal WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -303,36 +288,6 @@ public readonly ref partial struct Portal
 		return this;
 	}
 
-	public Portal WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Portal WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -353,4 +308,31 @@ public readonly ref partial struct Portal
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Portal>.Writer => writer;
+	static Portal IHtmlElement<Portal>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Portal>.IsVoidElement => false;
+	static string IHtmlElement<Portal>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Portal>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

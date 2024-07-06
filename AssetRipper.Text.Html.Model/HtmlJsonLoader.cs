@@ -1,27 +1,48 @@
-﻿using System.Text.Json;
-
-namespace AssetRipper.Text.Html.Model;
+﻿namespace AssetRipper.Text.Html.Model;
 
 public sealed class HtmlJsonLoader
 {
 	private const string NamespacePrefix = "AssetRipper.Text.Html.Model.";
 
-	public static IReadOnlyDictionary<string, HtmlElement> Load()
+	public static void Load(out List<HtmlAttribute> globalAttributes, out List<HtmlAttribute> localAttributes, out List<HtmlElement> elements)
 	{
 		using Stream stream = typeof(HtmlJsonLoader).Assembly.GetManifestResourceStream(NamespacePrefix + "html-elements-attributes.json")
 			?? throw new NullReferenceException("Could not load resource stream.");
 
 		string json = new StreamReader(stream).ReadToEnd();
 
-		List<KeyValuePair<string, string[]>> data = JsonSerializer.Deserialize(json, HtmlJsonSerializerContext.Default.ListKeyValuePairStringStringArray)
-			?? throw new NullReferenceException("Could not deserialize data from the json text.");
+		HtmlJson data = HtmlJson.FromJson(json);
 
-		Dictionary<string, HtmlElement> result = new();
-		foreach ((string elementName, string[] attributeArray) in data)
+		Dictionary<string, HtmlAttribute> attributeDictionary = new();
+
+		globalAttributes = new();
+		foreach (string name in data.GlobalAttributes)
 		{
-			result.Add(elementName, new HtmlElement(elementName, attributeArray));
+			HtmlAttribute attribute = new HtmlAttribute(name, true);
+			attributeDictionary.Add(name, attribute);
+			globalAttributes.Add(attribute);
 		}
 
-		return result;
+		localAttributes = new();
+		foreach ((_, List<string> attributeList) in data.Elements)
+		{
+			foreach (string name in attributeList)
+			{
+				if (attributeDictionary.ContainsKey(name))
+				{
+					continue;
+				}
+
+				HtmlAttribute attribute = new HtmlAttribute(name, false);
+				attributeDictionary.Add(name, attribute);
+				localAttributes.Add(attribute);
+			}
+		}
+
+		elements = new();
+		foreach ((string elementName, List<string> attributeArray) in data.Elements)
+		{
+			elements.Add(new HtmlElement(elementName, attributeArray.Union(data.GlobalAttributes).Order(), attributeDictionary));
+		}
 	}
 }

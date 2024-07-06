@@ -4,7 +4,18 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Link
+public readonly ref partial struct Link : IHtmlElement<Link>,
+	IAsAttribute<Link>,
+	ICrossOriginAttribute<Link>,
+	IHrefAttribute<Link>,
+	IHrefLangAttribute<Link>,
+	IIntegrityAttribute<Link>,
+	IMediaAttribute<Link>,
+	IReferrerPolicyAttribute<Link>,
+	IRelAttribute<Link>,
+	ISizesAttribute<Link>,
+	ITypeAttribute<Link>,
+	IGlobalAttributes<Link>
 {
 	private const string ElementName = "link";
 	private readonly TextWriter writer;
@@ -15,7 +26,7 @@ public readonly ref partial struct Link
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +36,25 @@ public readonly ref partial struct Link
 		}
 	}
 
-	public Link WithAccesskey(string? value = null)
+	public Link WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
+		return this;
+	}
+
+	public string? As
+	{
+		set
+		{
+			writer.Write(" as=\"");
+			writer.Write(value);
+			writer.Write('"');
+		}
+	}
+
+	public Link WithAs(string? value = null)
+	{
+		As = value;
 		return this;
 	}
 
@@ -63,7 +90,7 @@ public readonly ref partial struct Link
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,29 +100,13 @@ public readonly ref partial struct Link
 		}
 	}
 
-	public Link WithContenteditable(string? value = null)
+	public Link WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Link WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
-		return this;
-	}
-
-	public string? Crossorigin
+	public string? CrossOrigin
 	{
 		set
 		{
@@ -105,9 +116,9 @@ public readonly ref partial struct Link
 		}
 	}
 
-	public Link WithCrossorigin(string? value = null)
+	public Link WithCrossOrigin(string? value = null)
 	{
-		Crossorigin = value;
+		CrossOrigin = value;
 		return this;
 	}
 
@@ -175,7 +186,7 @@ public readonly ref partial struct Link
 		return this;
 	}
 
-	public string? Hreflang
+	public string? HrefLang
 	{
 		set
 		{
@@ -185,9 +196,9 @@ public readonly ref partial struct Link
 		}
 	}
 
-	public Link WithHreflang(string? value = null)
+	public Link WithHrefLang(string? value = null)
 	{
-		Hreflang = value;
+		HrefLang = value;
 		return this;
 	}
 
@@ -223,7 +234,7 @@ public readonly ref partial struct Link
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -233,9 +244,9 @@ public readonly ref partial struct Link
 		}
 	}
 
-	public Link WithItemprop(string? value = null)
+	public Link WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -271,7 +282,7 @@ public readonly ref partial struct Link
 		return this;
 	}
 
-	public string? Referrerpolicy
+	public string? ReferrerPolicy
 	{
 		set
 		{
@@ -281,9 +292,9 @@ public readonly ref partial struct Link
 		}
 	}
 
-	public Link WithReferrerpolicy(string? value = null)
+	public Link WithReferrerPolicy(string? value = null)
 	{
-		Referrerpolicy = value;
+		ReferrerPolicy = value;
 		return this;
 	}
 
@@ -351,7 +362,7 @@ public readonly ref partial struct Link
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -361,9 +372,9 @@ public readonly ref partial struct Link
 		}
 	}
 
-	public Link WithSpellcheck(string? value = null)
+	public Link WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -383,7 +394,7 @@ public readonly ref partial struct Link
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -393,9 +404,9 @@ public readonly ref partial struct Link
 		}
 	}
 
-	public Link WithTabindex(string? value = null)
+	public Link WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -447,35 +458,44 @@ public readonly ref partial struct Link
 		return this;
 	}
 
-	public Link WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Link WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write("/>");
+
+	HtmlElementCloser IHtmlElement<Link>.End() => throw new NotSupportedException();
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Link>.Writer => writer;
+	static Link IHtmlElement<Link>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Link>.IsVoidElement => true;
+	static string IHtmlElement<Link>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Link>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"as",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"crossorigin",
+		"dir",
+		"draggable",
+		"hidden",
+		"href",
+		"hreflang",
+		"id",
+		"integrity",
+		"itemprop",
+		"lang",
+		"media",
+		"referrerpolicy",
+		"rel",
+		"role",
+		"sizes",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"type",
+	];
 }

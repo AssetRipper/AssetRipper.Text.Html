@@ -4,7 +4,16 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Script
+public readonly ref partial struct Script : IHtmlElement<Script>,
+	IAsyncAttribute<Script>,
+	ICrossOriginAttribute<Script>,
+	IDeferAttribute<Script>,
+	IIntegrityAttribute<Script>,
+	ILanguageAttribute<Script>,
+	IReferrerPolicyAttribute<Script>,
+	ISrcAttribute<Script>,
+	ITypeAttribute<Script>,
+	IGlobalAttributes<Script>
 {
 	private const string ElementName = "script";
 	private readonly TextWriter writer;
@@ -15,7 +24,7 @@ public readonly ref partial struct Script
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +34,9 @@ public readonly ref partial struct Script
 		}
 	}
 
-	public Script WithAccesskey(string? value = null)
+	public Script WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -79,7 +88,7 @@ public readonly ref partial struct Script
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -89,29 +98,13 @@ public readonly ref partial struct Script
 		}
 	}
 
-	public Script WithContenteditable(string? value = null)
+	public Script WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Script WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
-		return this;
-	}
-
-	public string? Crossorigin
+	public string? CrossOrigin
 	{
 		set
 		{
@@ -121,9 +114,9 @@ public readonly ref partial struct Script
 		}
 	}
 
-	public Script WithCrossorigin(string? value = null)
+	public Script WithCrossOrigin(string? value = null)
 	{
-		Crossorigin = value;
+		CrossOrigin = value;
 		return this;
 	}
 
@@ -223,7 +216,7 @@ public readonly ref partial struct Script
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -233,9 +226,9 @@ public readonly ref partial struct Script
 		}
 	}
 
-	public Script WithItemprop(string? value = null)
+	public Script WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -271,7 +264,7 @@ public readonly ref partial struct Script
 		return this;
 	}
 
-	public string? Referrerpolicy
+	public string? ReferrerPolicy
 	{
 		set
 		{
@@ -281,9 +274,9 @@ public readonly ref partial struct Script
 		}
 	}
 
-	public Script WithReferrerpolicy(string? value = null)
+	public Script WithReferrerPolicy(string? value = null)
 	{
-		Referrerpolicy = value;
+		ReferrerPolicy = value;
 		return this;
 	}
 
@@ -319,7 +312,7 @@ public readonly ref partial struct Script
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -329,9 +322,9 @@ public readonly ref partial struct Script
 		}
 	}
 
-	public Script WithSpellcheck(string? value = null)
+	public Script WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -367,7 +360,7 @@ public readonly ref partial struct Script
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -377,9 +370,9 @@ public readonly ref partial struct Script
 		}
 	}
 
-	public Script WithTabindex(string? value = null)
+	public Script WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -431,36 +424,6 @@ public readonly ref partial struct Script
 		return this;
 	}
 
-	public Script WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Script WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -481,4 +444,39 @@ public readonly ref partial struct Script
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Script>.Writer => writer;
+	static Script IHtmlElement<Script>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Script>.IsVoidElement => false;
+	static string IHtmlElement<Script>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Script>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"async",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"crossorigin",
+		"defer",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"integrity",
+		"itemprop",
+		"lang",
+		"language",
+		"referrerpolicy",
+		"role",
+		"slot",
+		"spellcheck",
+		"src",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"type",
+	];
 }

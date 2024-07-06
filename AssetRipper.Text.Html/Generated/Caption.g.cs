@@ -4,7 +4,9 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Caption
+public readonly ref partial struct Caption : IHtmlElement<Caption>,
+	IAlignAttribute<Caption>,
+	IGlobalAttributes<Caption>
 {
 	private const string ElementName = "caption";
 	private readonly TextWriter writer;
@@ -15,7 +17,7 @@ public readonly ref partial struct Caption
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +27,9 @@ public readonly ref partial struct Caption
 		}
 	}
 
-	public Caption WithAccesskey(string? value = null)
+	public Caption WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -79,7 +81,7 @@ public readonly ref partial struct Caption
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -89,25 +91,9 @@ public readonly ref partial struct Caption
 		}
 	}
 
-	public Caption WithContenteditable(string? value = null)
+	public Caption WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Caption WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -175,7 +161,7 @@ public readonly ref partial struct Caption
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -185,9 +171,9 @@ public readonly ref partial struct Caption
 		}
 	}
 
-	public Caption WithItemprop(string? value = null)
+	public Caption WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -239,7 +225,7 @@ public readonly ref partial struct Caption
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -249,9 +235,9 @@ public readonly ref partial struct Caption
 		}
 	}
 
-	public Caption WithSpellcheck(string? value = null)
+	public Caption WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -271,7 +257,7 @@ public readonly ref partial struct Caption
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -281,9 +267,9 @@ public readonly ref partial struct Caption
 		}
 	}
 
-	public Caption WithTabindex(string? value = null)
+	public Caption WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -319,36 +305,6 @@ public readonly ref partial struct Caption
 		return this;
 	}
 
-	public Caption WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Caption WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -369,4 +325,32 @@ public readonly ref partial struct Caption
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Caption>.Writer => writer;
+	static Caption IHtmlElement<Caption>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Caption>.IsVoidElement => false;
+	static string IHtmlElement<Caption>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Caption>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"align",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

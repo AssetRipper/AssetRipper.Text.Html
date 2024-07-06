@@ -4,7 +4,11 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Style
+public readonly ref partial struct Style : IHtmlElement<Style>,
+	IMediaAttribute<Style>,
+	IScopedAttribute<Style>,
+	ITypeAttribute<Style>,
+	IGlobalAttributes<Style>
 {
 	private const string ElementName = "style";
 	private readonly TextWriter writer;
@@ -15,7 +19,7 @@ public readonly ref partial struct Style
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +29,9 @@ public readonly ref partial struct Style
 		}
 	}
 
-	public Style WithAccesskey(string? value = null)
+	public Style WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +67,7 @@ public readonly ref partial struct Style
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,25 +77,9 @@ public readonly ref partial struct Style
 		}
 	}
 
-	public Style WithContenteditable(string? value = null)
+	public Style WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Style WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -159,7 +147,7 @@ public readonly ref partial struct Style
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -169,9 +157,9 @@ public readonly ref partial struct Style
 		}
 	}
 
-	public Style WithItemprop(string? value = null)
+	public Style WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -255,7 +243,7 @@ public readonly ref partial struct Style
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -265,9 +253,9 @@ public readonly ref partial struct Style
 		}
 	}
 
-	public Style WithSpellcheck(string? value = null)
+	public Style WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -281,13 +269,18 @@ public readonly ref partial struct Style
 		}
 	}
 
+	string IGlobalAttributes<Style>.Style
+	{
+		set => Style_ = value;
+	}
+
 	public Style WithStyle(string? value = null)
 	{
 		Style_ = value;
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -297,9 +290,9 @@ public readonly ref partial struct Style
 		}
 	}
 
-	public Style WithTabindex(string? value = null)
+	public Style WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -351,36 +344,6 @@ public readonly ref partial struct Style
 		return this;
 	}
 
-	public Style WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Style WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -401,4 +364,34 @@ public readonly ref partial struct Style
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Style>.Writer => writer;
+	static Style IHtmlElement<Style>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Style>.IsVoidElement => false;
+	static string IHtmlElement<Style>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Style>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"media",
+		"role",
+		"scoped",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"type",
+	];
 }

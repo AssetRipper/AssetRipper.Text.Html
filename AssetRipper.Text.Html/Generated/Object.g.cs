@@ -4,7 +4,16 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Object
+public readonly ref partial struct Object : IHtmlElement<Object>,
+	IBorderAttribute<Object>,
+	IDataAttribute<Object>,
+	IFormAttribute<Object>,
+	IHeightAttribute<Object>,
+	INameAttribute<Object>,
+	ITypeAttribute<Object>,
+	IUseMapAttribute<Object>,
+	IWidthAttribute<Object>,
+	IGlobalAttributes<Object>
 {
 	private const string ElementName = "object";
 	private readonly TextWriter writer;
@@ -15,7 +24,7 @@ public readonly ref partial struct Object
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +34,9 @@ public readonly ref partial struct Object
 		}
 	}
 
-	public Object WithAccesskey(string? value = null)
+	public Object WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -79,7 +88,7 @@ public readonly ref partial struct Object
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -89,25 +98,9 @@ public readonly ref partial struct Object
 		}
 	}
 
-	public Object WithContenteditable(string? value = null)
+	public Object WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Object WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -223,7 +216,7 @@ public readonly ref partial struct Object
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -233,9 +226,9 @@ public readonly ref partial struct Object
 		}
 	}
 
-	public Object WithItemprop(string? value = null)
+	public Object WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -303,7 +296,7 @@ public readonly ref partial struct Object
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -313,9 +306,9 @@ public readonly ref partial struct Object
 		}
 	}
 
-	public Object WithSpellcheck(string? value = null)
+	public Object WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -335,7 +328,7 @@ public readonly ref partial struct Object
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -345,9 +338,9 @@ public readonly ref partial struct Object
 		}
 	}
 
-	public Object WithTabindex(string? value = null)
+	public Object WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -399,7 +392,7 @@ public readonly ref partial struct Object
 		return this;
 	}
 
-	public string? Usemap
+	public string? UseMap
 	{
 		set
 		{
@@ -409,9 +402,9 @@ public readonly ref partial struct Object
 		}
 	}
 
-	public Object WithUsemap(string? value = null)
+	public Object WithUseMap(string? value = null)
 	{
-		Usemap = value;
+		UseMap = value;
 		return this;
 	}
 
@@ -429,36 +422,6 @@ public readonly ref partial struct Object
 	{
 		Width = value;
 		return this;
-	}
-
-	public Object WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Object WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
 	}
 
 	public void Close() => writer.Write($"></{ElementName}>");
@@ -481,4 +444,39 @@ public readonly ref partial struct Object
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Object>.Writer => writer;
+	static Object IHtmlElement<Object>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Object>.IsVoidElement => false;
+	static string IHtmlElement<Object>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Object>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"border",
+		"class",
+		"contenteditable",
+		"data",
+		"dir",
+		"draggable",
+		"form",
+		"height",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"name",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"type",
+		"usemap",
+		"width",
+	];
 }

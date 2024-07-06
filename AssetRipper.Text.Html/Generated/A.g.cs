@@ -4,7 +4,17 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct A
+public readonly ref partial struct A : IHtmlElement<A>,
+	IDownloadAttribute<A>,
+	IHrefAttribute<A>,
+	IHrefLangAttribute<A>,
+	IMediaAttribute<A>,
+	IPingAttribute<A>,
+	IReferrerPolicyAttribute<A>,
+	IRelAttribute<A>,
+	IShapeAttribute<A>,
+	ITargetAttribute<A>,
+	IGlobalAttributes<A>
 {
 	private const string ElementName = "a";
 	private readonly TextWriter writer;
@@ -15,7 +25,7 @@ public readonly ref partial struct A
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +35,9 @@ public readonly ref partial struct A
 		}
 	}
 
-	public A WithAccesskey(string? value = null)
+	public A WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +73,7 @@ public readonly ref partial struct A
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,25 +83,9 @@ public readonly ref partial struct A
 		}
 	}
 
-	public A WithContenteditable(string? value = null)
+	public A WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public A WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -175,7 +169,7 @@ public readonly ref partial struct A
 		return this;
 	}
 
-	public string? Hreflang
+	public string? HrefLang
 	{
 		set
 		{
@@ -185,9 +179,9 @@ public readonly ref partial struct A
 		}
 	}
 
-	public A WithHreflang(string? value = null)
+	public A WithHrefLang(string? value = null)
 	{
-		Hreflang = value;
+		HrefLang = value;
 		return this;
 	}
 
@@ -207,7 +201,7 @@ public readonly ref partial struct A
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -217,9 +211,9 @@ public readonly ref partial struct A
 		}
 	}
 
-	public A WithItemprop(string? value = null)
+	public A WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -271,7 +265,7 @@ public readonly ref partial struct A
 		return this;
 	}
 
-	public string? Referrerpolicy
+	public string? ReferrerPolicy
 	{
 		set
 		{
@@ -281,9 +275,9 @@ public readonly ref partial struct A
 		}
 	}
 
-	public A WithReferrerpolicy(string? value = null)
+	public A WithReferrerPolicy(string? value = null)
 	{
-		Referrerpolicy = value;
+		ReferrerPolicy = value;
 		return this;
 	}
 
@@ -351,7 +345,7 @@ public readonly ref partial struct A
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -361,9 +355,9 @@ public readonly ref partial struct A
 		}
 	}
 
-	public A WithSpellcheck(string? value = null)
+	public A WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -383,7 +377,7 @@ public readonly ref partial struct A
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -393,9 +387,9 @@ public readonly ref partial struct A
 		}
 	}
 
-	public A WithTabindex(string? value = null)
+	public A WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -447,36 +441,6 @@ public readonly ref partial struct A
 		return this;
 	}
 
-	public A WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public A WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -497,4 +461,40 @@ public readonly ref partial struct A
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<A>.Writer => writer;
+	static A IHtmlElement<A>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<A>.IsVoidElement => false;
+	static string IHtmlElement<A>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<A>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"download",
+		"draggable",
+		"hidden",
+		"href",
+		"hreflang",
+		"id",
+		"itemprop",
+		"lang",
+		"media",
+		"ping",
+		"referrerpolicy",
+		"rel",
+		"role",
+		"shape",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"target",
+		"title",
+		"translate",
+	];
 }
