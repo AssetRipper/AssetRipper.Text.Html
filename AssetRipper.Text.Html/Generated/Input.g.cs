@@ -4,7 +4,40 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Input
+public readonly ref partial struct Input : IHtmlElement<Input>,
+	IAcceptAttribute<Input>,
+	IAltAttribute<Input>,
+	IAutocompleteAttribute<Input>,
+	ICaptureAttribute<Input>,
+	ICheckedAttribute<Input>,
+	IDirNameAttribute<Input>,
+	IDisabledAttribute<Input>,
+	IFormAttribute<Input>,
+	IFormActionAttribute<Input>,
+	IFormEncTypeAttribute<Input>,
+	IFormMethodAttribute<Input>,
+	IFormNoValidateAttribute<Input>,
+	IFormTargetAttribute<Input>,
+	IHeightAttribute<Input>,
+	IListAttribute<Input>,
+	IMaxAttribute<Input>,
+	IMaxLengthAttribute<Input>,
+	IMinAttribute<Input>,
+	IMinLengthAttribute<Input>,
+	IMultipleAttribute<Input>,
+	INameAttribute<Input>,
+	IPatternAttribute<Input>,
+	IPlaceholderAttribute<Input>,
+	IReadonlyAttribute<Input>,
+	IRequiredAttribute<Input>,
+	ISizeAttribute<Input>,
+	ISrcAttribute<Input>,
+	IStepAttribute<Input>,
+	ITypeAttribute<Input>,
+	IUseMapAttribute<Input>,
+	IValueAttribute<Input>,
+	IWidthAttribute<Input>,
+	IGlobalAttributes<Input>
 {
 	private const string ElementName = "input";
 	private readonly TextWriter writer;
@@ -31,7 +64,7 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -41,9 +74,9 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithAccesskey(string? value = null)
+	public Input WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -143,7 +176,7 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -153,9 +186,9 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithContenteditable(string? value = null)
+	public Input WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -175,7 +208,7 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Dirname
+	public string? DirName
 	{
 		set
 		{
@@ -185,9 +218,9 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithDirname(string? value = null)
+	public Input WithDirName(string? value = null)
 	{
-		Dirname = value;
+		DirName = value;
 		return this;
 	}
 
@@ -239,7 +272,7 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Formaction
+	public string? FormAction
 	{
 		set
 		{
@@ -249,13 +282,13 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithFormaction(string? value = null)
+	public Input WithFormAction(string? value = null)
 	{
-		Formaction = value;
+		FormAction = value;
 		return this;
 	}
 
-	public string? Formenctype
+	public string? FormEncType
 	{
 		set
 		{
@@ -265,13 +298,13 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithFormenctype(string? value = null)
+	public Input WithFormEncType(string? value = null)
 	{
-		Formenctype = value;
+		FormEncType = value;
 		return this;
 	}
 
-	public string? Formmethod
+	public string? FormMethod
 	{
 		set
 		{
@@ -281,13 +314,13 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithFormmethod(string? value = null)
+	public Input WithFormMethod(string? value = null)
 	{
-		Formmethod = value;
+		FormMethod = value;
 		return this;
 	}
 
-	public string? Formnovalidate
+	public string? FormNoValidate
 	{
 		set
 		{
@@ -297,13 +330,13 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithFormnovalidate(string? value = null)
+	public Input WithFormNoValidate(string? value = null)
 	{
-		Formnovalidate = value;
+		FormNoValidate = value;
 		return this;
 	}
 
-	public string? Formtarget
+	public string? FormTarget
 	{
 		set
 		{
@@ -313,9 +346,9 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithFormtarget(string? value = null)
+	public Input WithFormTarget(string? value = null)
 	{
-		Formtarget = value;
+		FormTarget = value;
 		return this;
 	}
 
@@ -367,7 +400,7 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -377,9 +410,9 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithItemprop(string? value = null)
+	public Input WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -431,7 +464,7 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Maxlength
+	public string? MaxLength
 	{
 		set
 		{
@@ -441,9 +474,9 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithMaxlength(string? value = null)
+	public Input WithMaxLength(string? value = null)
 	{
-		Maxlength = value;
+		MaxLength = value;
 		return this;
 	}
 
@@ -463,7 +496,7 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Minlength
+	public string? MinLength
 	{
 		set
 		{
@@ -473,9 +506,9 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithMinlength(string? value = null)
+	public Input WithMinLength(string? value = null)
 	{
-		Minlength = value;
+		MinLength = value;
 		return this;
 	}
 
@@ -623,7 +656,7 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -633,9 +666,9 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithSpellcheck(string? value = null)
+	public Input WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -687,7 +720,7 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -697,9 +730,9 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithTabindex(string? value = null)
+	public Input WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -751,7 +784,7 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Usemap
+	public string? UseMap
 	{
 		set
 		{
@@ -761,9 +794,9 @@ public readonly ref partial struct Input
 		}
 	}
 
-	public Input WithUsemap(string? value = null)
+	public Input WithUseMap(string? value = null)
 	{
-		Usemap = value;
+		UseMap = value;
 		return this;
 	}
 
@@ -799,35 +832,66 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public Input WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Input WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write("/>");
+
+	HtmlElementCloser IHtmlElement<Input>.End() => throw new NotSupportedException();
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Input>.Writer => writer;
+	static Input IHtmlElement<Input>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Input>.IsVoidElement => true;
+	static string IHtmlElement<Input>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Input>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accept",
+		"accesskey",
+		"alt",
+		"autocapitalize",
+		"autocomplete",
+		"capture",
+		"checked",
+		"class",
+		"contenteditable",
+		"dir",
+		"dirname",
+		"disabled",
+		"draggable",
+		"form",
+		"formaction",
+		"formenctype",
+		"formmethod",
+		"formnovalidate",
+		"formtarget",
+		"height",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"list",
+		"max",
+		"maxlength",
+		"min",
+		"minlength",
+		"multiple",
+		"name",
+		"pattern",
+		"placeholder",
+		"readonly",
+		"required",
+		"role",
+		"size",
+		"slot",
+		"spellcheck",
+		"src",
+		"step",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"type",
+		"usemap",
+		"value",
+		"width",
+	];
 }

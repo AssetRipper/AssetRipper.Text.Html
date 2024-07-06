@@ -4,7 +4,11 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Fieldset
+public readonly ref partial struct Fieldset : IHtmlElement<Fieldset>,
+	IDisabledAttribute<Fieldset>,
+	IFormAttribute<Fieldset>,
+	INameAttribute<Fieldset>,
+	IGlobalAttributes<Fieldset>
 {
 	private const string ElementName = "fieldset";
 	private readonly TextWriter writer;
@@ -15,7 +19,7 @@ public readonly ref partial struct Fieldset
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +29,9 @@ public readonly ref partial struct Fieldset
 		}
 	}
 
-	public Fieldset WithAccesskey(string? value = null)
+	public Fieldset WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +67,7 @@ public readonly ref partial struct Fieldset
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,9 +77,9 @@ public readonly ref partial struct Fieldset
 		}
 	}
 
-	public Fieldset WithContenteditable(string? value = null)
+	public Fieldset WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -175,7 +179,7 @@ public readonly ref partial struct Fieldset
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -185,9 +189,9 @@ public readonly ref partial struct Fieldset
 		}
 	}
 
-	public Fieldset WithItemprop(string? value = null)
+	public Fieldset WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -255,7 +259,7 @@ public readonly ref partial struct Fieldset
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -265,9 +269,9 @@ public readonly ref partial struct Fieldset
 		}
 	}
 
-	public Fieldset WithSpellcheck(string? value = null)
+	public Fieldset WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -287,7 +291,7 @@ public readonly ref partial struct Fieldset
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -297,9 +301,9 @@ public readonly ref partial struct Fieldset
 		}
 	}
 
-	public Fieldset WithTabindex(string? value = null)
+	public Fieldset WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -335,36 +339,6 @@ public readonly ref partial struct Fieldset
 		return this;
 	}
 
-	public Fieldset WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Fieldset WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -385,4 +359,34 @@ public readonly ref partial struct Fieldset
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Fieldset>.Writer => writer;
+	static Fieldset IHtmlElement<Fieldset>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Fieldset>.IsVoidElement => false;
+	static string IHtmlElement<Fieldset>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Fieldset>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"disabled",
+		"draggable",
+		"form",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"name",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

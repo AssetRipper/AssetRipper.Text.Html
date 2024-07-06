@@ -4,7 +4,11 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Progress
+public readonly ref partial struct Progress : IHtmlElement<Progress>,
+	IFormAttribute<Progress>,
+	IMaxAttribute<Progress>,
+	IValueAttribute<Progress>,
+	IGlobalAttributes<Progress>
 {
 	private const string ElementName = "progress";
 	private readonly TextWriter writer;
@@ -15,7 +19,7 @@ public readonly ref partial struct Progress
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +29,9 @@ public readonly ref partial struct Progress
 		}
 	}
 
-	public Progress WithAccesskey(string? value = null)
+	public Progress WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +67,7 @@ public readonly ref partial struct Progress
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,9 +77,9 @@ public readonly ref partial struct Progress
 		}
 	}
 
-	public Progress WithContenteditable(string? value = null)
+	public Progress WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -159,7 +163,7 @@ public readonly ref partial struct Progress
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -169,9 +173,9 @@ public readonly ref partial struct Progress
 		}
 	}
 
-	public Progress WithItemprop(string? value = null)
+	public Progress WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -239,7 +243,7 @@ public readonly ref partial struct Progress
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -249,9 +253,9 @@ public readonly ref partial struct Progress
 		}
 	}
 
-	public Progress WithSpellcheck(string? value = null)
+	public Progress WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -271,7 +275,7 @@ public readonly ref partial struct Progress
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -281,9 +285,9 @@ public readonly ref partial struct Progress
 		}
 	}
 
-	public Progress WithTabindex(string? value = null)
+	public Progress WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -335,36 +339,6 @@ public readonly ref partial struct Progress
 		return this;
 	}
 
-	public Progress WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Progress WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -385,4 +359,34 @@ public readonly ref partial struct Progress
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Progress>.Writer => writer;
+	static Progress IHtmlElement<Progress>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Progress>.IsVoidElement => false;
+	static string IHtmlElement<Progress>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Progress>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"form",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"max",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"value",
+	];
 }

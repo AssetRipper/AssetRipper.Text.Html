@@ -4,7 +4,9 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Time
+public readonly ref partial struct Time : IHtmlElement<Time>,
+	IDateTimeAttribute<Time>,
+	IGlobalAttributes<Time>
 {
 	private const string ElementName = "time";
 	private readonly TextWriter writer;
@@ -15,7 +17,7 @@ public readonly ref partial struct Time
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +27,9 @@ public readonly ref partial struct Time
 		}
 	}
 
-	public Time WithAccesskey(string? value = null)
+	public Time WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +65,7 @@ public readonly ref partial struct Time
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,13 +75,13 @@ public readonly ref partial struct Time
 		}
 	}
 
-	public Time WithContenteditable(string? value = null)
+	public Time WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
-	public string? Datetime
+	public string? DateTime
 	{
 		set
 		{
@@ -89,9 +91,9 @@ public readonly ref partial struct Time
 		}
 	}
 
-	public Time WithDatetime(string? value = null)
+	public Time WithDateTime(string? value = null)
 	{
-		Datetime = value;
+		DateTime = value;
 		return this;
 	}
 
@@ -159,7 +161,7 @@ public readonly ref partial struct Time
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -169,9 +171,9 @@ public readonly ref partial struct Time
 		}
 	}
 
-	public Time WithItemprop(string? value = null)
+	public Time WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -223,7 +225,7 @@ public readonly ref partial struct Time
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -233,9 +235,9 @@ public readonly ref partial struct Time
 		}
 	}
 
-	public Time WithSpellcheck(string? value = null)
+	public Time WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -255,7 +257,7 @@ public readonly ref partial struct Time
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -265,9 +267,9 @@ public readonly ref partial struct Time
 		}
 	}
 
-	public Time WithTabindex(string? value = null)
+	public Time WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -303,36 +305,6 @@ public readonly ref partial struct Time
 		return this;
 	}
 
-	public Time WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Time WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -353,4 +325,32 @@ public readonly ref partial struct Time
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Time>.Writer => writer;
+	static Time IHtmlElement<Time>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Time>.IsVoidElement => false;
+	static string IHtmlElement<Time>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Time>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"datetime",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

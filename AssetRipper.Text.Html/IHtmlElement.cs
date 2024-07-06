@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AssetRipper.Text.Html;
+﻿namespace AssetRipper.Text.Html;
 
 public interface IHtmlElement<TSelf> where TSelf : IHtmlElement<TSelf>, allows ref struct
 {
-	static abstract TSelf Create(TextWriter writer);
+	static abstract ReadOnlySpan<string> SupportedAttributes { get; }
+	static abstract string Name { get; }
+	static abstract bool IsVoidElement { get; }
+	static abstract TSelf Create(TextWriter writer); //Start?
+	TextWriter Writer { get; }
+	void Close();
+	HtmlElementCloser End();
 }

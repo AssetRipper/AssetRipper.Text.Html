@@ -4,7 +4,19 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Video
+public readonly ref partial struct Video : IHtmlElement<Video>,
+	IAutoplayAttribute<Video>,
+	IControlsAttribute<Video>,
+	ICrossOriginAttribute<Video>,
+	IHeightAttribute<Video>,
+	ILoopAttribute<Video>,
+	IMutedAttribute<Video>,
+	IPlaysInlineAttribute<Video>,
+	IPosterAttribute<Video>,
+	IPreloadAttribute<Video>,
+	ISrcAttribute<Video>,
+	IWidthAttribute<Video>,
+	IGlobalAttributes<Video>
 {
 	private const string ElementName = "video";
 	private readonly TextWriter writer;
@@ -15,7 +27,7 @@ public readonly ref partial struct Video
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +37,9 @@ public readonly ref partial struct Video
 		}
 	}
 
-	public Video WithAccesskey(string? value = null)
+	public Video WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -79,7 +91,7 @@ public readonly ref partial struct Video
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -89,9 +101,9 @@ public readonly ref partial struct Video
 		}
 	}
 
-	public Video WithContenteditable(string? value = null)
+	public Video WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -111,7 +123,7 @@ public readonly ref partial struct Video
 		return this;
 	}
 
-	public string? Crossorigin
+	public string? CrossOrigin
 	{
 		set
 		{
@@ -121,9 +133,9 @@ public readonly ref partial struct Video
 		}
 	}
 
-	public Video WithCrossorigin(string? value = null)
+	public Video WithCrossOrigin(string? value = null)
 	{
-		Crossorigin = value;
+		CrossOrigin = value;
 		return this;
 	}
 
@@ -207,7 +219,7 @@ public readonly ref partial struct Video
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -217,9 +229,9 @@ public readonly ref partial struct Video
 		}
 	}
 
-	public Video WithItemprop(string? value = null)
+	public Video WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -271,7 +283,7 @@ public readonly ref partial struct Video
 		return this;
 	}
 
-	public string? Playsinline
+	public string? PlaysInline
 	{
 		set
 		{
@@ -281,9 +293,9 @@ public readonly ref partial struct Video
 		}
 	}
 
-	public Video WithPlaysinline(string? value = null)
+	public Video WithPlaysInline(string? value = null)
 	{
-		Playsinline = value;
+		PlaysInline = value;
 		return this;
 	}
 
@@ -351,7 +363,7 @@ public readonly ref partial struct Video
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -361,9 +373,9 @@ public readonly ref partial struct Video
 		}
 	}
 
-	public Video WithSpellcheck(string? value = null)
+	public Video WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -399,7 +411,7 @@ public readonly ref partial struct Video
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -409,9 +421,9 @@ public readonly ref partial struct Video
 		}
 	}
 
-	public Video WithTabindex(string? value = null)
+	public Video WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -463,36 +475,6 @@ public readonly ref partial struct Video
 		return this;
 	}
 
-	public Video WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Video WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -513,4 +495,42 @@ public readonly ref partial struct Video
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Video>.Writer => writer;
+	static Video IHtmlElement<Video>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Video>.IsVoidElement => false;
+	static string IHtmlElement<Video>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Video>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"autoplay",
+		"class",
+		"contenteditable",
+		"controls",
+		"crossorigin",
+		"dir",
+		"draggable",
+		"height",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"loop",
+		"muted",
+		"playsinline",
+		"poster",
+		"preload",
+		"role",
+		"slot",
+		"spellcheck",
+		"src",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"width",
+	];
 }

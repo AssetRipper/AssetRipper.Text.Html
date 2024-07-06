@@ -4,7 +4,10 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Body
+public readonly ref partial struct Body : IHtmlElement<Body>,
+	IBackgroundAttribute<Body>,
+	IBgColorAttribute<Body>,
+	IGlobalAttributes<Body>
 {
 	private const string ElementName = "body";
 	private readonly TextWriter writer;
@@ -15,7 +18,7 @@ public readonly ref partial struct Body
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +28,9 @@ public readonly ref partial struct Body
 		}
 	}
 
-	public Body WithAccesskey(string? value = null)
+	public Body WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +66,7 @@ public readonly ref partial struct Body
 		return this;
 	}
 
-	public string? Bgcolor
+	public string? BgColor
 	{
 		set
 		{
@@ -73,9 +76,9 @@ public readonly ref partial struct Body
 		}
 	}
 
-	public Body WithBgcolor(string? value = null)
+	public Body WithBgColor(string? value = null)
 	{
-		Bgcolor = value;
+		BgColor = value;
 		return this;
 	}
 
@@ -95,7 +98,7 @@ public readonly ref partial struct Body
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -105,9 +108,9 @@ public readonly ref partial struct Body
 		}
 	}
 
-	public Body WithContenteditable(string? value = null)
+	public Body WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -175,7 +178,7 @@ public readonly ref partial struct Body
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -185,9 +188,9 @@ public readonly ref partial struct Body
 		}
 	}
 
-	public Body WithItemprop(string? value = null)
+	public Body WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -239,7 +242,7 @@ public readonly ref partial struct Body
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -249,9 +252,9 @@ public readonly ref partial struct Body
 		}
 	}
 
-	public Body WithSpellcheck(string? value = null)
+	public Body WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -271,7 +274,7 @@ public readonly ref partial struct Body
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -281,9 +284,9 @@ public readonly ref partial struct Body
 		}
 	}
 
-	public Body WithTabindex(string? value = null)
+	public Body WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -319,36 +322,6 @@ public readonly ref partial struct Body
 		return this;
 	}
 
-	public Body WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Body WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -369,4 +342,33 @@ public readonly ref partial struct Body
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Body>.Writer => writer;
+	static Body IHtmlElement<Body>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Body>.IsVoidElement => false;
+	static string IHtmlElement<Body>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Body>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"background",
+		"bgcolor",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

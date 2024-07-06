@@ -4,7 +4,11 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Col
+public readonly ref partial struct Col : IHtmlElement<Col>,
+	IAlignAttribute<Col>,
+	IBgColorAttribute<Col>,
+	ISpanAttribute<Col>,
+	IGlobalAttributes<Col>
 {
 	private const string ElementName = "col";
 	private readonly TextWriter writer;
@@ -15,7 +19,7 @@ public readonly ref partial struct Col
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +29,9 @@ public readonly ref partial struct Col
 		}
 	}
 
-	public Col WithAccesskey(string? value = null)
+	public Col WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +67,7 @@ public readonly ref partial struct Col
 		return this;
 	}
 
-	public string? Bgcolor
+	public string? BgColor
 	{
 		set
 		{
@@ -73,9 +77,9 @@ public readonly ref partial struct Col
 		}
 	}
 
-	public Col WithBgcolor(string? value = null)
+	public Col WithBgColor(string? value = null)
 	{
-		Bgcolor = value;
+		BgColor = value;
 		return this;
 	}
 
@@ -95,7 +99,7 @@ public readonly ref partial struct Col
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -105,9 +109,9 @@ public readonly ref partial struct Col
 		}
 	}
 
-	public Col WithContenteditable(string? value = null)
+	public Col WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -175,7 +179,7 @@ public readonly ref partial struct Col
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -185,9 +189,9 @@ public readonly ref partial struct Col
 		}
 	}
 
-	public Col WithItemprop(string? value = null)
+	public Col WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -255,7 +259,7 @@ public readonly ref partial struct Col
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -265,9 +269,9 @@ public readonly ref partial struct Col
 		}
 	}
 
-	public Col WithSpellcheck(string? value = null)
+	public Col WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -287,7 +291,7 @@ public readonly ref partial struct Col
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -297,9 +301,9 @@ public readonly ref partial struct Col
 		}
 	}
 
-	public Col WithTabindex(string? value = null)
+	public Col WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -335,35 +339,37 @@ public readonly ref partial struct Col
 		return this;
 	}
 
-	public Col WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Col WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write("/>");
+
+	HtmlElementCloser IHtmlElement<Col>.End() => throw new NotSupportedException();
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Col>.Writer => writer;
+	static Col IHtmlElement<Col>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Col>.IsVoidElement => true;
+	static string IHtmlElement<Col>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Col>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"align",
+		"autocapitalize",
+		"bgcolor",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"role",
+		"slot",
+		"span",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

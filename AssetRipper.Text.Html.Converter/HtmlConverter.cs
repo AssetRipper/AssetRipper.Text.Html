@@ -12,7 +12,14 @@ namespace AssetRipper.Text.Html.Converter;
 
 internal static partial class HtmlConverter
 {
-	private static IReadOnlyDictionary<string, ModelElement> ElementDictionary { get; } = HtmlJsonLoader.Load();
+	static HtmlConverter()
+	{
+		HtmlJsonLoader.Load(out List<HtmlAttribute> globalAttributes, out List<HtmlAttribute> localAttributes, out List<ModelElement> elements);
+
+		ElementDictionary = elements.ToDictionary(t => t.Name, t => t);
+	}
+
+	private static IReadOnlyDictionary<string, ModelElement> ElementDictionary { get; }
 
 	//This works perfect, except for whitespace removal. That could be improved.
 	//Currently, there's a lot of `writer.Write(' ');` calls that get generated,
@@ -53,7 +60,7 @@ internal static partial class HtmlConverter
 		}
 		else
 		{
-			writer.Write($"HtmlElement(writer, {ToLiteral(node.LocalName)})");
+			writer.Write($"{nameof(CustomHtmlElement)}(writer, {ToLiteral(node.LocalName)})");
 		}
 
 		WriteAttributes(writer, node.Attributes, elementData);
@@ -144,7 +151,7 @@ internal static partial class HtmlConverter
 			if (elementData is not null && elementData.Attributes.TryGetValue(attribute.LocalName, out HtmlAttribute? attributeData))
 			{
 				writer.Write('.');
-				writer.Write(attributeData.FluentMethodName);
+				writer.Write(attributeData.GetFluentMethodName(elementData.ClassName));
 				writer.Write('(');
 			}
 			else

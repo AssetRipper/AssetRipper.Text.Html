@@ -4,7 +4,23 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Img
+public readonly ref partial struct Img : IHtmlElement<Img>,
+	IAlignAttribute<Img>,
+	IAltAttribute<Img>,
+	IBorderAttribute<Img>,
+	ICrossOriginAttribute<Img>,
+	IDecodingAttribute<Img>,
+	IHeightAttribute<Img>,
+	IIntrinsicsizeAttribute<Img>,
+	IIsMapAttribute<Img>,
+	ILoadingAttribute<Img>,
+	IReferrerPolicyAttribute<Img>,
+	ISizesAttribute<Img>,
+	ISrcAttribute<Img>,
+	ISrcSetAttribute<Img>,
+	IUseMapAttribute<Img>,
+	IWidthAttribute<Img>,
+	IGlobalAttributes<Img>
 {
 	private const string ElementName = "img";
 	private readonly TextWriter writer;
@@ -15,7 +31,7 @@ public readonly ref partial struct Img
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +41,9 @@ public readonly ref partial struct Img
 		}
 	}
 
-	public Img WithAccesskey(string? value = null)
+	public Img WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -111,7 +127,7 @@ public readonly ref partial struct Img
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -121,13 +137,13 @@ public readonly ref partial struct Img
 		}
 	}
 
-	public Img WithContenteditable(string? value = null)
+	public Img WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
-	public string? Crossorigin
+	public string? CrossOrigin
 	{
 		set
 		{
@@ -137,9 +153,9 @@ public readonly ref partial struct Img
 		}
 	}
 
-	public Img WithCrossorigin(string? value = null)
+	public Img WithCrossOrigin(string? value = null)
 	{
-		Crossorigin = value;
+		CrossOrigin = value;
 		return this;
 	}
 
@@ -255,7 +271,7 @@ public readonly ref partial struct Img
 		return this;
 	}
 
-	public string? Ismap
+	public string? IsMap
 	{
 		set
 		{
@@ -265,13 +281,13 @@ public readonly ref partial struct Img
 		}
 	}
 
-	public Img WithIsmap(string? value = null)
+	public Img WithIsMap(string? value = null)
 	{
-		Ismap = value;
+		IsMap = value;
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -281,9 +297,9 @@ public readonly ref partial struct Img
 		}
 	}
 
-	public Img WithItemprop(string? value = null)
+	public Img WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -319,7 +335,7 @@ public readonly ref partial struct Img
 		return this;
 	}
 
-	public string? Referrerpolicy
+	public string? ReferrerPolicy
 	{
 		set
 		{
@@ -329,9 +345,9 @@ public readonly ref partial struct Img
 		}
 	}
 
-	public Img WithReferrerpolicy(string? value = null)
+	public Img WithReferrerPolicy(string? value = null)
 	{
-		Referrerpolicy = value;
+		ReferrerPolicy = value;
 		return this;
 	}
 
@@ -383,7 +399,7 @@ public readonly ref partial struct Img
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -393,9 +409,9 @@ public readonly ref partial struct Img
 		}
 	}
 
-	public Img WithSpellcheck(string? value = null)
+	public Img WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -415,7 +431,7 @@ public readonly ref partial struct Img
 		return this;
 	}
 
-	public string? Srcset
+	public string? SrcSet
 	{
 		set
 		{
@@ -425,9 +441,9 @@ public readonly ref partial struct Img
 		}
 	}
 
-	public Img WithSrcset(string? value = null)
+	public Img WithSrcSet(string? value = null)
 	{
-		Srcset = value;
+		SrcSet = value;
 		return this;
 	}
 
@@ -447,7 +463,7 @@ public readonly ref partial struct Img
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -457,9 +473,9 @@ public readonly ref partial struct Img
 		}
 	}
 
-	public Img WithTabindex(string? value = null)
+	public Img WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -495,7 +511,7 @@ public readonly ref partial struct Img
 		return this;
 	}
 
-	public string? Usemap
+	public string? UseMap
 	{
 		set
 		{
@@ -505,9 +521,9 @@ public readonly ref partial struct Img
 		}
 	}
 
-	public Img WithUsemap(string? value = null)
+	public Img WithUseMap(string? value = null)
 	{
-		Usemap = value;
+		UseMap = value;
 		return this;
 	}
 
@@ -527,35 +543,49 @@ public readonly ref partial struct Img
 		return this;
 	}
 
-	public Img WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Img WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write("/>");
+
+	HtmlElementCloser IHtmlElement<Img>.End() => throw new NotSupportedException();
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Img>.Writer => writer;
+	static Img IHtmlElement<Img>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Img>.IsVoidElement => true;
+	static string IHtmlElement<Img>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Img>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"align",
+		"alt",
+		"autocapitalize",
+		"border",
+		"class",
+		"contenteditable",
+		"crossorigin",
+		"decoding",
+		"dir",
+		"draggable",
+		"height",
+		"hidden",
+		"id",
+		"intrinsicsize",
+		"ismap",
+		"itemprop",
+		"lang",
+		"loading",
+		"referrerpolicy",
+		"role",
+		"sizes",
+		"slot",
+		"spellcheck",
+		"src",
+		"srcset",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"usemap",
+		"width",
+	];
 }

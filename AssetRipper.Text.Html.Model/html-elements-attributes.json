@@ -1,3423 +1,894 @@
-[
-  {
-    "Key": "a",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "download",
-      "draggable",
-      "hidden",
-      "href",
-      "hreflang",
-      "id",
-      "itemprop",
-      "lang",
-      "media",
-      "ping",
-      "referrerpolicy",
-      "rel",
-      "role",
-      "shape",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "target",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "abbr",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "acronym",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "address",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "area",
-    "Value": [
-      "accesskey",
-      "alt",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "coords",
-      "dir",
-      "download",
-      "draggable",
-      "hidden",
-      "href",
-      "id",
-      "itemprop",
-      "lang",
-      "media",
-      "ping",
-      "referrerpolicy",
-      "rel",
-      "role",
-      "shape",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "target",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "article",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "aside",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "audio",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "autoplay",
-      "buffered",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "controls",
-      "crossorigin",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "loop",
-      "muted",
-      "preload",
-      "role",
-      "slot",
-      "spellcheck",
-      "src",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "b",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "base",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "href",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "target",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "bdi",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "bdo",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "big",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "blockquote",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "cite",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "body",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "background",
-      "bgcolor",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "br",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "button",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "disabled",
-      "draggable",
-      "form",
-      "formaction",
-      "formenctype",
-      "formmethod",
-      "formnovalidate",
-      "formtarget",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "name",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "type",
-      "value"
-    ]
-  },
-  {
-    "Key": "canvas",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "height",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "width"
-    ]
-  },
-  {
-    "Key": "caption",
-    "Value": [
-      "accesskey",
-      "align",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "center",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "cite",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "code",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "col",
-    "Value": [
-      "accesskey",
-      "align",
-      "autocapitalize",
-      "bgcolor",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "span",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "colgroup",
-    "Value": [
-      "accesskey",
-      "align",
-      "autocapitalize",
-      "bgcolor",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "span",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "content",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "data",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "value"
-    ]
-  },
-  {
-    "Key": "datalist",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "dd",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "del",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "cite",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "datetime",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "details",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "open",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "dfn",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "dialog",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "open",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "dir",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "div",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "dl",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "dt",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "em",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "embed",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "height",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "src",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "type",
-      "width"
-    ]
-  },
-  {
-    "Key": "fieldset",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "disabled",
-      "draggable",
-      "form",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "name",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "figcaption",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "figure",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "font",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "color",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "footer",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "form",
-    "Value": [
-      "accept",
-      "accept-charset",
-      "accesskey",
-      "action",
-      "autocapitalize",
-      "autocomplete",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "enctype",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "method",
-      "name",
-      "novalidate",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "target",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "frame",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "frameset",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "h1",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "h2",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "h3",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "h4",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "h5",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "h6",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "head",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "header",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "hgroup",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "hr",
-    "Value": [
-      "accesskey",
-      "align",
-      "autocapitalize",
-      "class",
-      "color",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "html",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "manifest",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "i",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "iframe",
-    "Value": [
-      "accesskey",
-      "align",
-      "allow",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "csp",
-      "dir",
-      "draggable",
-      "height",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "loading",
-      "name",
-      "referrerpolicy",
-      "role",
-      "sandbox",
-      "slot",
-      "spellcheck",
-      "src",
-      "srcdoc",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "width"
-    ]
-  },
-  {
-    "Key": "image",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "img",
-    "Value": [
-      "accesskey",
-      "align",
-      "alt",
-      "autocapitalize",
-      "border",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "crossorigin",
-      "decoding",
-      "dir",
-      "draggable",
-      "height",
-      "hidden",
-      "id",
-      "intrinsicsize",
-      "ismap",
-      "itemprop",
-      "lang",
-      "loading",
-      "referrerpolicy",
-      "role",
-      "sizes",
-      "slot",
-      "spellcheck",
-      "src",
-      "srcset",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "usemap",
-      "width"
-    ]
-  },
-  {
-    "Key": "input",
-    "Value": [
-      "accept",
-      "accesskey",
-      "alt",
-      "autocapitalize",
-      "autocomplete",
-      "capture",
-      "checked",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "dirname",
-      "disabled",
-      "draggable",
-      "form",
-      "formaction",
-      "formenctype",
-      "formmethod",
-      "formnovalidate",
-      "formtarget",
-      "height",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "list",
-      "max",
-      "maxlength",
-      "minlength",
-      "min",
-      "multiple",
-      "name",
-      "pattern",
-      "placeholder",
-      "readonly",
-      "required",
-      "role",
-      "size",
-      "slot",
-      "spellcheck",
-      "src",
-      "step",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "type",
-      "usemap",
-      "value",
-      "width"
-    ]
-  },
-  {
-    "Key": "ins",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "cite",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "datetime",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "kbd",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "label",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "for",
-      "form",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "legend",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "li",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "value"
-    ]
-  },
-  {
-    "Key": "link",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "crossorigin",
-      "dir",
-      "draggable",
-      "hidden",
-      "href",
-      "hreflang",
-      "id",
-      "integrity",
-      "itemprop",
-      "lang",
-      "media",
-      "referrerpolicy",
-      "rel",
-      "role",
-      "sizes",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "type"
-    ]
-  },
-  {
-    "Key": "main",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "map",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "name",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "mark",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "marquee",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "bgcolor",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "loop",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "math",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "menu",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "type"
-    ]
-  },
-  {
-    "Key": "menuitem",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "meta",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "charset",
-      "class",
-      "content",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "http-equiv",
-      "id",
-      "itemprop",
-      "lang",
-      "name",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "meter",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "form",
-      "hidden",
-      "high",
-      "id",
-      "itemprop",
-      "lang",
-      "low",
-      "max",
-      "min",
-      "optimum",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "value"
-    ]
-  },
-  {
-    "Key": "nav",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "nobr",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "noembed",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "noframes",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "noscript",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "object",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "border",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "data",
-      "dir",
-      "draggable",
-      "form",
-      "height",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "name",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "type",
-      "usemap",
-      "width"
-    ]
-  },
-  {
-    "Key": "ol",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "reversed",
-      "role",
-      "slot",
-      "spellcheck",
-      "start",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "type"
-    ]
-  },
-  {
-    "Key": "optgroup",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "disabled",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "label",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "option",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "disabled",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "label",
-      "lang",
-      "role",
-      "selected",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "value"
-    ]
-  },
-  {
-    "Key": "output",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "for",
-      "form",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "name",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "p",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "param",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "name",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "value"
-    ]
-  },
-  {
-    "Key": "picture",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "plaintext",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "portal",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "pre",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "progress",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "form",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "max",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "value"
-    ]
-  },
-  {
-    "Key": "q",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "cite",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "rb",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "rp",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "rt",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "rtc",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "ruby",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "s",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "samp",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "script",
-    "Value": [
-      "accesskey",
-      "async",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "crossorigin",
-      "defer",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "integrity",
-      "itemprop",
-      "lang",
-      "language",
-      "referrerpolicy",
-      "role",
-      "slot",
-      "spellcheck",
-      "src",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "type"
-    ]
-  },
-  {
-    "Key": "search",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "section",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "select",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "autocomplete",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "disabled",
-      "draggable",
-      "form",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "multiple",
-      "name",
-      "required",
-      "role",
-      "size",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "shadow",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "slot",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "small",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "source",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "media",
-      "role",
-      "sizes",
-      "slot",
-      "spellcheck",
-      "src",
-      "srcset",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "type"
-    ]
-  },
-  {
-    "Key": "span",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "strike",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "strong",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "style",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "media",
-      "role",
-      "scoped",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "type"
-    ]
-  },
-  {
-    "Key": "sub",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "summary",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "sup",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "svg",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "table",
-    "Value": [
-      "accesskey",
-      "align",
-      "autocapitalize",
-      "background",
-      "bgcolor",
-      "border",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "summary",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "tbody",
-    "Value": [
-      "accesskey",
-      "align",
-      "autocapitalize",
-      "bgcolor",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "td",
-    "Value": [
-      "accesskey",
-      "align",
-      "autocapitalize",
-      "background",
-      "bgcolor",
-      "class",
-      "colspan",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "headers",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "rowspan",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "template",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "textarea",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "autocomplete",
-      "class",
-      "cols",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "dirname",
-      "disabled",
-      "draggable",
-      "enterkeyhint",
-      "form",
-      "hidden",
-      "id",
-      "inputmode",
-      "itemprop",
-      "lang",
-      "maxlength",
-      "minlength",
-      "name",
-      "placeholder",
-      "readonly",
-      "required",
-      "role",
-      "rows",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "wrap"
-    ]
-  },
-  {
-    "Key": "tfoot",
-    "Value": [
-      "accesskey",
-      "align",
-      "autocapitalize",
-      "bgcolor",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "th",
-    "Value": [
-      "accesskey",
-      "align",
-      "autocapitalize",
-      "background",
-      "bgcolor",
-      "class",
-      "colspan",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "headers",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "rowspan",
-      "scope",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "thead",
-    "Value": [
-      "accesskey",
-      "align",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "time",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "datetime",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "title",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "tr",
-    "Value": [
-      "accesskey",
-      "align",
-      "autocapitalize",
-      "bgcolor",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "track",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "default",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "kind",
-      "label",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "src",
-      "srclang",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "tt",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "u",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "ul",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "var",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "video",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "autoplay",
-      "buffered",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "controls",
-      "crossorigin",
-      "dir",
-      "draggable",
-      "height",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "loop",
-      "muted",
-      "playsinline",
-      "poster",
-      "preload",
-      "role",
-      "slot",
-      "spellcheck",
-      "src",
-      "style",
-      "tabindex",
-      "title",
-      "translate",
-      "width"
-    ]
-  },
-  {
-    "Key": "wbr",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  },
-  {
-    "Key": "xmp",
-    "Value": [
-      "accesskey",
-      "autocapitalize",
-      "class",
-      "contenteditable",
-      "contextmenu",
-      "dir",
-      "draggable",
-      "hidden",
-      "id",
-      "itemprop",
-      "lang",
-      "role",
-      "slot",
-      "spellcheck",
-      "style",
-      "tabindex",
-      "title",
-      "translate"
-    ]
-  }
-]
+{
+  "Elements": [
+    {
+      "Key": "a",
+      "Value": [
+        "download",
+        "href",
+        "hreflang",
+        "media",
+        "ping",
+        "referrerpolicy",
+        "rel",
+        "shape",
+        "target"
+      ]
+    },
+    {
+      "Key": "abbr",
+      "Value": []
+    },
+    {
+      "Key": "acronym",
+      "Value": []
+    },
+    {
+      "Key": "address",
+      "Value": []
+    },
+    {
+      "Key": "area",
+      "Value": [
+        "alt",
+        "coords",
+        "download",
+        "href",
+        "media",
+        "ping",
+        "referrerpolicy",
+        "rel",
+        "shape",
+        "target"
+      ]
+    },
+    {
+      "Key": "article",
+      "Value": []
+    },
+    {
+      "Key": "aside",
+      "Value": []
+    },
+    {
+      "Key": "audio",
+      "Value": [
+        "autoplay",
+        "controls",
+        "crossorigin",
+        "loop",
+        "muted",
+        "preload",
+        "src"
+      ]
+    },
+    {
+      "Key": "b",
+      "Value": []
+    },
+    {
+      "Key": "base",
+      "Value": [
+        "href",
+        "target"
+      ]
+    },
+    {
+      "Key": "bdi",
+      "Value": []
+    },
+    {
+      "Key": "bdo",
+      "Value": []
+    },
+    {
+      "Key": "big",
+      "Value": []
+    },
+    {
+      "Key": "blockquote",
+      "Value": [
+        "cite"
+      ]
+    },
+    {
+      "Key": "body",
+      "Value": [
+        "background",
+        "bgcolor"
+      ]
+    },
+    {
+      "Key": "br",
+      "Value": []
+    },
+    {
+      "Key": "button",
+      "Value": [
+        "disabled",
+        "form",
+        "formaction",
+        "formenctype",
+        "formmethod",
+        "formnovalidate",
+        "formtarget",
+        "name",
+        "type",
+        "value"
+      ]
+    },
+    {
+      "Key": "canvas",
+      "Value": [
+        "height",
+        "width"
+      ]
+    },
+    {
+      "Key": "caption",
+      "Value": [
+        "align"
+      ]
+    },
+    {
+      "Key": "center",
+      "Value": []
+    },
+    {
+      "Key": "cite",
+      "Value": []
+    },
+    {
+      "Key": "code",
+      "Value": []
+    },
+    {
+      "Key": "col",
+      "Value": [
+        "align",
+        "bgcolor",
+        "span"
+      ]
+    },
+    {
+      "Key": "colgroup",
+      "Value": [
+        "align",
+        "bgcolor",
+        "span"
+      ]
+    },
+    {
+      "Key": "content",
+      "Value": []
+    },
+    {
+      "Key": "data",
+      "Value": [
+        "value"
+      ]
+    },
+    {
+      "Key": "datalist",
+      "Value": []
+    },
+    {
+      "Key": "dd",
+      "Value": []
+    },
+    {
+      "Key": "del",
+      "Value": [
+        "cite",
+        "datetime"
+      ]
+    },
+    {
+      "Key": "details",
+      "Value": [
+        "open"
+      ]
+    },
+    {
+      "Key": "dfn",
+      "Value": []
+    },
+    {
+      "Key": "dialog",
+      "Value": [
+        "open"
+      ]
+    },
+    {
+      "Key": "dir",
+      "Value": []
+    },
+    {
+      "Key": "div",
+      "Value": []
+    },
+    {
+      "Key": "dl",
+      "Value": []
+    },
+    {
+      "Key": "dt",
+      "Value": []
+    },
+    {
+      "Key": "em",
+      "Value": []
+    },
+    {
+      "Key": "embed",
+      "Value": [
+        "height",
+        "src",
+        "type",
+        "width"
+      ]
+    },
+    {
+      "Key": "fieldset",
+      "Value": [
+        "disabled",
+        "form",
+        "name"
+      ]
+    },
+    {
+      "Key": "figcaption",
+      "Value": []
+    },
+    {
+      "Key": "figure",
+      "Value": []
+    },
+    {
+      "Key": "font",
+      "Value": [
+        "color"
+      ]
+    },
+    {
+      "Key": "footer",
+      "Value": []
+    },
+    {
+      "Key": "form",
+      "Value": [
+        "accept",
+        "accept-charset",
+        "action",
+        "autocomplete",
+        "enctype",
+        "method",
+        "name",
+        "novalidate",
+        "target"
+      ]
+    },
+    {
+      "Key": "frame",
+      "Value": []
+    },
+    {
+      "Key": "frameset",
+      "Value": []
+    },
+    {
+      "Key": "h1",
+      "Value": []
+    },
+    {
+      "Key": "h2",
+      "Value": []
+    },
+    {
+      "Key": "h3",
+      "Value": []
+    },
+    {
+      "Key": "h4",
+      "Value": []
+    },
+    {
+      "Key": "h5",
+      "Value": []
+    },
+    {
+      "Key": "h6",
+      "Value": []
+    },
+    {
+      "Key": "head",
+      "Value": []
+    },
+    {
+      "Key": "header",
+      "Value": []
+    },
+    {
+      "Key": "hgroup",
+      "Value": []
+    },
+    {
+      "Key": "hr",
+      "Value": [
+        "align",
+        "color"
+      ]
+    },
+    {
+      "Key": "html",
+      "Value": []
+    },
+    {
+      "Key": "i",
+      "Value": []
+    },
+    {
+      "Key": "iframe",
+      "Value": [
+        "align",
+        "allow",
+        "csp",
+        "height",
+        "loading",
+        "name",
+        "referrerpolicy",
+        "sandbox",
+        "src",
+        "srcdoc",
+        "width"
+      ]
+    },
+    {
+      "Key": "image",
+      "Value": []
+    },
+    {
+      "Key": "img",
+      "Value": [
+        "align",
+        "alt",
+        "border",
+        "crossorigin",
+        "decoding",
+        "height",
+        "intrinsicsize",
+        "ismap",
+        "loading",
+        "referrerpolicy",
+        "sizes",
+        "src",
+        "srcset",
+        "usemap",
+        "width"
+      ]
+    },
+    {
+      "Key": "input",
+      "Value": [
+        "accept",
+        "alt",
+        "autocomplete",
+        "capture",
+        "checked",
+        "dirname",
+        "disabled",
+        "form",
+        "formaction",
+        "formenctype",
+        "formmethod",
+        "formnovalidate",
+        "formtarget",
+        "height",
+        "list",
+        "max",
+        "maxlength",
+        "minlength",
+        "min",
+        "multiple",
+        "name",
+        "pattern",
+        "placeholder",
+        "readonly",
+        "required",
+        "size",
+        "src",
+        "step",
+        "type",
+        "usemap",
+        "value",
+        "width"
+      ]
+    },
+    {
+      "Key": "ins",
+      "Value": [
+        "cite",
+        "datetime"
+      ]
+    },
+    {
+      "Key": "kbd",
+      "Value": []
+    },
+    {
+      "Key": "label",
+      "Value": [
+        "for",
+        "form"
+      ]
+    },
+    {
+      "Key": "legend",
+      "Value": []
+    },
+    {
+      "Key": "li",
+      "Value": [
+        "value"
+      ]
+    },
+    {
+      "Key": "link",
+      "Value": [
+        "as",
+        "crossorigin",
+        "href",
+        "hreflang",
+        "integrity",
+        "media",
+        "referrerpolicy",
+        "rel",
+        "sizes",
+        "type"
+      ]
+    },
+    {
+      "Key": "main",
+      "Value": []
+    },
+    {
+      "Key": "map",
+      "Value": [
+        "name"
+      ]
+    },
+    {
+      "Key": "mark",
+      "Value": []
+    },
+    {
+      "Key": "marquee",
+      "Value": [
+        "bgcolor",
+        "loop"
+      ]
+    },
+    {
+      "Key": "math",
+      "Value": []
+    },
+    {
+      "Key": "menu",
+      "Value": [
+        "type"
+      ]
+    },
+    {
+      "Key": "menuitem",
+      "Value": []
+    },
+    {
+      "Key": "meta",
+      "Value": [
+        "charset",
+        "content",
+        "http-equiv",
+        "name"
+      ]
+    },
+    {
+      "Key": "meter",
+      "Value": [
+        "form",
+        "high",
+        "low",
+        "max",
+        "min",
+        "optimum",
+        "value"
+      ]
+    },
+    {
+      "Key": "nav",
+      "Value": []
+    },
+    {
+      "Key": "nobr",
+      "Value": []
+    },
+    {
+      "Key": "noembed",
+      "Value": []
+    },
+    {
+      "Key": "noframes",
+      "Value": []
+    },
+    {
+      "Key": "noscript",
+      "Value": []
+    },
+    {
+      "Key": "object",
+      "Value": [
+        "border",
+        "data",
+        "form",
+        "height",
+        "name",
+        "type",
+        "usemap",
+        "width"
+      ]
+    },
+    {
+      "Key": "ol",
+      "Value": [
+        "reversed",
+        "start",
+        "type"
+      ]
+    },
+    {
+      "Key": "optgroup",
+      "Value": [
+        "disabled",
+        "label"
+      ]
+    },
+    {
+      "Key": "option",
+      "Value": [
+        "disabled",
+        "label",
+        "selected",
+        "value"
+      ]
+    },
+    {
+      "Key": "output",
+      "Value": [
+        "for",
+        "form",
+        "name"
+      ]
+    },
+    {
+      "Key": "p",
+      "Value": []
+    },
+    {
+      "Key": "param",
+      "Value": [
+        "name",
+        "value"
+      ]
+    },
+    {
+      "Key": "picture",
+      "Value": []
+    },
+    {
+      "Key": "plaintext",
+      "Value": []
+    },
+    {
+      "Key": "portal",
+      "Value": []
+    },
+    {
+      "Key": "pre",
+      "Value": []
+    },
+    {
+      "Key": "progress",
+      "Value": [
+        "form",
+        "max",
+        "value"
+      ]
+    },
+    {
+      "Key": "q",
+      "Value": [
+        "cite"
+      ]
+    },
+    {
+      "Key": "rb",
+      "Value": []
+    },
+    {
+      "Key": "rp",
+      "Value": []
+    },
+    {
+      "Key": "rt",
+      "Value": []
+    },
+    {
+      "Key": "rtc",
+      "Value": []
+    },
+    {
+      "Key": "ruby",
+      "Value": []
+    },
+    {
+      "Key": "s",
+      "Value": []
+    },
+    {
+      "Key": "samp",
+      "Value": []
+    },
+    {
+      "Key": "script",
+      "Value": [
+        "async",
+        "crossorigin",
+        "defer",
+        "integrity",
+        "language",
+        "referrerpolicy",
+        "src",
+        "type"
+      ]
+    },
+    {
+      "Key": "search",
+      "Value": []
+    },
+    {
+      "Key": "section",
+      "Value": []
+    },
+    {
+      "Key": "select",
+      "Value": [
+        "autocomplete",
+        "disabled",
+        "form",
+        "multiple",
+        "name",
+        "required",
+        "size"
+      ]
+    },
+    {
+      "Key": "shadow",
+      "Value": []
+    },
+    {
+      "Key": "slot",
+      "Value": []
+    },
+    {
+      "Key": "small",
+      "Value": []
+    },
+    {
+      "Key": "source",
+      "Value": [
+        "media",
+        "sizes",
+        "src",
+        "srcset",
+        "type"
+      ]
+    },
+    {
+      "Key": "span",
+      "Value": []
+    },
+    {
+      "Key": "strike",
+      "Value": []
+    },
+    {
+      "Key": "strong",
+      "Value": []
+    },
+    {
+      "Key": "style",
+      "Value": [
+        "media",
+        "scoped",
+        "type"
+      ]
+    },
+    {
+      "Key": "sub",
+      "Value": []
+    },
+    {
+      "Key": "summary",
+      "Value": []
+    },
+    {
+      "Key": "sup",
+      "Value": []
+    },
+    {
+      "Key": "svg",
+      "Value": []
+    },
+    {
+      "Key": "table",
+      "Value": [
+        "align",
+        "background",
+        "bgcolor",
+        "border",
+        "summary"
+      ]
+    },
+    {
+      "Key": "tbody",
+      "Value": [
+        "align",
+        "bgcolor"
+      ]
+    },
+    {
+      "Key": "td",
+      "Value": [
+        "align",
+        "background",
+        "bgcolor",
+        "colspan",
+        "headers",
+        "rowspan"
+      ]
+    },
+    {
+      "Key": "template",
+      "Value": []
+    },
+    {
+      "Key": "textarea",
+      "Value": [
+        "autocomplete",
+        "cols",
+        "dirname",
+        "disabled",
+        "enterkeyhint",
+        "form",
+        "inputmode",
+        "maxlength",
+        "minlength",
+        "name",
+        "placeholder",
+        "readonly",
+        "required",
+        "rows",
+        "wrap"
+      ]
+    },
+    {
+      "Key": "tfoot",
+      "Value": [
+        "align",
+        "bgcolor"
+      ]
+    },
+    {
+      "Key": "th",
+      "Value": [
+        "align",
+        "background",
+        "bgcolor",
+        "colspan",
+        "headers",
+        "rowspan",
+        "scope"
+      ]
+    },
+    {
+      "Key": "thead",
+      "Value": [
+        "align"
+      ]
+    },
+    {
+      "Key": "time",
+      "Value": [
+        "datetime"
+      ]
+    },
+    {
+      "Key": "title",
+      "Value": []
+    },
+    {
+      "Key": "tr",
+      "Value": [
+        "align",
+        "bgcolor"
+      ]
+    },
+    {
+      "Key": "track",
+      "Value": [
+        "default",
+        "kind",
+        "label",
+        "src",
+        "srclang"
+      ]
+    },
+    {
+      "Key": "tt",
+      "Value": []
+    },
+    {
+      "Key": "u",
+      "Value": []
+    },
+    {
+      "Key": "ul",
+      "Value": []
+    },
+    {
+      "Key": "var",
+      "Value": []
+    },
+    {
+      "Key": "video",
+      "Value": [
+        "autoplay",
+        "controls",
+        "crossorigin",
+        "height",
+        "loop",
+        "muted",
+        "playsinline",
+        "poster",
+        "preload",
+        "src",
+        "width"
+      ]
+    },
+    {
+      "Key": "wbr",
+      "Value": []
+    },
+    {
+      "Key": "xmp",
+      "Value": []
+    }
+  ],
+  "GlobalAttributes": [
+    "accesskey",
+    "autocapitalize",
+    "class",
+    "contenteditable",
+    "dir",
+    "draggable",
+    "hidden",
+    "id",
+    "itemprop",
+    "lang",
+    "role",
+    "slot",
+    "spellcheck",
+    "style",
+    "tabindex",
+    "title",
+    "translate"
+  ]
+}

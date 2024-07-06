@@ -4,7 +4,9 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Details
+public readonly ref partial struct Details : IHtmlElement<Details>,
+	IOpenAttribute<Details>,
+	IGlobalAttributes<Details>
 {
 	private const string ElementName = "details";
 	private readonly TextWriter writer;
@@ -15,7 +17,7 @@ public readonly ref partial struct Details
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +27,9 @@ public readonly ref partial struct Details
 		}
 	}
 
-	public Details WithAccesskey(string? value = null)
+	public Details WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +65,7 @@ public readonly ref partial struct Details
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,9 +75,9 @@ public readonly ref partial struct Details
 		}
 	}
 
-	public Details WithContenteditable(string? value = null)
+	public Details WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -143,7 +145,7 @@ public readonly ref partial struct Details
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -153,9 +155,9 @@ public readonly ref partial struct Details
 		}
 	}
 
-	public Details WithItemprop(string? value = null)
+	public Details WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -223,7 +225,7 @@ public readonly ref partial struct Details
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -233,9 +235,9 @@ public readonly ref partial struct Details
 		}
 	}
 
-	public Details WithSpellcheck(string? value = null)
+	public Details WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -255,7 +257,7 @@ public readonly ref partial struct Details
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -265,9 +267,9 @@ public readonly ref partial struct Details
 		}
 	}
 
-	public Details WithTabindex(string? value = null)
+	public Details WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -303,36 +305,6 @@ public readonly ref partial struct Details
 		return this;
 	}
 
-	public Details WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Details WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -353,4 +325,32 @@ public readonly ref partial struct Details
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Details>.Writer => writer;
+	static Details IHtmlElement<Details>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Details>.IsVoidElement => false;
+	static string IHtmlElement<Details>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Details>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"open",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

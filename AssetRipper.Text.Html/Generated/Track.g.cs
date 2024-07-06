@@ -4,7 +4,13 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Track
+public readonly ref partial struct Track : IHtmlElement<Track>,
+	IDefaultAttribute<Track>,
+	IKindAttribute<Track>,
+	ILabelAttribute<Track>,
+	ISrcAttribute<Track>,
+	ISrcLangAttribute<Track>,
+	IGlobalAttributes<Track>
 {
 	private const string ElementName = "track";
 	private readonly TextWriter writer;
@@ -15,7 +21,7 @@ public readonly ref partial struct Track
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +31,9 @@ public readonly ref partial struct Track
 		}
 	}
 
-	public Track WithAccesskey(string? value = null)
+	public Track WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +69,7 @@ public readonly ref partial struct Track
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,9 +79,9 @@ public readonly ref partial struct Track
 		}
 	}
 
-	public Track WithContenteditable(string? value = null)
+	public Track WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -159,7 +165,7 @@ public readonly ref partial struct Track
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -169,9 +175,9 @@ public readonly ref partial struct Track
 		}
 	}
 
-	public Track WithItemprop(string? value = null)
+	public Track WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -255,7 +261,7 @@ public readonly ref partial struct Track
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -265,9 +271,9 @@ public readonly ref partial struct Track
 		}
 	}
 
-	public Track WithSpellcheck(string? value = null)
+	public Track WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -287,7 +293,7 @@ public readonly ref partial struct Track
 		return this;
 	}
 
-	public string? Srclang
+	public string? SrcLang
 	{
 		set
 		{
@@ -297,9 +303,9 @@ public readonly ref partial struct Track
 		}
 	}
 
-	public Track WithSrclang(string? value = null)
+	public Track WithSrcLang(string? value = null)
 	{
-		Srclang = value;
+		SrcLang = value;
 		return this;
 	}
 
@@ -319,7 +325,7 @@ public readonly ref partial struct Track
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -329,9 +335,9 @@ public readonly ref partial struct Track
 		}
 	}
 
-	public Track WithTabindex(string? value = null)
+	public Track WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -367,35 +373,39 @@ public readonly ref partial struct Track
 		return this;
 	}
 
-	public Track WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Track WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write("/>");
+
+	HtmlElementCloser IHtmlElement<Track>.End() => throw new NotSupportedException();
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Track>.Writer => writer;
+	static Track IHtmlElement<Track>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Track>.IsVoidElement => true;
+	static string IHtmlElement<Track>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Track>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"default",
+		"dir",
+		"draggable",
+		"hidden",
+		"id",
+		"itemprop",
+		"kind",
+		"label",
+		"lang",
+		"role",
+		"slot",
+		"spellcheck",
+		"src",
+		"srclang",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+	];
 }

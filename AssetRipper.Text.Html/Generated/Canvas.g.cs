@@ -4,7 +4,10 @@
 
 namespace AssetRipper.Text.Html;
 
-public readonly ref partial struct Canvas
+public readonly ref partial struct Canvas : IHtmlElement<Canvas>,
+	IHeightAttribute<Canvas>,
+	IWidthAttribute<Canvas>,
+	IGlobalAttributes<Canvas>
 {
 	private const string ElementName = "canvas";
 	private readonly TextWriter writer;
@@ -15,7 +18,7 @@ public readonly ref partial struct Canvas
 		writer.Write($"<{ElementName}");
 	}
 
-	public string? Accesskey
+	public string? AccessKey
 	{
 		set
 		{
@@ -25,9 +28,9 @@ public readonly ref partial struct Canvas
 		}
 	}
 
-	public Canvas WithAccesskey(string? value = null)
+	public Canvas WithAccessKey(string? value = null)
 	{
-		Accesskey = value;
+		AccessKey = value;
 		return this;
 	}
 
@@ -63,7 +66,7 @@ public readonly ref partial struct Canvas
 		return this;
 	}
 
-	public string? Contenteditable
+	public string? ContentEditable
 	{
 		set
 		{
@@ -73,9 +76,9 @@ public readonly ref partial struct Canvas
 		}
 	}
 
-	public Canvas WithContenteditable(string? value = null)
+	public Canvas WithContentEditable(string? value = null)
 	{
-		Contenteditable = value;
+		ContentEditable = value;
 		return this;
 	}
 
@@ -159,7 +162,7 @@ public readonly ref partial struct Canvas
 		return this;
 	}
 
-	public string? Itemprop
+	public string? ItemProp
 	{
 		set
 		{
@@ -169,9 +172,9 @@ public readonly ref partial struct Canvas
 		}
 	}
 
-	public Canvas WithItemprop(string? value = null)
+	public Canvas WithItemProp(string? value = null)
 	{
-		Itemprop = value;
+		ItemProp = value;
 		return this;
 	}
 
@@ -223,7 +226,7 @@ public readonly ref partial struct Canvas
 		return this;
 	}
 
-	public string? Spellcheck
+	public string? SpellCheck
 	{
 		set
 		{
@@ -233,9 +236,9 @@ public readonly ref partial struct Canvas
 		}
 	}
 
-	public Canvas WithSpellcheck(string? value = null)
+	public Canvas WithSpellCheck(string? value = null)
 	{
-		Spellcheck = value;
+		SpellCheck = value;
 		return this;
 	}
 
@@ -255,7 +258,7 @@ public readonly ref partial struct Canvas
 		return this;
 	}
 
-	public string? Tabindex
+	public string? TabIndex
 	{
 		set
 		{
@@ -265,9 +268,9 @@ public readonly ref partial struct Canvas
 		}
 	}
 
-	public Canvas WithTabindex(string? value = null)
+	public Canvas WithTabIndex(string? value = null)
 	{
-		Tabindex = value;
+		TabIndex = value;
 		return this;
 	}
 
@@ -319,36 +322,6 @@ public readonly ref partial struct Canvas
 		return this;
 	}
 
-	public Canvas WithCustomAttribute(string key, string? value = null)
-	{
-		WriteKey(key);
-		WriteValue(value);
-		return this;
-	}
-
-	public Canvas WithCustomAttributes(scoped ReadOnlySpan<(string, string?)> attributes)
-	{
-		foreach ((string key, string? value) in attributes)
-		{
-			WriteKey(key);
-			WriteValue(value);
-		}
-		return this;
-	}
-
-	private void WriteKey(string key)
-	{
-		writer.Write(' ');
-		writer.Write(key);
-	}
-
-	private void WriteValue(string? value)
-	{
-		writer.Write("=\"");
-		writer.Write(value);
-		writer.Write('"');
-	}
-
 	public void Close() => writer.Write($"></{ElementName}>");
 
 	/// <summary>
@@ -369,4 +342,33 @@ public readonly ref partial struct Canvas
 		writer.Write('>');
 		return new HtmlElementCloser(writer, $"</{ElementName}>");
 	}
+
+	// IHtmlElement<TSelf> implementation
+	TextWriter IHtmlElement<Canvas>.Writer => writer;
+	static Canvas IHtmlElement<Canvas>.Create(TextWriter writer) => new(writer);
+	static bool IHtmlElement<Canvas>.IsVoidElement => false;
+	static string IHtmlElement<Canvas>.Name => ElementName;
+	static ReadOnlySpan<string> IHtmlElement<Canvas>.SupportedAttributes => _supportedAttributes;
+	private static readonly string[] _supportedAttributes =
+	[
+		"accesskey",
+		"autocapitalize",
+		"class",
+		"contenteditable",
+		"dir",
+		"draggable",
+		"height",
+		"hidden",
+		"id",
+		"itemprop",
+		"lang",
+		"role",
+		"slot",
+		"spellcheck",
+		"style",
+		"tabindex",
+		"title",
+		"translate",
+		"width",
+	];
 }
