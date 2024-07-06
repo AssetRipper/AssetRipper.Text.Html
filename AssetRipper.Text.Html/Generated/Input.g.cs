@@ -159,22 +159,6 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Input WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
-		return this;
-	}
-
 	public string? Dir
 	{
 		set
@@ -463,22 +447,6 @@ public readonly ref partial struct Input
 		return this;
 	}
 
-	public string? Minlength
-	{
-		set
-		{
-			writer.Write(" minlength=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Input WithMinlength(string? value = null)
-	{
-		Minlength = value;
-		return this;
-	}
-
 	public string? Min
 	{
 		set
@@ -492,6 +460,22 @@ public readonly ref partial struct Input
 	public Input WithMin(string? value = null)
 	{
 		Min = value;
+		return this;
+	}
+
+	public string? Minlength
+	{
+		set
+		{
+			writer.Write(" minlength=\"");
+			writer.Write(value);
+			writer.Write('"');
+		}
+	}
+
+	public Input WithMinlength(string? value = null)
+	{
+		Minlength = value;
 		return this;
 	}
 

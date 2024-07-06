@@ -95,22 +95,6 @@ public readonly ref partial struct Area
 		return this;
 	}
 
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Area WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
-		return this;
-	}
-
 	public string? Coords
 	{
 		set

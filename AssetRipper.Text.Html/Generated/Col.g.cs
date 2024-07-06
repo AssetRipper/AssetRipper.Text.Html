@@ -111,22 +111,6 @@ public readonly ref partial struct Col
 		return this;
 	}
 
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Col WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
-		return this;
-	}
-
 	public string? Dir
 	{
 		set

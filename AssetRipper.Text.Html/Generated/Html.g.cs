@@ -79,22 +79,6 @@ public readonly ref partial struct Html
 		return this;
 	}
 
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Html WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
-		return this;
-	}
-
 	public string? Dir
 	{
 		set
@@ -188,22 +172,6 @@ public readonly ref partial struct Html
 	public Html WithLang(string? value = null)
 	{
 		Lang = value;
-		return this;
-	}
-
-	public string? Manifest
-	{
-		set
-		{
-			writer.Write(" manifest=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Html WithManifest(string? value = null)
-	{
-		Manifest = value;
 		return this;
 	}
 

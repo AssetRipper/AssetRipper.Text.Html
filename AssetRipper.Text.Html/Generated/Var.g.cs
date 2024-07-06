@@ -79,22 +79,6 @@ public readonly ref partial struct Var
 		return this;
 	}
 
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Var WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
-		return this;
-	}
-
 	public string? Dir
 	{
 		set

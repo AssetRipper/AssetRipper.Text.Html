@@ -63,22 +63,6 @@ public readonly ref partial struct Audio
 		return this;
 	}
 
-	public string? Buffered
-	{
-		set
-		{
-			writer.Write(" buffered=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Audio WithBuffered(string? value = null)
-	{
-		Buffered = value;
-		return this;
-	}
-
 	public string? Class
 	{
 		set
@@ -108,22 +92,6 @@ public readonly ref partial struct Audio
 	public Audio WithContenteditable(string? value = null)
 	{
 		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Audio WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
 		return this;
 	}
 

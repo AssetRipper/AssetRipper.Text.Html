@@ -31,6 +31,22 @@ public readonly ref partial struct Link
 		return this;
 	}
 
+	public string? As
+	{
+		set
+		{
+			writer.Write(" as=\"");
+			writer.Write(value);
+			writer.Write('"');
+		}
+	}
+
+	public Link WithAs(string? value = null)
+	{
+		As = value;
+		return this;
+	}
+
 	public string? Autocapitalize
 	{
 		set
@@ -76,22 +92,6 @@ public readonly ref partial struct Link
 	public Link WithContenteditable(string? value = null)
 	{
 		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Link WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
 		return this;
 	}
 

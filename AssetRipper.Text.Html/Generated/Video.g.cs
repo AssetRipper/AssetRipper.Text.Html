@@ -63,22 +63,6 @@ public readonly ref partial struct Video
 		return this;
 	}
 
-	public string? Buffered
-	{
-		set
-		{
-			writer.Write(" buffered=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Video WithBuffered(string? value = null)
-	{
-		Buffered = value;
-		return this;
-	}
-
 	public string? Class
 	{
 		set
@@ -108,22 +92,6 @@ public readonly ref partial struct Video
 	public Video WithContenteditable(string? value = null)
 	{
 		Contenteditable = value;
-		return this;
-	}
-
-	public string? Contextmenu
-	{
-		set
-		{
-			writer.Write(" contextmenu=\"");
-			writer.Write(value);
-			writer.Write('"');
-		}
-	}
-
-	public Video WithContextmenu(string? value = null)
-	{
-		Contextmenu = value;
 		return this;
 	}
 
