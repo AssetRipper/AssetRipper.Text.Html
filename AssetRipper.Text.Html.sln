@@ -14,11 +14,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0D674883-9878-44EE-8280-8D67B6C00076}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetRipper.Text.Html.Model", "AssetRipper.Text.Html.Model\AssetRipper.Text.Html.Model.csproj", "{E07CCCBB-D1CA-4AF2-A6C7-C05B3BC43E66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetRipper.Text.Html.Model", "AssetRipper.Text.Html.Model\AssetRipper.Text.Html.Model.csproj", "{E07CCCBB-D1CA-4AF2-A6C7-C05B3BC43E66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetRipper.Text.Html.Converter", "AssetRipper.Text.Html.Converter\AssetRipper.Text.Html.Converter.csproj", "{F7EBBC0A-472A-42DA-B2A2-CC8B42C96CAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetRipper.Text.Html.Converter", "AssetRipper.Text.Html.Converter\AssetRipper.Text.Html.Converter.csproj", "{F7EBBC0A-472A-42DA-B2A2-CC8B42C96CAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
