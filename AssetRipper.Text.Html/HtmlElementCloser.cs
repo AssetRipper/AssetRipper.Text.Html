@@ -1,6 +1,6 @@
 ﻿namespace AssetRipper.Text.Html;
 
-public readonly ref struct HtmlElementCloser
+public readonly ref struct HtmlElementCloser : IDisposable
 {
 	private readonly TextWriter writer;
 	private readonly string content;
