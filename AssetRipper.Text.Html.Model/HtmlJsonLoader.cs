@@ -18,13 +18,14 @@ public sealed class HtmlJsonLoader
 		globalAttributes = new();
 		foreach (string name in data.GlobalAttributes)
 		{
-			HtmlAttribute attribute = new HtmlAttribute(name, true);
+			string description = data.AttributeDescriptions.FirstOrDefault(t => t.Key == name).Value ?? "";
+			HtmlAttribute attribute = new HtmlAttribute(name, description, true);
 			attributeDictionary.Add(name, attribute);
 			globalAttributes.Add(attribute);
 		}
 
 		localAttributes = new();
-		foreach ((_, List<string> attributeList) in data.Elements)
+		foreach ((_, _, List<string> attributeList) in data.Elements)
 		{
 			foreach (string name in attributeList)
 			{
@@ -33,16 +34,17 @@ public sealed class HtmlJsonLoader
 					continue;
 				}
 
-				HtmlAttribute attribute = new HtmlAttribute(name, false);
+				string description = data.AttributeDescriptions.FirstOrDefault(t => t.Key == name).Value ?? "";
+				HtmlAttribute attribute = new HtmlAttribute(name, description, false);
 				attributeDictionary.Add(name, attribute);
 				localAttributes.Add(attribute);
 			}
 		}
 
 		elements = new();
-		foreach ((string elementName, List<string> attributeArray) in data.Elements)
+		foreach ((string elementName, string description, List<string> attributeArray) in data.Elements)
 		{
-			elements.Add(new HtmlElement(elementName, attributeArray.Union(data.GlobalAttributes).Order(), attributeDictionary));
+			elements.Add(new HtmlElement(elementName, description, attributeArray.Union(data.GlobalAttributes).Order(), attributeDictionary));
 		}
 	}
 }

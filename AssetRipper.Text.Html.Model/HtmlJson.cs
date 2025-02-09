@@ -2,9 +2,9 @@
 
 namespace AssetRipper.Text.Html.Model;
 
-public sealed record HtmlJson(List<KeyValuePair<string, List<string>>> Elements, List<string> GlobalAttributes)
+public sealed record HtmlJson(List<HtmlElementData> Elements, List<string> GlobalAttributes, List<KeyValuePair<string, string>> AttributeDescriptions)
 {
-	public HtmlJson() : this([], [])
+	public HtmlJson() : this([], [], [])
 	{
 	}
 

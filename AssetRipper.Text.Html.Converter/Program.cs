@@ -66,7 +66,7 @@ internal static class Program
 			{
 				using (new Form(writer).WithAction("/Result").WithMethod("post").End())
 				{
-					new Textarea(writer)
+					new TextArea(writer)
 						.WithName(HtmlFormName)
 						.WithClass("bg-dark-subtle rounded-3 p-2")
 						.WithStyle("width: 100%; height: 90%")

@@ -1,8 +1,9 @@
 {
   "Elements": [
     {
-      "Key": "a",
-      "Value": [
+      "Name": "a",
+      "Description": "Together with its href attribute, creates a hyperlink to web pages, files, email addresses, locations within the current page, or anything else a URL can address.",
+      "Attributes": [
         "download",
         "href",
         "hreflang",
@@ -15,20 +16,24 @@
       ]
     },
     {
-      "Key": "abbr",
-      "Value": []
+      "Name": "abbr",
+      "Description": "Represents an abbreviation or acronym.",
+      "Attributes": []
     },
     {
-      "Key": "acronym",
-      "Value": []
+      "Name": "acronym",
+      "Description": "Allows authors to clearly indicate a sequence of characters that compose an acronym or abbreviation for a word.",
+      "Attributes": []
     },
     {
-      "Key": "address",
-      "Value": []
+      "Name": "address",
+      "Description": "Indicates that the enclosed HTML provides contact information for a person or people, or for an organization.",
+      "Attributes": []
     },
     {
-      "Key": "area",
-      "Value": [
+      "Name": "area",
+      "Description": "Defines an area inside an image map that has predefined clickable areas. An image map allows geometric areas on an image to be associated with hyperlink.",
+      "Attributes": [
         "alt",
         "coords",
         "download",
@@ -42,16 +47,19 @@
       ]
     },
     {
-      "Key": "article",
-      "Value": []
+      "Name": "article",
+      "Description": "Represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable (e.g., in syndication). Examples include a forum post, a magazine or newspaper article, a blog entry, a product card, a user-submitted comment, an interactive widget or gadget, or any other independent item of content.",
+      "Attributes": []
     },
     {
-      "Key": "aside",
-      "Value": []
+      "Name": "aside",
+      "Description": "Represents a portion of a document whose content is only indirectly related to the document\u0027s main content. Asides are frequently presented as sidebars or call-out boxes.",
+      "Attributes": []
     },
     {
-      "Key": "audio",
-      "Value": [
+      "Name": "audio",
+      "Description": "Used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element: the browser will choose the most suitable one. It can also be the destination for streamed media, using a MediaStream.",
+      "Attributes": [
         "autoplay",
         "controls",
         "crossorigin",
@@ -62,48 +70,57 @@
       ]
     },
     {
-      "Key": "b",
-      "Value": []
+      "Name": "b",
+      "Description": "Used to draw the reader\u0027s attention to the element\u0027s contents, which are not otherwise granted special importance. This was formerly known as the Boldface element, and most browsers still draw the text in boldface. However, you should not use \u003Cb\u003E for styling text or granting importance. If you wish to create boldface text, you should use the CSS font-weight property. If you wish to indicate an element is of special importance, you should use the \u003Cstrong\u003E element.",
+      "Attributes": []
     },
     {
-      "Key": "base",
-      "Value": [
+      "Name": "base",
+      "Description": "Specifies the base URL to use for all relative URLs in a document. There can be only one such element in a document.",
+      "Attributes": [
         "href",
         "target"
       ]
     },
     {
-      "Key": "bdi",
-      "Value": []
+      "Name": "bdi",
+      "Description": "Tells the browser\u0027s bidirectional algorithm to treat the text it contains in isolation from its surrounding text. It\u0027s particularly useful when a website dynamically inserts some text and doesn\u0027t know the directionality of the text being inserted.",
+      "Attributes": []
     },
     {
-      "Key": "bdo",
-      "Value": []
+      "Name": "bdo",
+      "Description": "Overrides the current directionality of text, so that the text within is rendered in a different direction.",
+      "Attributes": []
     },
     {
-      "Key": "big",
-      "Value": []
+      "Name": "big",
+      "Description": "Renders the enclosed text at a font size one level larger than the surrounding text (medium becomes large, for example). The size is capped at the browser\u0027s maximum permitted font size.",
+      "Attributes": []
     },
     {
-      "Key": "blockquote",
-      "Value": [
+      "Name": "blockquote",
+      "Description": "Indicates that the enclosed text is an extended quotation. Usually, this is rendered visually by indentation. A URL for the source of the quotation may be given using the cite attribute, while a text representation of the source can be given using the \u003Ccite\u003E element.",
+      "Attributes": [
         "cite"
       ]
     },
     {
-      "Key": "body",
-      "Value": [
+      "Name": "body",
+      "Description": "Represents the content of an HTML document. There can be only one such element in a document.",
+      "Attributes": [
         "background",
         "bgcolor"
       ]
     },
     {
-      "Key": "br",
-      "Value": []
+      "Name": "br",
+      "Description": "Produces a line break in text (carriage-return). It is useful for writing a poem or an address, where the division of lines is significant.",
+      "Attributes": []
     },
     {
-      "Key": "button",
-      "Value": [
+      "Name": "button",
+      "Description": "An interactive element activated by a user with a mouse, keyboard, finger, voice command, or other assistive technology. Once activated, it performs an action, such as submitting a form or opening a dialog.",
+      "Attributes": [
         "disabled",
         "form",
         "formaction",
@@ -117,110 +134,131 @@
       ]
     },
     {
-      "Key": "canvas",
-      "Value": [
+      "Name": "canvas",
+      "Description": "Container element to use with either the canvas scripting API or the WebGL API to draw graphics and animations.",
+      "Attributes": [
         "height",
         "width"
       ]
     },
     {
-      "Key": "caption",
-      "Value": [
+      "Name": "caption",
+      "Description": "Specifies the caption (or title) of a table.",
+      "Attributes": [
         "align"
       ]
     },
     {
-      "Key": "center",
-      "Value": []
+      "Name": "center",
+      "Description": "Displays its block-level or inline contents centered horizontally within its containing element.",
+      "Attributes": []
     },
     {
-      "Key": "cite",
-      "Value": []
+      "Name": "cite",
+      "Description": "Used to mark up the title of a cited creative work. The reference may be in an abbreviated form according to context-appropriate conventions related to citation metadata.",
+      "Attributes": []
     },
     {
-      "Key": "code",
-      "Value": []
+      "Name": "code",
+      "Description": "Displays its contents styled in a fashion intended to indicate that the text is a short fragment of computer code. By default, the content text is displayed using the user agent\u0027s default monospace font.",
+      "Attributes": []
     },
     {
-      "Key": "col",
-      "Value": [
+      "Name": "col",
+      "Description": "Defines one or more columns in a column group represented by its implicit or explicit parent \u003Ccolgroup\u003E element. The \u003Ccol\u003E element is only valid as a child of a \u003Ccolgroup\u003E element that has no span attribute defined.",
+      "Attributes": [
         "align",
         "bgcolor",
         "span"
       ]
     },
     {
-      "Key": "colgroup",
-      "Value": [
+      "Name": "colgroup",
+      "Description": "Defines a group of columns within a table.",
+      "Attributes": [
         "align",
         "bgcolor",
         "span"
       ]
     },
     {
-      "Key": "content",
-      "Value": []
+      "Name": "content",
+      "Description": "An obsolete part of the Web Components suite of technologies\u2014was used inside of Shadow DOM as an insertion point, and wasn\u0027t meant to be used in ordinary HTML. It has now been replaced by the \u003Cslot\u003E element, which creates a point in the DOM at which a shadow DOM can be inserted. Consider using \u003Cslot\u003E instead.",
+      "Attributes": []
     },
     {
-      "Key": "data",
-      "Value": [
+      "Name": "data",
+      "Description": "Links a given piece of content with a machine-readable translation. If the content is time- or date-related, the \u003Ctime\u003E element must be used.",
+      "Attributes": [
         "value"
       ]
     },
     {
-      "Key": "datalist",
-      "Value": []
+      "Name": "datalist",
+      "Description": "Contains a set of \u003Coption\u003E elements that represent the permissible or recommended options available to choose from within other controls.",
+      "Attributes": []
     },
     {
-      "Key": "dd",
-      "Value": []
+      "Name": "dd",
+      "Description": "Provides the description, definition, or value for the preceding term (\u003Cdt\u003E) in a description list (\u003Cdl\u003E).",
+      "Attributes": []
     },
     {
-      "Key": "del",
-      "Value": [
+      "Name": "del",
+      "Description": "Represents a range of text that has been deleted from a document. This can be used when rendering \u0022track changes\u0022 or source code diff information, for example. The \u003Cins\u003E element can be used for the opposite purpose: to indicate text that has been added to the document.",
+      "Attributes": [
         "cite",
         "datetime"
       ]
     },
     {
-      "Key": "details",
-      "Value": [
+      "Name": "details",
+      "Description": "Creates a disclosure widget in which information is visible only when the widget is toggled into an \u0022open\u0022 state. A summary or label must be provided using the \u003Csummary\u003E element.",
+      "Attributes": [
         "open"
       ]
     },
     {
-      "Key": "dfn",
-      "Value": []
+      "Name": "dfn",
+      "Description": "Used to indicate the term being defined within the context of a definition phrase or sentence. The ancestor \u003Cp\u003E element, the \u003Cdt\u003E/\u003Cdd\u003E pairing, or the nearest section ancestor of the \u003Cdfn\u003E element, is considered to be the definition of the term.",
+      "Attributes": []
     },
     {
-      "Key": "dialog",
-      "Value": [
+      "Name": "dialog",
+      "Description": "Represents a dialog box or other interactive component, such as a dismissible alert, inspector, or subwindow.",
+      "Attributes": [
         "open"
       ]
     },
     {
-      "Key": "dir",
-      "Value": []
+      "Name": "dir",
+      "Description": "Container for a directory of files and/or folders, potentially with styles and icons applied by the user agent. Do not use this obsolete element; instead, you should use the \u003Cul\u003E element for lists, including lists of files.",
+      "Attributes": []
     },
     {
-      "Key": "div",
-      "Value": []
+      "Name": "div",
+      "Description": "The generic container for flow content. It has no effect on the content or layout until styled in some way using CSS (e.g., styling is directly applied to it, or some kind of layout model like flexbox is applied to its parent element).",
+      "Attributes": []
     },
     {
-      "Key": "dl",
-      "Value": []
+      "Name": "dl",
+      "Description": "Represents a description list. The element encloses a list of groups of terms (specified using the \u003Cdt\u003E element) and descriptions (provided by \u003Cdd\u003E elements). Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).",
+      "Attributes": []
     },
     {
-      "Key": "dt",
-      "Value": []
+      "Name": "dt",
+      "Description": "Specifies a term in a description or definition list, and as such must be used inside a \u003Cdl\u003E element. It is usually followed by a \u003Cdd\u003E element; however, multiple \u003Cdt\u003E elements in a row indicate several terms that are all defined by the immediate next \u003Cdd\u003E element.",
+      "Attributes": []
     },
     {
-      "Key": "em",
-      "Value": []
+      "Name": "em",
+      "Description": "Marks text that has stress emphasis. The \u003Cem\u003E element can be nested, with each nesting level indicating a greater degree of emphasis.",
+      "Attributes": []
     },
     {
-      "Key": "embed",
-      "Value": [
+      "Name": "embed",
+      "Description": "Embeds external content at the specified point in the document. This content is provided by an external application or other source of interactive content such as a browser plug-in.",
+      "Attributes": [
         "height",
         "src",
         "type",
@@ -228,38 +266,45 @@
       ]
     },
     {
-      "Key": "fencedframe",
-      "Value": []
+      "Name": "fencedframe",
+      "Description": "Represents a nested browsing context, like \u003Ciframe\u003E but with more native privacy features built in.",
+      "Attributes": []
     },
     {
-      "Key": "fieldset",
-      "Value": [
+      "Name": "fieldset",
+      "Description": "Used to group several controls as well as labels (\u003Clabel\u003E) within a web form.",
+      "Attributes": [
         "disabled",
         "form",
         "name"
       ]
     },
     {
-      "Key": "figcaption",
-      "Value": []
+      "Name": "figcaption",
+      "Description": "Represents a caption or legend describing the rest of the contents of its parent \u003Cfigure\u003E element.",
+      "Attributes": []
     },
     {
-      "Key": "figure",
-      "Value": []
+      "Name": "figure",
+      "Description": "Represents self-contained content, potentially with an optional caption, which is specified using the \u003Cfigcaption\u003E element. The figure, its caption, and its contents are referenced as a single unit.",
+      "Attributes": []
     },
     {
-      "Key": "font",
-      "Value": [
+      "Name": "font",
+      "Description": "Defines the font size, color and face for its content.",
+      "Attributes": [
         "color"
       ]
     },
     {
-      "Key": "footer",
-      "Value": []
+      "Name": "footer",
+      "Description": "Represents a footer for its nearest ancestor sectioning content or sectioning root element. A \u003Cfooter\u003E typically contains information about the author of the section, copyright data, or links to related documents.",
+      "Attributes": []
     },
     {
-      "Key": "form",
-      "Value": [
+      "Name": "form",
+      "Description": "Represents a document section containing interactive controls for submitting information.",
+      "Attributes": [
         "accept",
         "accept-charset",
         "action",
@@ -272,67 +317,82 @@
       ]
     },
     {
-      "Key": "frame",
-      "Value": []
+      "Name": "frame",
+      "Description": "Defines a particular area in which another HTML document can be displayed. A frame should be used within a \u003Cframeset\u003E.",
+      "Attributes": []
     },
     {
-      "Key": "frameset",
-      "Value": []
+      "Name": "frameset",
+      "Description": "Used to contain \u003Cframe\u003E elements.",
+      "Attributes": []
     },
     {
-      "Key": "h1",
-      "Value": []
+      "Name": "h1",
+      "Description": "Represent six levels of section headings. \u003Ch1\u003E is the highest section level and \u003Ch6\u003E is the lowest.",
+      "Attributes": []
     },
     {
-      "Key": "h2",
-      "Value": []
+      "Name": "h2",
+      "Description": "Represent six levels of section headings. \u003Ch1\u003E is the highest section level and \u003Ch6\u003E is the lowest.",
+      "Attributes": []
     },
     {
-      "Key": "h3",
-      "Value": []
+      "Name": "h3",
+      "Description": "Represent six levels of section headings. \u003Ch1\u003E is the highest section level and \u003Ch6\u003E is the lowest.",
+      "Attributes": []
     },
     {
-      "Key": "h4",
-      "Value": []
+      "Name": "h4",
+      "Description": "Represent six levels of section headings. \u003Ch1\u003E is the highest section level and \u003Ch6\u003E is the lowest.",
+      "Attributes": []
     },
     {
-      "Key": "h5",
-      "Value": []
+      "Name": "h5",
+      "Description": "Represent six levels of section headings. \u003Ch1\u003E is the highest section level and \u003Ch6\u003E is the lowest.",
+      "Attributes": []
     },
     {
-      "Key": "h6",
-      "Value": []
+      "Name": "h6",
+      "Description": "Represent six levels of section headings. \u003Ch1\u003E is the highest section level and \u003Ch6\u003E is the lowest.",
+      "Attributes": []
     },
     {
-      "Key": "head",
-      "Value": []
+      "Name": "head",
+      "Description": "Contains machine-readable information (metadata) about the document, like its title, scripts, and style sheets.",
+      "Attributes": []
     },
     {
-      "Key": "header",
-      "Value": []
+      "Name": "header",
+      "Description": "Represents introductory content, typically a group of introductory or navigational aids. It may contain some heading elements but also a logo, a search form, an author name, and other elements.",
+      "Attributes": []
     },
     {
-      "Key": "hgroup",
-      "Value": []
+      "Name": "hgroup",
+      "Description": "Represents a heading grouped with any secondary content, such as subheadings, an alternative title, or a tagline.",
+      "Attributes": []
     },
     {
-      "Key": "hr",
-      "Value": [
+      "Name": "hr",
+      "Description": "Represents a thematic break between paragraph-level elements: for example, a change of scene in a story, or a shift of topic within a section.",
+      "Attributes": [
         "align",
         "color"
       ]
     },
     {
-      "Key": "html",
-      "Value": []
+      "Name": "html",
+      "Description": "Represents the root (top-level element) of an HTML document, so it is also referred to as the root element. All other elements must be descendants of this element.",
+      "Attributes": []
     },
     {
-      "Key": "i",
-      "Value": []
+      "Name": "i",
+      "Description": "Represents a range of text that is set off from the normal text for some reason, such as idiomatic text, technical terms, and taxonomical designations, among others. Historically, these have been presented using italicized type, which is the original source of the \u003Ci\u003E naming of this element.",
+      "Attributes": []
     },
     {
-      "Key": "iframe",
-      "Value": [
+      "Name": "iframe",
+      "Description": "Represents a nested browsing context, embedding another HTML page into the current one.",
+      "Attributes": [
         "align",
         "allow",
         "csp",
@@ -347,12 +407,14 @@
       ]
     },
     {
-      "Key": "image",
-      "Value": []
+      "Name": "image",
+      "Description": "An ancient and poorly supported precursor to the \u003Cimg\u003E element. It should not be used.",
+      "Attributes": []
     },
     {
-      "Key": "img",
-      "Value": [
+      "Name": "img",
+      "Description": "Embeds an image into the document.",
+      "Attributes": [
         "align",
         "alt",
         "border",
@@ -371,8 +433,9 @@
       ]
     },
     {
-      "Key": "input",
-      "Value": [
+      "Name": "input",
+      "Description": "Used to create interactive controls for web-based forms to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent. The \u003Cinput\u003E element is one of the most powerful and complex in all of HTML due to the sheer number of combinations of input types and attributes.",
+      "Attributes": [
         "accept",
         "alt",
         "autocomplete",
@@ -408,36 +471,42 @@
       ]
     },
     {
-      "Key": "ins",
-      "Value": [
+      "Name": "ins",
+      "Description": "Represents a range of text that has been added to a document. You can use the \u003Cdel\u003E element to similarly represent a range of text that has been deleted from the document.",
+      "Attributes": [
         "cite",
         "datetime"
       ]
     },
     {
-      "Key": "kbd",
-      "Value": []
+      "Name": "kbd",
+      "Description": "Represents a span of inline text denoting textual user input from a keyboard, voice input, or any other text entry device. By convention, the user agent defaults to rendering the contents of a \u003Ckbd\u003E element using its default monospace font, although this is not mandated by the HTML standard.",
+      "Attributes": []
     },
     {
-      "Key": "label",
-      "Value": [
+      "Name": "label",
+      "Description": "Represents a caption for an item in a user interface.",
+      "Attributes": [
         "for",
         "form"
       ]
     },
     {
-      "Key": "legend",
-      "Value": []
+      "Name": "legend",
+      "Description": "Represents a caption for the content of its parent \u003Cfieldset\u003E.",
+      "Attributes": []
     },
     {
-      "Key": "li",
-      "Value": [
+      "Name": "li",
+      "Description": "Represents an item in a list. It must be contained in a parent element: an ordered list (\u003Col\u003E), an unordered list (\u003Cul\u003E), or a menu (\u003Cmenu\u003E). In menus and unordered lists, list items are usually displayed using bullet points. In ordered lists, they are usually displayed with an ascending counter on the left, such as a number or letter.",
+      "Attributes": [
         "value"
       ]
     },
     {
-      "Key": "link",
-      "Value": [
+      "Name": "link",
+      "Description": "Specifies relationships between the current document and an external resource. This element is most commonly used to link to CSS but is also used to establish site icons (both \u0022favicon\u0022 style icons and icons for the home screen and apps on mobile devices) among other things.",
+      "Attributes": [
         "as",
         "crossorigin",
         "href",
@@ -451,43 +520,51 @@
       ]
     },
     {
-      "Key": "main",
-      "Value": []
+      "Name": "main",
+      "Description": "Represents the dominant content of the body of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central functionality of an application.",
+      "Attributes": []
     },
     {
-      "Key": "map",
-      "Value": [
+      "Name": "map",
+      "Description": "Used with \u003Carea\u003E elements to define an image map (a clickable link area).",
+      "Attributes": [
         "name"
       ]
     },
     {
-      "Key": "mark",
-      "Value": []
+      "Name": "mark",
+      "Description": "Represents text which is marked or highlighted for reference or notation purposes due to the marked passage\u0027s relevance in the enclosing context.",
+      "Attributes": []
     },
     {
-      "Key": "marquee",
-      "Value": [
+      "Name": "marquee",
+      "Description": "Used to insert a scrolling area of text. You can control what happens when the text reaches the edges of its content area using its attributes.",
+      "Attributes": [
         "bgcolor",
         "loop"
       ]
     },
     {
-      "Key": "math",
-      "Value": []
+      "Name": "math",
+      "Description": "The top-level element in MathML. Every valid MathML instance must be wrapped in it. In addition, you must not nest a second \u003Cmath\u003E element in another, but you can have an arbitrary number of other child elements in it.",
+      "Attributes": []
     },
     {
-      "Key": "menu",
-      "Value": [
+      "Name": "menu",
+      "Description": "A semantic alternative to \u003Cul\u003E, but treated by browsers (and exposed through the accessibility tree) as no different than \u003Cul\u003E. It represents an unordered list of items (which are represented by \u003Cli\u003E elements).",
+      "Attributes": [
         "type"
       ]
     },
     {
-      "Key": "menuitem",
-      "Value": []
+      "Name": "menuitem",
+      "Description": "Represents a command that a user is able to invoke through a popup menu. This includes context menus, as well as menus that might be attached to a menu button.",
+      "Attributes": []
     },
     {
-      "Key": "meta",
-      "Value": [
+      "Name": "meta",
+      "Description": "Represents metadata that cannot be represented by other HTML meta-related elements, like \u003Cbase\u003E, \u003Clink\u003E, \u003Cscript\u003E, \u003Cstyle\u003E and \u003Ctitle\u003E.",
+      "Attributes": [
         "charset",
         "content",
         "http-equiv",
@@ -495,8 +572,9 @@
       ]
     },
     {
-      "Key": "meter",
-      "Value": [
+      "Name": "meter",
+      "Description": "Represents either a scalar value within a known range or a fractional value.",
+      "Attributes": [
         "form",
         "high",
         "low",
@@ -507,28 +585,34 @@
       ]
     },
     {
-      "Key": "nav",
-      "Value": []
+      "Name": "nav",
+      "Description": "Represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents. Common examples of navigation sections are menus, tables of contents, and indexes.",
+      "Attributes": []
     },
     {
-      "Key": "nobr",
-      "Value": []
+      "Name": "nobr",
+      "Description": "Prevents the text it contains from automatically wrapping across multiple lines, potentially resulting in the user having to scroll horizontally to see the entire width of the text.",
+      "Attributes": []
     },
     {
-      "Key": "noembed",
-      "Value": []
+      "Name": "noembed",
+      "Description": "An obsolete, non-standard way to provide alternative, or \u0022fallback\u0022, content for browsers that do not support the embed element or do not support the type of embedded content an author wishes to use. This element was deprecated in HTML 4.01 and above in favor of placing fallback content between the opening and closing tags of an \u003Cobject\u003E element.",
+      "Attributes": []
     },
     {
-      "Key": "noframes",
-      "Value": []
+      "Name": "noframes",
+      "Description": "Provides content to be presented in browsers that don\u0027t support (or have disabled support for) the \u003Cframe\u003E element. Although most commonly-used browsers support frames, there are exceptions, including certain special-use browsers including some mobile browsers, as well as text-mode browsers.",
+      "Attributes": []
     },
     {
-      "Key": "noscript",
-      "Value": []
+      "Name": "noscript",
+      "Description": "Defines a section of HTML to be inserted if a script type on the page is unsupported or if scripting is currently turned off in the browser.",
+      "Attributes": []
     },
     {
-      "Key": "object",
-      "Value": [
+      "Name": "object",
+      "Description": "Represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.",
+      "Attributes": [
         "border",
         "data",
         "form",
@@ -540,23 +624,26 @@
       ]
     },
     {
-      "Key": "ol",
-      "Value": [
+      "Name": "ol",
+      "Description": "Represents an ordered list of items \u2014 typically rendered as a numbered list.",
+      "Attributes": [
         "reversed",
         "start",
         "type"
       ]
     },
     {
-      "Key": "optgroup",
-      "Value": [
+      "Name": "optgroup",
+      "Description": "Creates a grouping of options within a \u003Cselect\u003E element.",
+      "Attributes": [
         "disabled",
         "label"
       ]
     },
     {
-      "Key": "option",
-      "Value": [
+      "Name": "option",
+      "Description": "Used to define an item contained in a select, an \u003Coptgroup\u003E, or a \u003Cdatalist\u003E element. As such, \u003Coption\u003E can represent menu items in popups and other lists of items in an HTML document.",
+      "Attributes": [
         "disabled",
         "label",
         "selected",
@@ -564,81 +651,97 @@
       ]
     },
     {
-      "Key": "output",
-      "Value": [
+      "Name": "output",
+      "Description": "Container element into which a site or app can inject the results of a calculation or the outcome of a user action.",
+      "Attributes": [
         "for",
         "form",
         "name"
       ]
     },
     {
-      "Key": "p",
-      "Value": []
+      "Name": "p",
+      "Description": "Represents a paragraph. Paragraphs are usually represented in visual media as blocks of text separated from adjacent blocks by blank lines and/or first-line indentation, but HTML paragraphs can be any structural grouping of related content, such as images or form fields.",
+      "Attributes": []
     },
     {
-      "Key": "param",
-      "Value": [
+      "Name": "param",
+      "Description": "Defines parameters for an \u003Cobject\u003E element.",
+      "Attributes": [
         "name",
         "value"
       ]
     },
     {
-      "Key": "picture",
-      "Value": []
+      "Name": "picture",
+      "Description": "Contains zero or more \u003Csource\u003E elements and one \u003Cimg\u003E element to offer alternative versions of an image for different display/device scenarios.",
+      "Attributes": []
     },
     {
-      "Key": "plaintext",
-      "Value": []
+      "Name": "plaintext",
+      "Description": "Renders everything following the start tag as raw text, ignoring any following HTML. There is no closing tag, since everything after it is considered raw text.",
+      "Attributes": []
     },
     {
-      "Key": "pre",
-      "Value": []
+      "Name": "pre",
+      "Description": "Represents preformatted text which is to be presented exactly as written in the HTML file. The text is typically rendered using a non-proportional, or monospaced, font. Whitespace inside this element is displayed as written.",
+      "Attributes": []
     },
     {
-      "Key": "progress",
-      "Value": [
+      "Name": "progress",
+      "Description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "Attributes": [
         "form",
         "max",
         "value"
       ]
     },
     {
-      "Key": "q",
-      "Value": [
+      "Name": "q",
+      "Description": "Indicates that the enclosed text is a short inline quotation. Most modern browsers implement this by surrounding the text in quotation marks. This element is intended for short quotations that don\u0027t require paragraph breaks; for long quotations use the \u003Cblockquote\u003E element.",
+      "Attributes": [
         "cite"
       ]
     },
     {
-      "Key": "rb",
-      "Value": []
+      "Name": "rb",
+      "Description": "Used to delimit the base text component of a ruby annotation, i.e. the text that is being annotated. One \u003Crb\u003E element should wrap each separate atomic segment of the base text.",
+      "Attributes": []
     },
     {
-      "Key": "rp",
-      "Value": []
+      "Name": "rp",
+      "Description": "Used to provide fall-back parentheses for browsers that do not support the display of ruby annotations using the \u003Cruby\u003E element. One \u003Crp\u003E element should enclose each of the opening and closing parentheses that wrap the \u003Crt\u003E element that contains the annotation\u0027s text.",
+      "Attributes": []
     },
     {
-      "Key": "rt",
-      "Value": []
+      "Name": "rt",
+      "Description": "Specifies the ruby text component of a ruby annotation, which is used to provide pronunciation, translation, or transliteration information for East Asian typography. The \u003Crt\u003E element must always be contained within a \u003Cruby\u003E element.",
+      "Attributes": []
     },
     {
-      "Key": "rtc",
-      "Value": []
+      "Name": "rtc",
+      "Description": "Embraces semantic annotations of characters presented in a ruby of \u003Crb\u003E elements used inside of \u003Cruby\u003E element. \u003Crb\u003E elements can have both pronunciation (\u003Crt\u003E) and semantic (\u003Crtc\u003E) annotations.",
+      "Attributes": []
     },
     {
-      "Key": "ruby",
-      "Value": []
+      "Name": "ruby",
+      "Description": "Represents small annotations that are rendered above, below, or next to base text, usually used for showing the pronunciation of East Asian characters. It can also be used for annotating other kinds of text, but this usage is less common.",
+      "Attributes": []
     },
     {
-      "Key": "s",
-      "Value": []
+      "Name": "s",
+      "Description": "Renders text with a strikethrough, or a line through it. Use the \u003Cs\u003E element to represent things that are no longer relevant or no longer accurate. However, \u003Cs\u003E is not appropriate when indicating document edits; for that, use the \u003Cdel\u003E and \u003Cins\u003E elements, as appropriate.",
+      "Attributes": []
     },
     {
-      "Key": "samp",
-      "Value": []
+      "Name": "samp",
+      "Description": "Used to enclose inline text which represents sample (or quoted) output from a computer program. Its contents are typically rendered using the browser\u0027s default monospaced font (such as Courier or Lucida Console).",
+      "Attributes": []
     },
     {
-      "Key": "script",
-      "Value": [
+      "Name": "script",
+      "Description": "Used to embed executable code or data; this is typically used to embed or refer to JavaScript code. The \u003Cscript\u003E element can also be used with other languages, such as WebGL\u0027s GLSL shader programming language and JSON.",
+      "Attributes": [
         "async",
         "crossorigin",
         "defer",
@@ -650,16 +753,19 @@
       ]
     },
     {
-      "Key": "search",
-      "Value": []
+      "Name": "search",
+      "Description": "Represents a part that contains a set of form controls or other content related to performing a search or filtering operation.",
+      "Attributes": []
     },
     {
-      "Key": "section",
-      "Value": []
+      "Name": "section",
+      "Description": "Represents a generic standalone section of a document, which doesn\u0027t have a more specific semantic element to represent it. Sections should always have a heading, with very few exceptions.",
+      "Attributes": []
     },
     {
-      "Key": "select",
-      "Value": [
+      "Name": "select",
+      "Description": "Represents a control that provides a menu of options.",
+      "Attributes": [
         "autocomplete",
         "disabled",
         "form",
@@ -670,20 +776,24 @@
       ]
     },
     {
-      "Key": "shadow",
-      "Value": []
+      "Name": "shadow",
+      "Description": "An obsolete part of the Web Components technology suite that was intended to be used as a shadow DOM insertion point. You might have used it if you have created multiple shadow roots under a shadow host. Consider using \u003Cslot\u003E instead.",
+      "Attributes": []
     },
     {
-      "Key": "slot",
-      "Value": []
+      "Name": "slot",
+      "Description": "Part of the Web Components technology suite, this element is a placeholder inside a web component that you can fill with your own markup, which lets you create separate DOM trees and present them together.",
+      "Attributes": []
     },
     {
-      "Key": "small",
-      "Value": []
+      "Name": "small",
+      "Description": "Represents side-comments and small print, like copyright and legal text, independent of its styled presentation. By default, it renders text within it one font size smaller, such as from small to x-small.",
+      "Attributes": []
     },
     {
-      "Key": "source",
-      "Value": [
+      "Name": "source",
+      "Description": "Specifies multiple media resources for the picture, the audio element, or the video element. It is a void element, meaning that it has no content and does not have a closing tag. It is commonly used to offer the same media content in multiple file formats in order to provide compatibility with a broad range of browsers given their differing support for image file formats and media file formats.",
+      "Attributes": [
         "media",
         "sizes",
         "src",
@@ -692,44 +802,53 @@
       ]
     },
     {
-      "Key": "span",
-      "Value": []
+      "Name": "span",
+      "Description": "A generic inline container for phrasing content, which does not inherently represent anything. It can be used to group elements for styling purposes (using the class or id attributes), or because they share attribute values, such as lang. It should be used only when no other semantic element is appropriate. \u003Cspan\u003E is very much like a div element, but div is a block-level element whereas a \u003Cspan\u003E is an inline-level element.",
+      "Attributes": []
     },
     {
-      "Key": "strike",
-      "Value": []
+      "Name": "strike",
+      "Description": "Places a strikethrough (horizontal line) over text.",
+      "Attributes": []
     },
     {
-      "Key": "strong",
-      "Value": []
+      "Name": "strong",
+      "Description": "Indicates that its contents have strong importance, seriousness, or urgency. Browsers typically render the contents in bold type.",
+      "Attributes": []
     },
     {
-      "Key": "style",
-      "Value": [
+      "Name": "style",
+      "Description": "Contains style information for a document or part of a document. It contains CSS, which is applied to the contents of the document containing this element.",
+      "Attributes": [
         "media",
         "scoped",
         "type"
       ]
     },
     {
-      "Key": "sub",
-      "Value": []
+      "Name": "sub",
+      "Description": "Specifies inline text which should be displayed as subscript for solely typographical reasons. Subscripts are typically rendered with a lowered baseline using smaller text.",
+      "Attributes": []
     },
     {
-      "Key": "summary",
-      "Value": []
+      "Name": "summary",
+      "Description": "Specifies a summary, caption, or legend for a details element\u0027s disclosure box. Clicking the \u003Csummary\u003E element toggles the state of the parent \u003Cdetails\u003E element open and closed.",
+      "Attributes": []
     },
     {
-      "Key": "sup",
-      "Value": []
+      "Name": "sup",
+      "Description": "Specifies inline text which is to be displayed as superscript for solely typographical reasons. Superscripts are usually rendered with a raised baseline using smaller text.",
+      "Attributes": []
     },
     {
-      "Key": "svg",
-      "Value": []
+      "Name": "svg",
+      "Description": "Container defining a new coordinate system and viewport. It is used as the outermost element of SVG documents, but it can also be used to embed an SVG fragment inside an SVG or HTML document.",
+      "Attributes": []
     },
     {
-      "Key": "table",
-      "Value": [
+      "Name": "table",
+      "Description": "Represents tabular data\u2014that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.",
+      "Attributes": [
         "align",
         "background",
         "bgcolor",
@@ -738,15 +857,17 @@
       ]
     },
     {
-      "Key": "tbody",
-      "Value": [
+      "Name": "tbody",
+      "Description": "Encapsulates a set of table rows (\u003Ctr\u003E elements), indicating that they comprise the body of a table\u0027s (main) data.",
+      "Attributes": [
         "align",
         "bgcolor"
       ]
     },
     {
-      "Key": "td",
-      "Value": [
+      "Name": "td",
+      "Description": "A child of the \u003Ctr\u003E element, it defines a cell of a table that contains data.",
+      "Attributes": [
         "align",
         "background",
         "bgcolor",
@@ -756,12 +877,14 @@
       ]
     },
     {
-      "Key": "template",
-      "Value": []
+      "Name": "template",
+      "Description": "A mechanism for holding HTML that is not to be rendered immediately when a page is loaded but may be instantiated subsequently during runtime using JavaScript.",
+      "Attributes": []
     },
     {
-      "Key": "textarea",
-      "Value": [
+      "Name": "textarea",
+      "Description": "Represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizeable amount of free-form text, for example, a comment on a review or feedback form.",
+      "Attributes": [
         "autocomplete",
         "cols",
         "dirname",
@@ -780,15 +903,17 @@
       ]
     },
     {
-      "Key": "tfoot",
-      "Value": [
+      "Name": "tfoot",
+      "Description": "Encapsulates a set of table rows (\u003Ctr\u003E elements), indicating that they comprise the foot of a table with information about the table\u0027s columns. This is usually a summary of the columns, e.g., a sum of the given numbers in a column.",
+      "Attributes": [
         "align",
         "bgcolor"
       ]
     },
     {
-      "Key": "th",
-      "Value": [
+      "Name": "th",
+      "Description": "A child of the \u003Ctr\u003E element, it defines a cell as the header of a group of table cells. The nature of this group can be explicitly defined by the scope and headers attributes.",
+      "Attributes": [
         "align",
         "background",
         "bgcolor",
@@ -799,31 +924,36 @@
       ]
     },
     {
-      "Key": "thead",
-      "Value": [
+      "Name": "thead",
+      "Description": "Encapsulates a set of table rows (\u003Ctr\u003E elements), indicating that they comprise the head of a table with information about the table\u0027s columns. This is usually in the form of column headers (\u003Cth\u003E elements).",
+      "Attributes": [
         "align"
       ]
     },
     {
-      "Key": "time",
-      "Value": [
+      "Name": "time",
+      "Description": "Represents a specific period in time. It may include the datetime attribute to translate dates into machine-readable format, allowing for better search engine results or custom features such as reminders.",
+      "Attributes": [
         "datetime"
       ]
     },
     {
-      "Key": "title",
-      "Value": []
+      "Name": "title",
+      "Description": "Defines the document\u0027s title that is shown in a browser\u0027s title bar or a page\u0027s tab. It only contains text; HTML tags within the element, if any, are also treated as plain text.",
+      "Attributes": []
     },
     {
-      "Key": "tr",
-      "Value": [
+      "Name": "tr",
+      "Description": "Defines a row of cells in a table. The row\u0027s cells can then be established using a mix of \u003Ctd\u003E (data cell) and \u003Cth\u003E (header cell) elements.",
+      "Attributes": [
         "align",
         "bgcolor"
       ]
     },
     {
-      "Key": "track",
-      "Value": [
+      "Name": "track",
+      "Description": "Used as a child of the media elements, audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files)\u2014Web Video Text Tracks.",
+      "Attributes": [
         "default",
         "kind",
         "label",
@@ -832,24 +962,29 @@
       ]
     },
     {
-      "Key": "tt",
-      "Value": []
+      "Name": "tt",
+      "Description": "Creates inline text which is presented using the user agent default monospace font face. This element was created for the purpose of rendering text as it would be displayed on a fixed-width display such as a teletype, text-only screen, or line printer.",
+      "Attributes": []
     },
     {
-      "Key": "u",
-      "Value": []
+      "Name": "u",
+      "Description": "Represents a span of inline text which should be rendered in a way that indicates that it has a non-textual annotation. This is rendered by default as a single solid underline but may be altered using CSS.",
+      "Attributes": []
     },
     {
-      "Key": "ul",
-      "Value": []
+      "Name": "ul",
+      "Description": "Represents an unordered list of items, typically rendered as a bulleted list.",
+      "Attributes": []
     },
     {
-      "Key": "var",
-      "Value": []
+      "Name": "var",
+      "Description": "Represents the name of a variable in a mathematical expression or a programming context. It\u0027s typically presented using an italicized version of the current typeface, although that behavior is browser-dependent.",
+      "Attributes": []
     },
     {
-      "Key": "video",
-      "Value": [
+      "Name": "video",
+      "Description": "Embeds a media player which supports video playback into the document. You can also use \u003Cvideo\u003E for audio content, but the audio element may provide a more appropriate user experience.",
+      "Attributes": [
         "autoplay",
         "controls",
         "crossorigin",
@@ -864,12 +999,14 @@
       ]
     },
     {
-      "Key": "wbr",
-      "Value": []
+      "Name": "wbr",
+      "Description": "Represents a word break opportunity\u2014a position within text where the browser may optionally break a line, though its line-breaking rules would not otherwise create a break at that location.",
+      "Attributes": []
     },
     {
-      "Key": "xmp",
-      "Value": []
+      "Name": "xmp",
+      "Description": "Renders text between the start and end tags without interpreting the HTML in between and using a monospaced font. The HTML2 specification recommended that it should be rendered wide enough to allow 80 characters per line.",
+      "Attributes": []
     }
   ],
   "GlobalAttributes": [
@@ -890,5 +1027,495 @@
     "tabindex",
     "title",
     "translate"
+  ],
+  "AttributeDescriptions": [
+    {
+      "Key": "accept",
+      "Value": "List of types the server accepts, typically a file type."
+    },
+    {
+      "Key": "accept-charset",
+      "Value": "The character set, which if provided must be \u0022UTF-8\u0022."
+    },
+    {
+      "Key": "accesskey",
+      "Value": "Keyboard shortcut to activate or add focus to the element."
+    },
+    {
+      "Key": "action",
+      "Value": "The URI of a program that processes the information submitted via the form."
+    },
+    {
+      "Key": "align",
+      "Value": "Specifies the horizontal alignment of the element."
+    },
+    {
+      "Key": "allow",
+      "Value": "Specifies a feature-policy for the iframe."
+    },
+    {
+      "Key": "alt",
+      "Value": "Alternative text in case an image can\u0027t be displayed."
+    },
+    {
+      "Key": "as",
+      "Value": "Specifies the type of content being loaded by the link."
+    },
+    {
+      "Key": "async",
+      "Value": "Executes the script asynchronously."
+    },
+    {
+      "Key": "autocapitalize",
+      "Value": "Sets whether input is automatically capitalized when entered by user"
+    },
+    {
+      "Key": "autocomplete",
+      "Value": "Indicates whether controls in this form can by default have their values automatically completed by the browser."
+    },
+    {
+      "Key": "autoplay",
+      "Value": "The audio or video should play as soon as possible."
+    },
+    {
+      "Key": "background",
+      "Value": "Specifies the URL of an image file. Note: Although browsers and email clients may still support this attribute, it is obsolete. Use CSS background-image instead."
+    },
+    {
+      "Key": "bgcolor",
+      "Value": "Background color of the element. Note: This is a legacy attribute. Please use the CSS background-color property instead."
+    },
+    {
+      "Key": "border",
+      "Value": "The border width. Note: This is a legacy attribute. Please use the CSS border property instead."
+    },
+    {
+      "Key": "capture",
+      "Value": "From the Media Capture specification, specifies a new file can be captured."
+    },
+    {
+      "Key": "charset",
+      "Value": "Declares the character encoding of the page or script."
+    },
+    {
+      "Key": "checked",
+      "Value": "Indicates whether the element should be checked on page load."
+    },
+    {
+      "Key": "cite",
+      "Value": "Contains a URI which points to the source of the quote or change."
+    },
+    {
+      "Key": "class",
+      "Value": "Often used with CSS to style elements with common properties."
+    },
+    {
+      "Key": "color",
+      "Value": "This attribute sets the text color using either a named color or a color specified in the hexadecimal #RRGGBB format. Note: This is a legacy attribute. Please use the CSS color property instead."
+    },
+    {
+      "Key": "cols",
+      "Value": "Defines the number of columns in a textarea."
+    },
+    {
+      "Key": "colspan",
+      "Value": "The colspan attribute defines the number of columns a cell should span."
+    },
+    {
+      "Key": "content",
+      "Value": "A value associated with http-equiv or name depending on the context."
+    },
+    {
+      "Key": "contenteditable",
+      "Value": "Indicates whether the element\u0027s content is editable."
+    },
+    {
+      "Key": "controls",
+      "Value": "Indicates whether the browser should show playback controls to the user."
+    },
+    {
+      "Key": "coords",
+      "Value": "A set of values specifying the coordinates of the hot-spot region."
+    },
+    {
+      "Key": "crossorigin",
+      "Value": "How the element handles cross-origin requests"
+    },
+    {
+      "Key": "csp",
+      "Value": "Specifies the Content Security Policy that an embedded document must agree to enforce upon itself."
+    },
+    {
+      "Key": "data",
+      "Value": "Specifies the URL of the resource."
+    },
+    {
+      "Key": "datetime",
+      "Value": "Indicates the date and time associated with the element."
+    },
+    {
+      "Key": "decoding",
+      "Value": "Indicates the preferred method to decode the image."
+    },
+    {
+      "Key": "default",
+      "Value": "Indicates that the track should be enabled unless the user\u0027s preferences indicate something different."
+    },
+    {
+      "Key": "defer",
+      "Value": "Indicates that the script should be executed after the page has been parsed."
+    },
+    {
+      "Key": "dir",
+      "Value": "Defines the text direction. Allowed values are ltr (Left-To-Right) or rtl (Right-To-Left)"
+    },
+    {
+      "Key": "dirname",
+      "Value": ""
+    },
+    {
+      "Key": "disabled",
+      "Value": "Indicates whether the user can interact with the element."
+    },
+    {
+      "Key": "download",
+      "Value": "Indicates that the hyperlink is to be used for downloading a resource."
+    },
+    {
+      "Key": "draggable",
+      "Value": "Defines whether the element can be dragged."
+    },
+    {
+      "Key": "enctype",
+      "Value": "Defines the content type of the form data when the method is POST."
+    },
+    {
+      "Key": "enterkeyhint",
+      "Value": "The enterkeyhint specifies what action label (or icon) to present for the enter key on virtual keyboards. The attribute can be used with form controls (such as the value of textarea elements), or in elements in an editing host (e.g., using contenteditable attribute)."
+    },
+    {
+      "Key": "for",
+      "Value": "Describes elements which belongs to this one."
+    },
+    {
+      "Key": "form",
+      "Value": "Indicates the form that is the owner of the element."
+    },
+    {
+      "Key": "formaction",
+      "Value": "Indicates the action of the element, overriding the action defined in the \u003Cform\u003E."
+    },
+    {
+      "Key": "formenctype",
+      "Value": "If the button/input is a submit button (e.g. type=\u0022submit\u0022), this attribute sets the encoding type to use during form submission. If this attribute is specified, it overrides the enctype attribute of the button\u0027s form owner."
+    },
+    {
+      "Key": "formmethod",
+      "Value": "If the button/input is a submit button (e.g. type=\u0022submit\u0022), this attribute sets the submission method to use during form submission (GET, POST, etc.). If this attribute is specified, it overrides the method attribute of the button\u0027s form owner."
+    },
+    {
+      "Key": "formnovalidate",
+      "Value": "If the button/input is a submit button (e.g. type=\u0022submit\u0022), this boolean attribute specifies that the form is not to be validated when it is submitted. If this attribute is specified, it overrides the novalidate attribute of the button\u0027s form owner."
+    },
+    {
+      "Key": "formtarget",
+      "Value": "If the button/input is a submit button (e.g. type=\u0022submit\u0022), this attribute specifies the browsing context (for example, tab, window, or inline frame) in which to display the response that is received after submitting the form. If this attribute is specified, it overrides the target attribute of the button\u0027s form owner."
+    },
+    {
+      "Key": "headers",
+      "Value": "IDs of the \u003Cth\u003E elements which applies to this element."
+    },
+    {
+      "Key": "height",
+      "Value": "Specifies the height of elements listed here. For all other elements, use the CSS height property. Note: In some instances, such as \u003Cdiv\u003E, this is a legacy attribute, in which case the CSS height property should be used instead."
+    },
+    {
+      "Key": "hidden",
+      "Value": "Prevents rendering of given element, while keeping child elements, e.g. script elements, active."
+    },
+    {
+      "Key": "high",
+      "Value": "Indicates the lower bound of the upper range."
+    },
+    {
+      "Key": "href",
+      "Value": "The URL of a linked resource."
+    },
+    {
+      "Key": "hreflang",
+      "Value": "Specifies the language of the linked resource."
+    },
+    {
+      "Key": "http-equiv",
+      "Value": "Defines a pragma directive."
+    },
+    {
+      "Key": "id",
+      "Value": "Often used with CSS to style a specific element. The value of this attribute must be unique."
+    },
+    {
+      "Key": "inputmode",
+      "Value": "Provides a hint as to the type of data that might be entered by the user while editing the element or its contents. The attribute can be used with form controls (such as the value of textarea elements), or in elements in an editing host (e.g., using contenteditable attribute)."
+    },
+    {
+      "Key": "integrity",
+      "Value": "Specifies a Subresource Integrity value that allows browsers to verify what they fetch."
+    },
+    {
+      "Key": "intrinsicsize",
+      "Value": "This attribute tells the browser to ignore the actual intrinsic size of the image and pretend it\u0027s the size specified in the attribute."
+    },
+    {
+      "Key": "ismap",
+      "Value": "Indicates that the image is part of a server-side image map."
+    },
+    {
+      "Key": "itemprop",
+      "Value": ""
+    },
+    {
+      "Key": "kind",
+      "Value": "Specifies the kind of text track."
+    },
+    {
+      "Key": "label",
+      "Value": "Specifies a user-readable title of the element."
+    },
+    {
+      "Key": "lang",
+      "Value": "Defines the language used in the element."
+    },
+    {
+      "Key": "language",
+      "Value": "Defines the script language used in the element."
+    },
+    {
+      "Key": "list",
+      "Value": "Identifies a list of pre-defined options to suggest to the user."
+    },
+    {
+      "Key": "loading",
+      "Value": "Indicates if the element should be loaded lazily (loading=\u0022lazy\u0022) or loaded immediately (loading=\u0022eager\u0022)."
+    },
+    {
+      "Key": "loop",
+      "Value": "Indicates whether the media should start playing from the start when it\u0027s finished."
+    },
+    {
+      "Key": "low",
+      "Value": "Indicates the upper bound of the lower range."
+    },
+    {
+      "Key": "max",
+      "Value": "Indicates the maximum value allowed."
+    },
+    {
+      "Key": "maxlength",
+      "Value": "Defines the maximum number of characters allowed in the element."
+    },
+    {
+      "Key": "media",
+      "Value": "Specifies a hint of the media for which the linked resource was designed."
+    },
+    {
+      "Key": "method",
+      "Value": "Defines which HTTP method to use when submitting the form. Can be GET (default) or POST."
+    },
+    {
+      "Key": "min",
+      "Value": "Indicates the minimum value allowed."
+    },
+    {
+      "Key": "minlength",
+      "Value": "Defines the minimum number of characters allowed in the element."
+    },
+    {
+      "Key": "multiple",
+      "Value": "Indicates whether multiple values can be entered in an input of the type email or file."
+    },
+    {
+      "Key": "muted",
+      "Value": "Indicates whether the audio will be initially silenced on page load."
+    },
+    {
+      "Key": "name",
+      "Value": "Name of the element. For example used by the server to identify the fields in form submits."
+    },
+    {
+      "Key": "novalidate",
+      "Value": "This attribute indicates that the form shouldn\u0027t be validated when submitted."
+    },
+    {
+      "Key": "open",
+      "Value": "Indicates whether the contents are currently visible (in the case of a \u003Cdetails\u003E element) or whether the dialog is active and can be interacted with (in the case of a \u003Cdialog\u003E element)."
+    },
+    {
+      "Key": "optimum",
+      "Value": "Indicates the optimal numeric value."
+    },
+    {
+      "Key": "pattern",
+      "Value": "Defines a regular expression which the element\u0027s value will be validated against."
+    },
+    {
+      "Key": "ping",
+      "Value": "The ping attribute specifies a space-separated list of URLs to be notified if a user follows the hyperlink."
+    },
+    {
+      "Key": "placeholder",
+      "Value": "Provides a hint to the user of what can be entered in the field."
+    },
+    {
+      "Key": "playsinline",
+      "Value": "A Boolean attribute indicating that the video is to be played \u0022inline\u0022; that is, within the element\u0027s playback area. Note that the absence of this attribute does not imply that the video will always be played in fullscreen."
+    },
+    {
+      "Key": "poster",
+      "Value": "A URL indicating a poster frame to show until the user plays or seeks."
+    },
+    {
+      "Key": "preload",
+      "Value": "Indicates whether the whole resource, parts of it or nothing should be preloaded."
+    },
+    {
+      "Key": "readonly",
+      "Value": "Indicates whether the element can be edited."
+    },
+    {
+      "Key": "referrerpolicy",
+      "Value": "Specifies which referrer is sent when fetching the resource."
+    },
+    {
+      "Key": "rel",
+      "Value": "Specifies the relationship of the target object to the link object."
+    },
+    {
+      "Key": "required",
+      "Value": "Indicates whether this element is required to fill out or not."
+    },
+    {
+      "Key": "reversed",
+      "Value": "Indicates whether the list should be displayed in a descending order instead of an ascending order."
+    },
+    {
+      "Key": "role",
+      "Value": "Defines an explicit role for an element for use by assistive technologies."
+    },
+    {
+      "Key": "rows",
+      "Value": "Defines the number of rows in a text area."
+    },
+    {
+      "Key": "rowspan",
+      "Value": "Defines the number of rows a table cell should span over."
+    },
+    {
+      "Key": "sandbox",
+      "Value": "Stops a document loaded in an iframe from using certain features (such as submitting forms or opening new windows)."
+    },
+    {
+      "Key": "scope",
+      "Value": "Defines the cells that the header test (defined in the th element) relates to."
+    },
+    {
+      "Key": "scoped",
+      "Value": ""
+    },
+    {
+      "Key": "selected",
+      "Value": "Defines a value which will be selected on page load."
+    },
+    {
+      "Key": "shape",
+      "Value": ""
+    },
+    {
+      "Key": "size",
+      "Value": "Defines the width of the element (in pixels). If the element\u0027s type attribute is text or password then it\u0027s the number of characters."
+    },
+    {
+      "Key": "sizes",
+      "Value": ""
+    },
+    {
+      "Key": "slot",
+      "Value": "Assigns a slot in a shadow DOM shadow tree to an element."
+    },
+    {
+      "Key": "span",
+      "Value": ""
+    },
+    {
+      "Key": "spellcheck",
+      "Value": "Indicates whether spell checking is allowed for the element."
+    },
+    {
+      "Key": "src",
+      "Value": "The URL of the embeddable content."
+    },
+    {
+      "Key": "srcdoc",
+      "Value": ""
+    },
+    {
+      "Key": "srclang",
+      "Value": ""
+    },
+    {
+      "Key": "srcset",
+      "Value": "One or more responsive image candidates."
+    },
+    {
+      "Key": "start",
+      "Value": "Defines the first number if other than 1."
+    },
+    {
+      "Key": "step",
+      "Value": ""
+    },
+    {
+      "Key": "style",
+      "Value": "Defines CSS styles which will override styles previously set."
+    },
+    {
+      "Key": "summary",
+      "Value": ""
+    },
+    {
+      "Key": "tabindex",
+      "Value": "Overrides the browser\u0027s default tab order and follows the one specified instead."
+    },
+    {
+      "Key": "target",
+      "Value": "Specifies where to open the linked document (in the case of an \u003Ca\u003E element) or where to display the response received (in the case of a \u003Cform\u003E element)"
+    },
+    {
+      "Key": "title",
+      "Value": "Text to be displayed in a tooltip when hovering over the element."
+    },
+    {
+      "Key": "translate",
+      "Value": "Specify whether an element\u0027s attribute values and the values of its Text node children are to be translated when the page is localized, or whether to leave them unchanged."
+    },
+    {
+      "Key": "type",
+      "Value": "Defines the type of the element."
+    },
+    {
+      "Key": "usemap",
+      "Value": ""
+    },
+    {
+      "Key": "value",
+      "Value": "Defines a default value which will be displayed in the element on page load."
+    },
+    {
+      "Key": "width",
+      "Value": "For the elements listed here, this establishes the element\u0027s width. Note: For all other instances, such as \u003Cdiv\u003E, this is a legacy attribute, in which case the CSS width property should be used instead."
+    },
+    {
+      "Key": "wrap",
+      "Value": "Indicates whether the text should be wrapped."
+    }
   ]
 }

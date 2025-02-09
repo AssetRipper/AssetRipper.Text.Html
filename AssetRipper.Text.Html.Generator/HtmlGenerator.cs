@@ -3,6 +3,7 @@ using AssetRipper.Text.SourceGeneration;
 using Microsoft.CodeAnalysis;
 using SGF;
 using System.CodeDom.Compiler;
+using System.Net;
 
 namespace HtmlSharp.Generator;
 
@@ -75,6 +76,7 @@ public sealed class HtmlGenerator : IncrementalGenerator
 			writer.WriteLineNoTabs();
 			writer.WriteFileScopedNamespace("AssetRipper.Text.Html");
 			writer.WriteLineNoTabs();
+			writer.WriteSummaryDocumentation(WebUtility.HtmlEncode(attribute.Description));
 			writer.WriteLine($"public interface {attribute.InterfaceName}<TSelf> where TSelf : {attribute.InterfaceName}<TSelf>, allows ref struct");
 			using (new CurlyBrackets(writer))
 			{
@@ -98,6 +100,7 @@ public sealed class HtmlGenerator : IncrementalGenerator
 			writer.WriteLineNoTabs();
 			writer.WriteFileScopedNamespace("AssetRipper.Text.Html");
 			writer.WriteLineNoTabs();
+			writer.WriteSummaryDocumentation(WebUtility.HtmlEncode(element.Description));
 			writer.WriteLine($"public readonly ref partial struct {element.ClassName} : IHtmlElement<{element.ClassName}>,");
 			using (new Indented(writer))
 			{
@@ -267,19 +270,23 @@ public sealed class HtmlGenerator : IncrementalGenerator
 
 	private static void WriteAttributeInterfacePropertyAndMethods(IndentedTextWriter writer, HtmlAttribute attribute)
 	{
+		string encodedDescription = WebUtility.HtmlEncode(attribute.Description);
+
 		writer.WriteSummaryDocumentation($"Includes the {attribute.Name} attribute.");
-		writer.WriteRemarksDocumentation($"The value is NOT automatically Html-encoded.\nThis is the same as calling {XmlFormatter.SeeCref(attribute.FluentMethodName)}.");
+		writer.WriteRemarksDocumentation(encodedDescription);
+		writer.WriteParameterDocumentation("value", "The value to set. It is NOT automatically Html-encoded.");
 		writer.WriteLine($"string? {attribute.PropertyName} {{ set; }}");
 
 		writer.WriteLineNoTabs();
 
 		writer.WriteSummaryDocumentation($"Includes the {attribute.Name} attribute.");
-		writer.WriteRemarksDocumentation($"This is the same as setting {XmlFormatter.SeeCref(attribute.PropertyName)}.");
+		writer.WriteRemarksDocumentation(encodedDescription);
 		writer.WriteParameterDocumentation("value", "The value to set. It is NOT automatically Html-encoded.");
 		writer.WriteReturnsDocumentation("This instance.");
 		writer.WriteLine($"TSelf {attribute.FluentMethodName}(string? value = null);");
 
 		writer.WriteSummaryDocumentation($"Might include the {attribute.Name} attribute.");
+		writer.WriteRemarksDocumentation(encodedDescription);
 		writer.WriteParameterDocumentation("exists", "Whether or not the attribute should be included.");
 		writer.WriteParameterDocumentation("value", "The value to set. It is NOT automatically Html-encoded.");
 		writer.WriteReturnsDocumentation("This instance.");

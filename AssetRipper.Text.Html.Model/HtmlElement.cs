@@ -3,13 +3,15 @@
 public sealed class HtmlElement
 {
 	public string Name { get; }
+	public string Description { get; }
 	public string ClassName { get; }
 	public bool IsVoidElement { get; }
 	public IReadOnlyDictionary<string, HtmlAttribute> Attributes { get; }
 
-	public HtmlElement(string name, IEnumerable<string> attributes, Dictionary<string, HtmlAttribute> attributeDictionary)
+	public HtmlElement(string name, string description, IEnumerable<string> attributes, Dictionary<string, HtmlAttribute> attributeDictionary)
 	{
 		Name = name;
+		Description = description;
 		ClassName = GetPascalName(name);
 		IsVoidElement = HtmlHelper.IsVoidElement(name);
 		Dictionary<string, HtmlAttribute> dictionary = new();
