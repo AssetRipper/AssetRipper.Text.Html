@@ -1,24 +1,37 @@
 ﻿using AssetRipper.Text.Html.Model;
 using AssetRipper.Text.SourceGeneration;
+using Microsoft.CodeAnalysis;
+using SGF;
 using System.CodeDom.Compiler;
 
 namespace HtmlSharp.Generator;
 
-internal class Program
+[IncrementalGenerator]
+public sealed class HtmlGenerator : IncrementalGenerator
 {
-	private const string RepositoryRoot = "../../../../";
-	private const string TargetProject = RepositoryRoot + "AssetRipper.Text.Html/";
-	private const string GeneratedFolder = TargetProject + "Generated/";
+	public HtmlGenerator() : base(nameof(HtmlGenerator))
+	{
+	}
 
-	static void Main()
+	public override void OnInitialize(SgfInitializationContext context)
+	{
+		context.RegisterPostInitializationOutput(GenerateCode);
+	}
+
+	private static void GenerateCode(IncrementalGeneratorPostInitializationContext context)
 	{
 		HtmlJsonLoader.Load(out List<HtmlAttribute> globalAttributes, out List<HtmlAttribute> localAttributes, out List<HtmlElement> elements);
 
-		Directory.CreateDirectory(GeneratedFolder);
-
 		// Global attributes
 		{
-			IndentedTextWriter writer = IndentedTextWriterFactory.Create(GeneratedFolder, "IGlobalAttributes");
+			StringWriter stringWriter = new()
+			{
+				NewLine = "\n",
+			};
+			IndentedTextWriter writer = new IndentedTextWriter(stringWriter, "\t")
+			{
+				NewLine = "\n",
+			};
 
 			writer.WriteGeneratedCodeWarning();
 			writer.WriteLineNoTabs();
@@ -41,12 +54,21 @@ internal class Program
 					writer.WriteLine($"TSelf {attribute.FluentMethodName}(string? value = null);");
 				}
 			}
+
+			context.AddSource("IGlobalAttributes.g.cs", stringWriter.ToString());
 		}
 
 		// Local attributes
 		foreach (HtmlAttribute attribute in localAttributes)
 		{
-			IndentedTextWriter writer = IndentedTextWriterFactory.Create(GeneratedFolder, attribute.InterfaceName);
+			StringWriter stringWriter = new()
+			{
+				NewLine = "\n",
+			};
+			IndentedTextWriter writer = new IndentedTextWriter(stringWriter, "\t")
+			{
+				NewLine = "\n",
+			};
 
 			writer.WriteGeneratedCodeWarning();
 			writer.WriteLineNoTabs();
@@ -61,11 +83,20 @@ internal class Program
 				writer.WriteLineNoTabs();
 				writer.WriteLine($"TSelf {attribute.FluentMethodName}(string? value = null);");
 			}
+
+			context.AddSource($"{attribute.InterfaceName}.g.cs", stringWriter.ToString());
 		}
 
 		foreach (HtmlElement element in elements)
 		{
-			IndentedTextWriter writer = IndentedTextWriterFactory.Create(GeneratedFolder, element.ClassName);
+			StringWriter stringWriter = new()
+			{
+				NewLine = "\n",
+			};
+			IndentedTextWriter writer = new IndentedTextWriter(stringWriter, "\t")
+			{
+				NewLine = "\n",
+			};
 
 			writer.WriteGeneratedCodeWarning();
 			writer.WriteLineNoTabs();
@@ -192,8 +223,8 @@ internal class Program
 					writer.WriteLine("];");
 				}
 			}
-			Console.WriteLine(element.Name);
+
+			context.AddSource($"{element.ClassName}.g.cs", stringWriter.ToString());
 		}
-		Console.WriteLine("Done!");
 	}
 }

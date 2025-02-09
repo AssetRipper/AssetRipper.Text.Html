@@ -30,4 +30,8 @@
 		<None Include="../README.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\AssetRipper.Text.Html.Generator\AssetRipper.Text.Html.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	</ItemGroup>
+
 </Project>

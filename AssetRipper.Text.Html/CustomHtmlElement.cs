@@ -1,5 +1,4 @@
-﻿
-namespace AssetRipper.Text.Html;
+﻿namespace AssetRipper.Text.Html;
 
 /// <summary>
 /// A class for custom HTML elements.
