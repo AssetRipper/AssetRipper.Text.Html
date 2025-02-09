@@ -3,7 +3,7 @@
 public sealed class HtmlAttribute
 {
 	public string Name { get; }
-	public string InterfaceName => Global ? "IGlobalAttributes" : $"I{PropertyName}Attribute";
+	public string InterfaceName => $"I{PropertyName}Attribute";
 	public string PropertyName { get; }
 	public string FluentMethodName { get; }
 	public string MaybeMethodName { get; }

@@ -36,25 +36,32 @@ public sealed class HtmlGenerator : IncrementalGenerator
 			writer.WriteLineNoTabs();
 			writer.WriteFileScopedNamespace("AssetRipper.Text.Html");
 			writer.WriteLineNoTabs();
-			writer.WriteLine("public interface IGlobalAttributes<TSelf> where TSelf : IGlobalAttributes<TSelf>, allows ref struct");
-			using (new CurlyBrackets(writer))
+			writer.WriteLine("public interface IGlobalAttributes<TSelf> :");
+			using (new Indented(writer))
 			{
 				for (int i = 0; i < globalAttributes.Count; i++)
 				{
 					HtmlAttribute attribute = globalAttributes[i];
-					if (i > 0)
+					if (i < globalAttributes.Count - 1)
 					{
-						writer.WriteLineNoTabs();
+						writer.WriteLine($"{attribute.InterfaceName}<TSelf>,");
 					}
-					WriteAttributeInterfacePropertyAndMethods(writer, attribute);
+					else
+					{
+						writer.WriteLine($"{attribute.InterfaceName}<TSelf>");
+					}
 				}
+				writer.WriteLine("where TSelf : IGlobalAttributes<TSelf>, allows ref struct");
+			}
+			using (new CurlyBrackets(writer))
+			{
 			}
 
 			context.AddSource("IGlobalAttributes.g.cs", stringWriter.ToString());
 		}
 
 		// Local attributes
-		foreach (HtmlAttribute attribute in localAttributes)
+		foreach (HtmlAttribute attribute in localAttributes.Concat(globalAttributes))
 		{
 			StringWriter stringWriter = new()
 			{
