@@ -178,6 +178,15 @@ public sealed class HtmlGenerator : IncrementalGenerator
 							writer.WriteLine($"return {fluentMethodName}(value);");
 						}
 					}
+
+					writer.WriteLineNoTabs();
+
+					writer.WriteInheritDocumentation();
+					writer.WriteLine($"public {element.ClassName} {attribute.MaybeMethodName}(bool exists, string? value = null)");
+					using (new CurlyBrackets(writer))
+					{
+						writer.WriteLine($"return exists ? {fluentMethodName}(value) : this;");
+					}
 				}
 
 				if (element.IsVoidElement)
@@ -260,6 +269,13 @@ public sealed class HtmlGenerator : IncrementalGenerator
 		writer.WriteSummaryDocumentation($"Includes the {attribute.Name} attribute.");
 		writer.WriteRemarksDocumentation($"This is the same as setting {XmlFormatter.SeeCref(attribute.PropertyName)}.");
 		writer.WriteParameterDocumentation("value", "The value to set. It is NOT automatically Html-encoded.");
+		writer.WriteReturnsDocumentation("This instance.");
 		writer.WriteLine($"TSelf {attribute.FluentMethodName}(string? value = null);");
+
+		writer.WriteSummaryDocumentation($"Might include the {attribute.Name} attribute.");
+		writer.WriteParameterDocumentation("exists", "Whether or not the attribute should be included.");
+		writer.WriteParameterDocumentation("value", "The value to set. It is NOT automatically Html-encoded.");
+		writer.WriteReturnsDocumentation("This instance.");
+		writer.WriteLine($"TSelf {attribute.MaybeMethodName}(bool exists, string? value = null);");
 	}
 }

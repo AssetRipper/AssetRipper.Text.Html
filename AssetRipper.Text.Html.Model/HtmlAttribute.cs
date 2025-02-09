@@ -6,13 +6,15 @@ public sealed class HtmlAttribute
 	public string InterfaceName => Global ? "IGlobalAttributes" : $"I{PropertyName}Attribute";
 	public string PropertyName { get; }
 	public string FluentMethodName { get; }
+	public string MaybeMethodName { get; }
 	public bool Global { get; }
 
 	public HtmlAttribute(string name, bool global)
 	{
 		Name = name;
 		PropertyName = GetPascalName(name);
-		FluentMethodName = $"With{GetPascalName(name)}";
+		FluentMethodName = $"With{PropertyName}";
+		MaybeMethodName = $"Maybe{FluentMethodName}";
 		Global = global;
 	}
 
