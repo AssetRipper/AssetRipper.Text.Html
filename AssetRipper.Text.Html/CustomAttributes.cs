@@ -10,6 +10,12 @@ public static class CustomAttributes
 		return element;
 	}
 
+	public static TSelf MaybeWithCustomAttribute<TSelf>(this TSelf element, bool exists, string key, string? value = null)
+		where TSelf : IHtmlElement<TSelf>, allows ref struct
+	{
+		return exists ? element.WithCustomAttribute(key, value) : element;
+	}
+
 	public static TSelf WithCustomAttributes<TSelf>(this TSelf element, scoped ReadOnlySpan<(string, string?)> attributes)
 		where TSelf : IHtmlElement<TSelf>, allows ref struct
 	{
