@@ -10,7 +10,7 @@ public sealed class HtmlElement
 	public HtmlElement(string name, IEnumerable<string> attributes, Dictionary<string, HtmlAttribute> attributeDictionary)
 	{
 		Name = name;
-		ClassName = HtmlHelper.ConvertKebabToPascal(name);
+		ClassName = GetPascalName(name);
 		IsVoidElement = HtmlHelper.IsVoidElement(name);
 		Dictionary<string, HtmlAttribute> dictionary = new();
 		foreach (string attribute in attributes)
@@ -19,4 +19,26 @@ public sealed class HtmlElement
 		}
 		Attributes = dictionary;
 	}
+
+	private static string GetPascalName(string name) => name switch
+	{
+		"blockquote" => "BlockQuote",
+		"colgroup" => "ColGroup",
+		"datalist" => "DataList",
+		"fencedframe" => "FencedFrame",
+		"fieldset" => "FieldSet",
+		"figcaption" => "FigCaption",
+		"frameset" => "FrameSet",
+		"hgroup" => "HGroup",
+		"iframe" => "IFrame",
+		"menuitem" => "MenuItem",
+		"nobr" => "NoBr",
+		"noembed" => "NoEmbed",
+		"noframes" => "NoFrames",
+		"noscript" => "NoScript",
+		"optgroup" => "OptGroup",
+		"plaintext" => "PlainText",
+		"textarea" => "TextArea",
+		_ => HtmlHelper.ConvertKebabToPascal(name),
+	};
 }
