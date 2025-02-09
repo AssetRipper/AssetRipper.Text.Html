@@ -142,7 +142,7 @@ public sealed class HtmlGenerator : IncrementalGenerator
 					{
 						writer.WriteLineNoTabs();
 						writer.WriteInheritDocumentation();
-						writer.WriteLine($"string {explicitPropertyName}");
+						writer.WriteLine($"string? {explicitPropertyName}");
 						using (new CurlyBrackets(writer))
 						{
 							writer.WriteLine($"set => {propertyName} = value;");
@@ -253,7 +253,7 @@ public sealed class HtmlGenerator : IncrementalGenerator
 	{
 		writer.WriteSummaryDocumentation($"Includes the {attribute.Name} attribute.");
 		writer.WriteRemarksDocumentation($"The value is NOT automatically Html-encoded.\nThis is the same as calling {XmlFormatter.SeeCref(attribute.FluentMethodName)}.");
-		writer.WriteLine($"string {attribute.PropertyName} {{ set; }}");
+		writer.WriteLine($"string? {attribute.PropertyName} {{ set; }}");
 
 		writer.WriteLineNoTabs();
 
