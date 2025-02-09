@@ -28,10 +28,7 @@ public sealed class HtmlGenerator : IncrementalGenerator
 			{
 				NewLine = "\n",
 			};
-			IndentedTextWriter writer = new IndentedTextWriter(stringWriter, "\t")
-			{
-				NewLine = "\n",
-			};
+			IndentedTextWriter writer = IndentedTextWriterFactory.Create(stringWriter);
 
 			writer.WriteGeneratedCodeWarning();
 			writer.WriteLineNoTabs();
@@ -49,9 +46,7 @@ public sealed class HtmlGenerator : IncrementalGenerator
 					{
 						writer.WriteLineNoTabs();
 					}
-					writer.WriteLine($"string {attribute.PropertyName} {{ set; }}");
-					writer.WriteLineNoTabs();
-					writer.WriteLine($"TSelf {attribute.FluentMethodName}(string? value = null);");
+					WriteAttributeInterfacePropertyAndMethods(writer, attribute);
 				}
 			}
 
@@ -65,10 +60,7 @@ public sealed class HtmlGenerator : IncrementalGenerator
 			{
 				NewLine = "\n",
 			};
-			IndentedTextWriter writer = new IndentedTextWriter(stringWriter, "\t")
-			{
-				NewLine = "\n",
-			};
+			IndentedTextWriter writer = IndentedTextWriterFactory.Create(stringWriter);
 
 			writer.WriteGeneratedCodeWarning();
 			writer.WriteLineNoTabs();
@@ -79,9 +71,7 @@ public sealed class HtmlGenerator : IncrementalGenerator
 			writer.WriteLine($"public interface {attribute.InterfaceName}<TSelf> where TSelf : {attribute.InterfaceName}<TSelf>, allows ref struct");
 			using (new CurlyBrackets(writer))
 			{
-				writer.WriteLine($"string {attribute.PropertyName} {{ set; }}");
-				writer.WriteLineNoTabs();
-				writer.WriteLine($"TSelf {attribute.FluentMethodName}(string? value = null);");
+				WriteAttributeInterfacePropertyAndMethods(writer, attribute);
 			}
 
 			context.AddSource($"{attribute.InterfaceName}.g.cs", stringWriter.ToString());
@@ -93,10 +83,7 @@ public sealed class HtmlGenerator : IncrementalGenerator
 			{
 				NewLine = "\n",
 			};
-			IndentedTextWriter writer = new IndentedTextWriter(stringWriter, "\t")
-			{
-				NewLine = "\n",
-			};
+			IndentedTextWriter writer = IndentedTextWriterFactory.Create(stringWriter);
 
 			writer.WriteGeneratedCodeWarning();
 			writer.WriteLineNoTabs();
@@ -127,8 +114,19 @@ public sealed class HtmlGenerator : IncrementalGenerator
 				}
 				foreach (HtmlAttribute attribute in element.Attributes.Values)
 				{
-					string propertyName = attribute.GetPropertyName(element.ClassName);
 					writer.WriteLineNoTabs();
+
+					string propertyName = attribute.GetPropertyName(element.ClassName);
+					bool needExplicitPropertyImplementation = propertyName != attribute.PropertyName;
+					string explicitPropertyName = $"{attribute.InterfaceName}<{element.ClassName}>.{attribute.PropertyName}";
+					if (needExplicitPropertyImplementation)
+					{
+						writer.WriteInheritDocumentation(explicitPropertyName.Replace('<', '{').Replace('>', '}'));
+					}
+					else
+					{
+						writer.WriteInheritDocumentation();
+					}
 					writer.WriteLine($"public string? {propertyName}");
 					using (new CurlyBrackets(writer))
 					{
@@ -140,28 +138,41 @@ public sealed class HtmlGenerator : IncrementalGenerator
 							writer.WriteLine("writer.Write('\"');");
 						}
 					}
-					if (propertyName != attribute.PropertyName)
+					if (needExplicitPropertyImplementation)
 					{
 						writer.WriteLineNoTabs();
-						writer.WriteLine($"string {attribute.InterfaceName}<{element.ClassName}>.{attribute.PropertyName}");
+						writer.WriteInheritDocumentation();
+						writer.WriteLine($"string {explicitPropertyName}");
 						using (new CurlyBrackets(writer))
 						{
 							writer.WriteLine($"set => {propertyName} = value;");
 						}
 					}
 
-					string fluentMethodName = attribute.GetFluentMethodName(element.ClassName);
 					writer.WriteLineNoTabs();
+
+					string fluentMethodName = attribute.GetFluentMethodName(element.ClassName);
+					bool needExplicitMethodImplementation = fluentMethodName != attribute.FluentMethodName;
+					string explicitFluentMethodName = $"{attribute.InterfaceName}<{element.ClassName}>.{attribute.FluentMethodName}";
+					if (needExplicitMethodImplementation)
+					{
+						writer.WriteInheritDocumentation(explicitFluentMethodName.Replace('<', '{').Replace('>', '}'));
+					}
+					else
+					{
+						writer.WriteInheritDocumentation();
+					}
 					writer.WriteLine($"public {element.ClassName} {fluentMethodName}(string? value = null)");
 					using (new CurlyBrackets(writer))
 					{
 						writer.WriteLine($"{attribute.GetPropertyName(element.ClassName)} = value;");
 						writer.WriteLine("return this;");
 					}
-					if (fluentMethodName != attribute.FluentMethodName)
+					if (needExplicitMethodImplementation)
 					{
 						writer.WriteLineNoTabs();
-						writer.WriteLine($"{element.ClassName} {attribute.InterfaceName}<{element.ClassName}>.{attribute.FluentMethodName}(string? value = null)");
+						writer.WriteInheritDocumentation();
+						writer.WriteLine($"{element.ClassName} {explicitFluentMethodName}(string? value = null)");
 						using (new CurlyBrackets(writer))
 						{
 							writer.WriteLine($"return {fluentMethodName}(value);");
@@ -172,14 +183,17 @@ public sealed class HtmlGenerator : IncrementalGenerator
 				if (element.IsVoidElement)
 				{
 					writer.WriteLineNoTabs();
+					writer.WriteInheritDocumentation();
 					writer.WriteLine("public void Close() => writer.Write(\"/>\");");
 
 					writer.WriteLineNoTabs();
+					writer.WriteInheritDocumentation();
 					writer.WriteLine($"HtmlElementCloser IHtmlElement<{element.ClassName}>.End() => throw new NotSupportedException();");
 				}
 				else
 				{
 					writer.WriteLineNoTabs();
+					writer.WriteInheritDocumentation();
 					writer.WriteLine("public void Close() => writer.Write($\"></{ElementName}>\");");
 
 					writer.WriteLineNoTabs();
@@ -194,6 +208,7 @@ public sealed class HtmlGenerator : IncrementalGenerator
 					}
 
 					writer.WriteLineNoTabs();
+					writer.WriteInheritDocumentation();
 					writer.WriteLine("public HtmlElementCloser End()");
 					using (new CurlyBrackets(writer))
 					{
@@ -206,10 +221,16 @@ public sealed class HtmlGenerator : IncrementalGenerator
 				{
 					writer.WriteLineNoTabs();
 					writer.WriteComment("IHtmlElement<TSelf> implementation");
+					writer.WriteLineNoTabs();
+					writer.WriteInheritDocumentation();
 					writer.WriteLine($"TextWriter IHtmlElement<{element.ClassName}>.Writer => writer;");
+					writer.WriteInheritDocumentation();
 					writer.WriteLine($"static {element.ClassName} IHtmlElement<{element.ClassName}>.Create(TextWriter writer) => new(writer);");
+					writer.WriteInheritDocumentation();
 					writer.WriteLine($"static bool IHtmlElement<{element.ClassName}>.IsVoidElement => {element.IsVoidElement.ToString().ToLowerInvariant()};");
+					writer.WriteInheritDocumentation();
 					writer.WriteLine($"static string IHtmlElement<{element.ClassName}>.Name => ElementName;");
+					writer.WriteInheritDocumentation();
 					writer.WriteLine($"static ReadOnlySpan<string> IHtmlElement<{element.ClassName}>.SupportedAttributes => _supportedAttributes;");
 					writer.WriteLine("private static readonly string[] _supportedAttributes =");
 					writer.WriteLine('[');
@@ -226,5 +247,19 @@ public sealed class HtmlGenerator : IncrementalGenerator
 
 			context.AddSource($"{element.ClassName}.g.cs", stringWriter.ToString());
 		}
+	}
+
+	private static void WriteAttributeInterfacePropertyAndMethods(IndentedTextWriter writer, HtmlAttribute attribute)
+	{
+		writer.WriteSummaryDocumentation($"Includes the {attribute.Name} attribute.");
+		writer.WriteRemarksDocumentation($"The value is NOT automatically Html-encoded.\nThis is the same as calling {XmlFormatter.SeeCref(attribute.FluentMethodName)}.");
+		writer.WriteLine($"string {attribute.PropertyName} {{ set; }}");
+
+		writer.WriteLineNoTabs();
+
+		writer.WriteSummaryDocumentation($"Includes the {attribute.Name} attribute.");
+		writer.WriteRemarksDocumentation($"This is the same as setting {XmlFormatter.SeeCref(attribute.PropertyName)}.");
+		writer.WriteParameterDocumentation("value", "The value to set. It is NOT automatically Html-encoded.");
+		writer.WriteLine($"TSelf {attribute.FluentMethodName}(string? value = null);");
 	}
 }
